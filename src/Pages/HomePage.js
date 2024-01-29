@@ -3,9 +3,8 @@ import './HomePage.css';
 
 const HomePage = () => {
   return (
-    <div className="homepage-text">
-      <h1>Welcome to our website!</h1>
-      <p>HOme</p>
+    <div className="home">
+      <div className='header'>Hi</div>
     </div>
   );
 };

@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import LoadingPage from './Components/LoadingPage/LoadingPage';
 import HomePage from './Pages/HomePage';
 import FAQpage from './Pages/FAQpage';
-import TeamPage from './Pages/TeamPage';
+import TeamPage from './Pages/Team/TeamPage';
 import StoryPage from './Pages/StoryPage';
-import NavBar from './Components/NavBar/NavBar';
+import NavBar from './Components/NavBar/Navbar';
 
 const App = () => {
   const [showLoading, setShowLoading] = useState(true); // State to control the display of the loading page

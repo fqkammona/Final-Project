@@ -1,3 +1,9 @@
-.homepage-text {
-    margin-top: 80px; /* adjust this value to match the height of your navbar */
-  }
+.home {
+  min-height: 100vh; 
+  background: #f0e6ee;
+  backface-visibility: hidden;
+}
+
+.header{
+  padding-top: 70px;
+}

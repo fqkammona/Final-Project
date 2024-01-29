@@ -1,0 +1,100 @@
+
+/* Members.css */
+
+.members-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    perspective: 1000px; /* Apply perspective to the parent element */
+  }
+  
+.member-card {
+    width: 300px;
+    margin: 16px;
+  }
+  
+  .member-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d; /* Allows for 3D rotation */
+  }
+  
+  .member-front, .member-back {
+    position: absolute;
+    backface-visibility: hidden; /* Hides the back side of the flip */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .member-front {
+    position: relative; /* Adjusted from absolute for the front only */
+    backface-visibility: hidden; /* Hide the back when flipped */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    z-index: 2; /* Ensures that the front face is above the back face when not flipped */
+  }
+  
+  .member-image {
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .member-info {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .member-name {
+    font-size: 20px; /* Adjust the size as needed */
+    color: #333;
+    margin-top: 10px; /* Space from the image */
+  }
+  
+  .member-title {
+    font-size: 18px; /* Adjust the size as needed */
+    color: #777;
+    margin-top: 5px; /* Space from the name */
+  }
+  
+  .member-card:hover .member-inner {
+    transform: rotateY(180deg); /* Rotate the inner container to show the back */
+  }
+
+  .member-back {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background: yellow; /* Back face color */
+    transform: rotateY(180deg); /* Rotate back face 180 degrees to hide it */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    z-index: 1; /* Below the front face when not flipped */
+    padding: 10px; /* Add some padding inside the back */
+  }
+  
+  .member-info-back {
+    width: 100%; /* Full width */
+    text-align: center; /* Center text horizontally */
+    margin-top: 10px; /* Space from the top */
+  }
+  
+  .member-name-back {
+    font-size: 20px; /* Adjust the size as needed */
+    color: black; /* Change color for better contrast */
+    margin-bottom: 5px; /* Space between name and title */
+  }
+  
+  .member-title-back {
+    font-size: 18px; /* Adjust the size as needed */
+    color: black; /* Change color for better contrast */
+  }

@@ -1,48 +1,92 @@
+/* Set the navbar to be a flex container, distribute items evenly, align items in the center, span full width, and position it relative to its normal position */
 .custom-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100%; 
+  position: relative; 
 }
 
+/* Style the sign-in button with absolute positioning, set its right and top positions, remove border, add shadow, set background color, and vertically center it */
+.sign-in-button {
+  position: absolute; 
+  right: 20px; 
+  top: 50%; 
+  border: none; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  background: #5714ff; 
+  transform: translateY(-50%); 
+}
+
+/* Adjust the sign-in button's position for screens smaller than 991px, making it static and aligning it to the end of the container */
+@media (max-width: 991px) {
+  .sign-in-button {
+    position: static; 
+    transform: none; 
+    margin-left: auto; 
+  }
+
+  .navbar.expanded {
+    background-color: transparent;
+  }
+  
+}
+
+.navbar.small-screen {
+  background-color: white; /* Set the background to white on small screens */
+  transition: background-color 0.3s; /* Smooth transition for the color change */
+}
+
+/* Set the navbar to be fixed at the top of the viewport, spanning the full width, with a transparent background and smooth transition effect */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 0 20px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  z-index: 1030;
+  padding: 0 20px; 
+  background: transparent; 
+  transition: all 0.3s ease-in-out; 
 }
 
+/* Add shadow to the navbar when it's scrolled */
 .navbar.scrolled {
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background-color: white; /* Set the background to white when scrolled */
+  transition: background-color 0.3s; /* Smooth transition for the color change */
 }
 
+/* Style the navbar brand with bold weight, large font size, and a specific color */
 .navbar-brand {
-  font-weight: bold;
-  font-size: 2rem;
-  color: #333;
+  font-weight: bold; 
+  font-size: 2rem; 
+  color: #333; 
 }
 
+/* Set the navbar navigation to be a flex container and center its items */
 .navbar-nav {
-  display: flex;
-  justify-content: center;
+  display: flex; 
+  justify-content: center; 
 }
 
+/* Style the navigation links, remove list style, set display to flex, add gap between items, and add transition effect */
 .nav-link {
-  padding: 0 10px;
-  font-size: 1.1rem;
-  color: #333;
-  transition: all 0.3s ease-in-out;
+  list-style: none; 
+  display: flex; 
+  gap: 20px; 
+  transition: all 0.3s ease-in-out; 
 }
 
+/* Change the color of navigation links on hover */
 .nav-link:hover {
-  color: #007bff;
+  color: #5714ff; 
 }
 
+/* Utility class to set the left margin to auto */
 .ml-auto {
-  margin-left: auto;
+  margin-left: auto; 
+}
+
+/* Set the height of the collapsed navbar content to 100% */
+.centered-collapse {
+  height: 100%; 
 }
