@@ -19,7 +19,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    transition: transform 0.8s;
     transform-style: preserve-3d; /* Allows for 3D rotation */
   }
   
@@ -41,6 +41,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(to right, #4c6ef5, #b96af5);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     z-index: 2; /* Ensures that the front face is above the back face when not flipped */
   }
@@ -63,7 +64,7 @@
   
   .member-title {
     font-size: 18px; /* Adjust the size as needed */
-    color: #777;
+    color: white;
     margin-top: 5px; /* Space from the name */
   }
   
@@ -73,7 +74,7 @@
 
   .member-back {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background: yellow; /* Back face color */
+    background: linear-gradient(to left, #4c6ef5, #b96af5);
     transform: rotateY(180deg); /* Rotate back face 180 degrees to hide it */
     display: flex;
     flex-direction: column; /* Stack children vertically */
@@ -97,4 +98,8 @@
   .member-title-back {
     font-size: 18px; /* Adjust the size as needed */
     color: black; /* Change color for better contrast */
+  }
+
+  .member-description{
+    text-align: left;
   }

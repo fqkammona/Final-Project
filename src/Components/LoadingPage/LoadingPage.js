@@ -7,7 +7,7 @@ const LoadingPage = () => {
   const [text, setText] = useState('');
   const [typingComplete, setTypingComplete] = useState(false);
   const typingDelay = 150; // milliseconds
-  const redirectDelay = 5000; // 5 seconds
+  const redirectDelay = 3000; // 5 seconds
   const navigate = useNavigate();
 
   useEffect(() => {

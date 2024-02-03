@@ -1,9 +1,10 @@
 .home {
   min-height: 100vh; 
-  background: #f0e6ee;
+  background:  white;
   backface-visibility: hidden;
 }
 
 .header{
   padding-top: 70px;
+  color: red;
 }

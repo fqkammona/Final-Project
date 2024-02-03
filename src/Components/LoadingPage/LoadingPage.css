@@ -61,7 +61,7 @@
 
 .blinkCursor {
   border-right: 0.1em solid #ff3314;
-  animation: blink 1s steps(2, start) infinite;
+  animation: blink 1s step-end infinite;
 }
 
 .typingEffect {
