@@ -1,15 +1,16 @@
-// Components/Login.js
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase-config';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import LoadingPage from '../LoadingPage/LoginLoadingPage'; // Update the path if necessary
 
 const Login = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [loading, setLoading] = useState(false); // New state for loading
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -17,21 +18,26 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setLoading(true); // Start loading
         setError('');
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        // Modify the .then() block in the handleSubmit function
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            // Navigate to the dashboard upon successful login
-            navigate('/dashboard', { state: { email: email } });
+            // setLoading(false); // You could stop loading here or let the LoadingPage handle the navigation
+            // navigate('/dashboard', { state: { email: email } });
           })
           .catch((error) => {
-            // Handle errors here based on error.code
+            setLoading(false); // Stop loading and show error
             setError('Login failed. Please try again.');
           });
     };
+
+    // If loading, render the LoadingPage instead of the login form
+    if (loading) {
+        return <LoadingPage />;
+    }
 
     return (
         <div className='login-page'>

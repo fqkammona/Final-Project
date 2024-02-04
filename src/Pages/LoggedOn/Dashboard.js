@@ -1,19 +1,17 @@
 import React from 'react';
 import './Dashboard.css';
-import { useLocation } from 'react-router-dom';
+import { useAuth } from '../../AuthContext'; // Updated the path to go up two levels
 
 const Dashboard = () => {
-  const location = useLocation();
-  const userEmail = location.state?.email;
+  const { currentUser } = useAuth();
 
   return (
     <div className="home">
       <div className='header'>
-        {userEmail ? <h1>Welcome, {userEmail}!</h1> : <h1>Welcome!</h1>}
+        {currentUser ? <h1>Welcome, {currentUser.email}!</h1> : <h1>Welcome!</h1>}
       </div>
     </div>
   );
 };
-
 
 export default Dashboard;
