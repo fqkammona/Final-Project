@@ -1,0 +1,72 @@
+/* NeonTextAnimation.css */
+@keyframes neon {
+    from {
+      filter: brightness(0);
+    }
+    to {
+      filter: brightness(1);
+    }
+  }
+  
+  @keyframes blink {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  .neonText {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    font-size: 10vw; /* Responsive font size */
+    font-weight: bold;
+    color: transparent; /* Initially transparent */
+    -webkit-text-stroke: 2px #5714ff; /* Neon Green outline */
+    text-transform: uppercase;
+    animation: neon 1.5s ease-in-out infinite alternate;
+    margin: 0; /* Remove default margins */
+  }
+  
+  .filledText {
+    color: #5714ff; /* Fills the text with Neon Green color */
+    -webkit-text-stroke: 0; /* Removes the outline */
+  }
+  
+  /* Adjust font size based on viewport width */
+  @media (max-width: 600px) {
+    .neonText {
+      font-size: 15vw;
+    }
+  }
+  
+  /* Adjust font size for larger screens */
+  @media (min-width: 1024px) {
+    .neonText {
+      font-size: 8vw;
+    }
+  }
+  
+  .blinkCursor {
+    border-right: 0.1em solid #ff3314;
+    animation: blink 1s step-end infinite;
+  }
+  
+  .typingEffect {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 5s steps(10, end), blink-caret 0.75s step-end infinite;
+  }
