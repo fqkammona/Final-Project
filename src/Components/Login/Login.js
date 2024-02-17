@@ -42,24 +42,28 @@ const Login = () => {
     return (
         <div className='login-page'>
             <form onSubmit={handleSubmit}>
+                <div className='login-title'>Login</div>
                 {error && <div className="error">{error}</div>}
-                <input name="email" type="text" placeholder="Email" required />
+                <label className='input-label'>Email</label>
+                <input name="email" type="text" placeholder="Type your email" required />
+                <label className='input-label'>Password</label>
                 <div className="password-container">
                     <input
                         name="password"
                         type={passwordVisible ? "text" : "password"}
-                        placeholder="Password"
+                        placeholder="Type your password"
                         required
                     />
                     <button type="button" onClick={togglePasswordVisibility} className="toggle-password">
                         {passwordVisible ? <AiFillEyeInvisible /> : <AiFillEye />}
                     </button>
                 </div>
-                <button className='buttons-options' type="submit">Login</button>
-                <button className='buttons-options' type="button" onClick={() => navigate('/signup')}>Create Account</button>
+                <button className='login-button' type="submit">LOGIN</button>
+                <button className='sign-up-button' type="button" onClick={() => navigate('/signup')}>Create Account</button>
             </form>
         </div>
     );
 };
 
 export default Login;
+

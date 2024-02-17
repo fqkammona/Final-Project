@@ -11,11 +11,7 @@ import StoryPage from './Pages/StoryPage';
 import NavBar from './Components/NavBar/Navbar';
 import UserNavbar from './Components/NavBar/UserNavbar';
 import Dashboard from './Pages/LoggedOn/Dashboard';
-<<<<<<< HEAD
-=======
-
-// Define a new component that will determine which Navbar to show
->>>>>>> 85d9ca4d58deb63cff5efb28a62095641e5d8d74
+import Settings from './Pages/LoggedOn/Settings';
 
 const App = () => {
   const [showLoading, setShowLoading] = useState(true);     
@@ -26,13 +22,7 @@ const App = () => {
   };
   
   useEffect(() => {
-<<<<<<< HEAD
     const timer = setTimeout(() => setShowLoading(false), 5000); // Adjust time as needed
-=======
-    const timer = setTimeout(() => {
-      setShowLoading(false);
-    }, 5000); // Adjust time as needed
->>>>>>> 85d9ca4d58deb63cff5efb28a62095641e5d8d74
     return () => clearTimeout(timer);
   }, []);
 
@@ -60,6 +50,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/settings" element={<Settings />} />
             </Routes>
           </>
         )}
@@ -69,3 +60,4 @@ const App = () => {
 };
 
 export default App;
+
