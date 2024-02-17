@@ -1,33 +1,43 @@
+import LoadingPage from '../LoadingPage/LoginLoadingPage'; // Make sure the path is correct
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase-config';
+import { setDoc, doc } from 'firebase/firestore'; // Import Firestore methods
+import { auth, db } from '../../firebase-config'; // Make sure you're importing db
 import { useNavigate } from 'react-router-dom';
 import './Signup.css';
-import LoadingPage from '../LoadingPage/LoginLoadingPage'; // Make sure the path is correct
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [firstName, setFirstName] = useState(''); // Added state for first name
+  const [lastName, setLastName] = useState(''); // Added state for last name
+  const [phoneNumber, setPhoneNumber] = useState(''); // Added state for phone number
+  const [address, setAddress] = useState(''); // Added state for address
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading
+    setLoading(true);
+
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // Wait for 5 seconds before navigating
-      setTimeout(() => {
-        navigate('/dashboard', { state: { email: userCredential.user.email } });
-      }, 5000); // Delay for 5 seconds
+      await setDoc(doc(db, 'users', userCredential.user.uid), {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        address
+      });
+      navigate('/dashboard');
     } catch (error) {
       console.error(error);
-      alert(error.message); // Optionally handle the error state
-      setLoading(false); // Stop loading on error
+      alert(error.message);
+    } finally {
+      setLoading(false);
     }
   };
-  
-  // If loading, render the LoadingPage instead of the signup form
+
   if (loading) {
     return <LoadingPage />;
   }
@@ -35,9 +45,19 @@ const Signup = () => {
   return (
     <div className='signup-page'>
       <form onSubmit={handleSubmit} className="signup-form">
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Sign Up</button>
+        <label className='input-label'>First Name</label>
+        <input type="text" placeholder="Girl" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+        <label className='input-label'>Last Name</label>
+        <input type="text" placeholder="Coded" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+        <label className='input-label'>Email</label>
+        <input type="email" placeholder="girl_coded@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <label className='input-label'>Phone Number</label>
+        <input type="tel" placeholder="(678) 999-8212" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+        <label className='input-label'>Address</label>
+        <input type="text" placeholder="3100 Seamans Center, Iowa City, IA 52242" value={address} onChange={(e) => setAddress(e.target.value)} required />
+        <label className='input-label'>Password</label>
+        <input type="password" placeholder="*****" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <button type="submit" disabled={loading}>Sign Up</button>
       </form>
     </div>
   );
