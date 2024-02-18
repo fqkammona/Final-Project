@@ -8,76 +8,43 @@
   background: linear-gradient(to right, #a1c4fd, #c2e9fb); /* Adjust the gradient colors as needed */
 }
 
-.form-title {
-  display: block;
-  font-family: Poppins-Bold;
-  font-size: 48px; /* Slightly larger to match the increased form size */
-  color: #333;
-  line-height: 1.2;
-  text-align: center;
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Or any space you want between input groups */
 }
 
 .input-label {
   color: black;
-  font-family: Poppins-Bold;
-  padding-top: 4px;
 }
 
-.signup-form {
+.input-with-icon {
   display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  width: 50%;
-  max-width: 600px;
-}
-
-.signup-form input {
+  align-items: center;
+  position: relative;
   border: none;
-  font-family: Poppins-Bold;
-  border-bottom: 2px solid #ccc;
-  padding: 0 15px 15px 0;
-  font-size: 20px;
-  width: 100%;
-  box-sizing: border-box;
+  border-bottom: 2px solid #000;
+  transition: border-bottom-color 0.3s ease; /* Transition for the border color */
 }
 
-.signup-form input:focus {
-  outline: none;
-  border-bottom: 2px solid #007bff;
+.input-icon {
+  color: black;
+  margin-right: 5px;
 }
 
-.signup-form button {
-  background-color: #007bff;
-  font-family: Poppins-Bold;
-  border-radius: 5px;
-  padding: 15px 30px;
-  font-size: 20px;
-  margin-top: 20px;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.signup-form button:hover {
-  background-color: #0056b3;
-}
-
-.signup-form .sign-up-button{
-  color: red;
-  background-color: transparent;
+.input-field {
+  flex: 1;
   border: none;
-  margin-top: 20px;
-  margin-bottom: 0;
+  padding: 5px 0; /* Adjust padding to vertically center text */
+  background-color: transparent; /* Ensures the input field does not cover the border */
 }
 
-.signup-form .sign-up-button:hover{
-  color: #0056b3;
+/* Remove outline and box-shadow on focus */
+.input-field:focus {
+  border: none;
 }
 
-.error {
-  color: red;
-  margin-bottom: 15px;
+/* Change the border-bottom-color to red when the input-with-icon is focused */
+.input-with-icon:focus-within {
+  border-bottom-color: blue; /* Red bottom border on focus */
 }

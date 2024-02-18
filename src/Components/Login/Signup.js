@@ -1,18 +1,24 @@
-import LoadingPage from '../LoadingPage/LoginLoadingPage'; // Make sure the path is correct
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { setDoc, doc } from 'firebase/firestore'; // Import Firestore methods
-import { auth, db } from '../../firebase-config'; // Make sure you're importing db
+import { setDoc, doc } from 'firebase/firestore';
+import { auth, db } from '../../firebase-config';
 import { useNavigate } from 'react-router-dom';
+import { IoMdHome } from 'react-icons/io'; // House icon
+import { MdEmail } from 'react-icons/md'; // Email icon
+import { FaMobileAlt } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa'; // Person icon
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+
 import './Signup.css';
+import LoadingPage from '../LoadingPage/LoginLoadingPage'; // Update the path if necessary
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState(''); // Added state for first name
-  const [lastName, setLastName] = useState(''); // Added state for last name
-  const [phoneNumber, setPhoneNumber] = useState(''); // Added state for phone number
-  const [address, setAddress] = useState(''); // Added state for address
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -45,18 +51,96 @@ const Signup = () => {
   return (
     <div className='signup-page'>
       <form onSubmit={handleSubmit} className="signup-form">
-        <label className='input-label'>First Name</label>
-        <input type="text" placeholder="Girl" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
-        <label className='input-label'>Last Name</label>
-        <input type="text" placeholder="Coded" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
-        <label className='input-label'>Email</label>
-        <input type="email" placeholder="girl_coded@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <label className='input-label'>Phone Number</label>
-        <input type="tel" placeholder="(678) 999-8212" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
-        <label className='input-label'>Address</label>
-        <input type="text" placeholder="3100 Seamans Center, Iowa City, IA 52242" value={address} onChange={(e) => setAddress(e.target.value)} required />
-        <label className='input-label'>Password</label>
-        <input type="password" placeholder="*****" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <div className="input-group">
+          <label htmlFor="firstName" className="input-label">First Name</label>
+          <div className="input-with-icon">
+            <FaUser className="input-icon" />
+            <input
+              id="firstName"
+              type="text"
+              className="input-field"
+              placeholder="Jane"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        <div className="input-group">
+          <label htmlFor="lastName" className="input-label">Last Name</label>
+          <div className="input-with-icon">
+            <FaUser className="input-icon" />
+            <input
+              id="lastName"
+              type="text"
+              className="input-field"
+              placeholder="Doe"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        <div className="input-group">
+          <label htmlFor="email" className="input-label">Email</label>
+          <div className="input-with-icon">
+            <MdEmail className="input-icon" />
+            <input
+              id="email"
+              type="text"
+              className="input-field"
+              placeholder="girl_coded@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        <div className="input-group">
+          <label htmlFor="phoneNumber" className="input-label">Phone Number</label>
+          <div className="input-with-icon">
+            <FaMobileAlt className="input-icon" />
+            <input
+              id="phoneNumber"
+              type="text"
+              className="input-field"
+              placeholder="(555) 123-4569"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        <div className="input-group">
+          <label htmlFor="address" className="input-label">Address</label>
+          <div className="input-with-icon">
+            <IoMdHome className="input-icon" />
+            <input
+              id="address"
+              type="text"
+              className="input-field"
+              placeholder="123 Main St, City, State 12345"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        <div className="input-group">
+          <label htmlFor="password" className="input-label">Password</label>
+          <div className="input-with-icon">
+            <AiFillEye className="input-icon" />
+            <input
+              id="password"
+              type="text"
+              className="input-field"
+              placeholder="******"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+        </div>
         <button type="submit" disabled={loading}>Sign Up</button>
       </form>
     </div>
