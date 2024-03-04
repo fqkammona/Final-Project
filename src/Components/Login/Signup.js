@@ -7,7 +7,7 @@ import { IoMdHome } from 'react-icons/io'; // House icon
 import { MdEmail } from 'react-icons/md'; // Email icon
 import { FaMobileAlt } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa'; // Person icon
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { AiFillEye } from 'react-icons/ai';
 
 import './Signup.css';
 import LoadingPage from '../LoadingPage/LoginLoadingPage'; // Update the path if necessary
