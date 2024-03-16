@@ -8,7 +8,7 @@ import HomePage from './Pages/HomePage';
 import FAQpage from './Pages/FAQpage';
 import TeamPage from './Pages/Team/TeamPage';
 import StoryPage from './Pages/StoryPage';
-import NavBar from './Components/NavBar/Navbar';
+import NavBar from './Components/NavBar/NavBar';
 import UserNavbar from './Components/NavBar/UserNavbar';
 import Dashboard from './Pages/LoggedOn/Dashboard';
 import Settings from './Pages/LoggedOn/Settings';
