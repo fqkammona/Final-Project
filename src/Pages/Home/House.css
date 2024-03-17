@@ -1,0 +1,210 @@
+:root {
+    /* Color variables */
+    --lightBlue: #bfe4ed;
+    --darkBlue: #65a1dc;
+    --lightPink: #fdd4d6;
+    --darkPink: #eab0e0;
+    --lightPurple: #c1b2d3;
+    --darkPurple: #745e8d;
+    --lightBrown: #d0c9a7;
+    --mediumBrown: #a59966;
+    --darkBrown: #534f33;
+    --lightGreen: #92d955;
+    --darkGreen: #84c950;
+    --yellow: #f3eb8a;
+    --red: #a74a43;
+    --white: #fdfdff;
+    --shadow: #1E2019;
+    --tealGreen: #C7E6D4;
+  }
+
+  .houseBase {
+    width: calc(100% - 80px); /* Reduces width to account for margin */
+    height: 200px; /* Adjusts height to account for margin */
+    background: linear-gradient(
+      to bottom,
+      var(--darkBlue) 25%, /* Blue color covers the top 1/4 */
+      var(--lightPink) 25% /* Pink color covers the bottom 3/4 */
+    );
+  }
+  
+  .roof {
+    width: calc(100% - 40px); /* Roof is as wide as the house base */
+    height: 80px; /* This is the height of the actual roof element, not the slanted roof */
+    position: absolute;
+    bottom: 65%;
+    z-index: 10;
+  }
+  
+  /* Styles for the chimney on the roof */
+  .chimney {
+    width: 30px; /* Width of the chimney */
+    height: 40px; /* Height of the chimney */
+    background-color: var(--mediumBrown); /* Color of the chimney */
+    position: absolute;
+    bottom: 80px; /* Position from the bottom of the roof element */
+    right: 20%; /* Position from the right side of the roof */
+    z-index: 11; /* Ensure the chimney is above the roof */
+  }
+  
+  .smoke {
+    background-color: #aaa; /* Smoke color */
+    border-radius: 50%;
+    position: absolute;
+    bottom: 100%; /* Position at the top of the chimney */
+    left: 50%; /* Center the smoke */
+    opacity: 0; /* Start out transparent */
+  }
+  
+  /* Generate slightly different animations for each smoke element */
+  .smoke-0 {
+    width: 12px;
+    height: 12px;
+    animation: smoke-animation 3s ease-out 0s infinite;
+  }
+  .smoke-1 {
+    width: 8px;
+    height: 8px;
+    animation: smoke-animation 4s ease-out 1s infinite;
+  }
+  .smoke-2 {
+    width: 10px;
+    height: 10px;
+    animation: smoke-animation 5s ease-out 2s infinite;
+  }
+  .smoke-3 {
+    width: 9px;
+    height: 9px;
+    animation: smoke-animation 4.5s ease-out 0.5s infinite;
+  }
+  .smoke-4 {
+    width: 11px;
+    height: 11px;
+    animation: smoke-animation 3.5s ease-out 1.5s infinite;
+  }
+  
+  /* Keyframes for the smoke animation */
+  @keyframes smoke-animation {
+    0% {
+      bottom: 100%;
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      bottom: 150%; /* Move smoke up */
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  /* This pseudo-element represents the slanted part of the roof */
+  .roof:before {
+    content: '';
+    position: absolute;
+    width: 50%; /* Only half the width to make the skew affect only one side */
+    height: 105px; /* Height of the slanted part */
+    background-color: var(--darkBrown); /* Roof color */
+    right: 50%; /* Position the pseudo-element on the left side */
+    transform: skewX(-6deg); /* Skew the left side */
+    transform-origin: bottom left;
+  }
+  
+  /* This pseudo-element represents the non-slanted part of the roof */
+  .roof:after {
+    content: '';
+    position: absolute;
+    width: 50%; /* The other half of the width */
+    height: 105px; /* Height of the slanted part */
+    background-color: var(--darkBrown); /* Roof color */
+    left: 50%; /* Position the pseudo-element on the right side */
+  }
+  
+  .pole {
+    background-color: var(--white);
+    width: 7px; /* Width of the poles */
+    position: absolute;
+    bottom: -190px; /* Position so the top is under the roof and extends to the house base */
+    height: calc(50% + 160px); /* Height is calculated to extend from under the roof to the house base */
+  }
+  
+  .left-pole {
+    left: 10px; /* Position the left pole */
+    z-index: -1;
+  }
+  
+  .right-pole {
+    right: 10px; /* Position the right pole */
+  }
+  
+  /* Styles for the window containers */
+  .window-container {
+    width: 35px; /* Width of the window container */
+    height: 45px; /* Height of the window container */
+    background-color: var(--white); /* White background of the window container */
+    position: absolute; /* Positioning inside the houseBase */
+    top: 60%; /* Position at the center vertically */
+    transform: translateY(-50%); /* Center the window container vertically */
+    display: flex; /* Use flexbox to center the window */
+    justify-content: center; /* Center the window horizontally */
+    align-items: center; /* Center the window vertically */
+  }
+  
+  /* Styles for the windows */
+  .window {
+    width: 30px; /* Width of the window */
+    height: 40px; /* Height of the window */
+    border: 2px solid var(--darkPink); /* Pink border around the window */
+    background-color: var(--yellow); /* Yellow background of the window */
+    overflow: hidden; /* Ensures the crossbars don't extend outside the window */
+  }
+  
+  .left-window {
+    left: 10%; /* Position from the left side */
+  }
+  
+  .right-window {
+    right: 10%; /* Position from the right side */
+  }
+  
+  /* Ensure the houseBase can contain the absolutely positioned window containers */
+  .houseBase {
+    position: relative; /* To position the window containers absolutely within */
+  }
+  
+  .crossbar-horizontal {
+    background-color: var(--darkPink); /* Pink color for the crossbar */
+    position: absolute;
+    height: 2px; /* Height of the horizontal crossbar */
+    width: 80%; /* Full width of the window */
+    top: 50%; /* Center horizontally */
+    transform: translateY(-50%); /* Center the crossbar */
+  }
+  
+  /* Styles for the door with a white border */
+  .door {
+    width: 60px; /* Width of the door */
+    height: 100px; /* Height of the door */
+    background-color: var(--darkBrown); /* Door color */
+    border: 4px solid var(--white); /* White border around the door */
+    position: absolute;
+    bottom: 0; /* Align with the bottom of the house base */
+    left: 50%; /* Center the door horizontally */
+    transform: translateX(-50%); /* Center the door */
+    z-index: 5; /* Ensure the door is above the house base */
+  }
+  
+  /* Styles for the doorknob */
+  .doorknob {
+    background-color: var(--yellow); /* Doorknob color */
+    border-radius: 50%; /* Make the doorknob round */
+    width: 10px; /* Width of the doorknob */
+    height: 10px; /* Height of the doorknob */
+    position: absolute;
+    left: 12px; /* Position from the left side of the door */
+    top: 50%; /* Position vertically centered */
+    transform: translateY(-50%); /* Center the doorknob */
+  }
+  

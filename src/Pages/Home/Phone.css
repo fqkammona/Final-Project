@@ -1,0 +1,59 @@
+:root {
+    /* Color variables */
+    --lightBlue: #bfe4ed;
+    --darkBlue: #65a1dc;
+    --lightPink: #fdd4d6;
+    --darkPink: #eab0e0;
+    --lightPurple: #c1b2d3;
+    --darkPurple: #745e8d;
+    --lightBrown: #d0c9a7;
+    --mediumBrown: #a59966;
+    --darkBrown: #534f33;
+    --lightGreen: #92d955;
+    --darkGreen: #84c950;
+    --yellow: #f3eb8a;
+    --red: #a74a43;
+    --white: #fdfdff;
+    --shadow: #1E2019;
+    --tealGreen: #C7E6D4;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .phone {
+    position: relative;
+    width: 320px; /* Represents the width of a phone screen */
+    height: 568px; /* Represents the height of a phone screen */
+    border: 16px solid var(--shadow); /* Gives the phone a border */
+    border-radius: 36px; /* Rounds the corners to mimic a phone's shape */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--tealGreen); /* Background color of the phone screen */
+  }
+  
+  .notch {
+    width: 170px; /* Width of the notch */
+    height: 30px; /* Height of the notch */
+    background-color: var(--shadow); /* Color of the notch */
+    border-radius: 0 0 10px 10px; /* Rounded bottom edges of the notch */
+    position: absolute;
+    top: 0px; /* Adjust to match the thickness of the phone's top border */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .time {
+    position: absolute;
+    top: 2px; /* Adjust to match the thickness of the phone's top border */
+    left: 4%;
+    color: var(--white); /* Color of the time text */
+    font-size: 15px; /* Size of the time text */
+  }
+  
