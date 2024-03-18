@@ -12,8 +12,10 @@ const LoginLoadingPage = () => {
     <div className="loadingPageContainer">
       <Background /> {/* Include the Background component */}
         <div className="carContainer">
+         <Car />
       </div>
       <div className="houseContainer">
+        <House />
       </div>
     </div>
   );
