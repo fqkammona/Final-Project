@@ -1,0 +1,40 @@
+.mountain {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .mountain:before,
+  .mountain:after {
+    content: "";
+    position: absolute;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+  }
+  
+  .mountain:before {
+    border-bottom: 100px solid #4CAF50;
+    left: -50px;
+    top: -100px;
+  }
+  
+  .mountain:after {
+    border-bottom: 150px solid #4CAF50;
+    left: 0;
+    top: -150px;
+  }
+  
+  .mountain-small {
+    width: 50px;
+    height: 100px;
+  }
+  
+  .mountain-medium {
+    width: 100px;
+    height: 200px;
+  }
+  
+  .mountain-large {
+    width: 150px;
+    height: 300px;
+  }

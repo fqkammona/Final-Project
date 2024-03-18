@@ -7,6 +7,7 @@ import Signup from './Components/Login/Signup';
 import HomePage from './Pages/HomePage';
 import House from './Pages/Home/House';
 import Phone from './Pages/Home/Phone';
+import Car from './Components/LoadingPage/Car'
 import FAQpage from './Pages/FAQpage';
 import TeamPage from './Pages/Team/TeamPage';
 import StoryPage from './Pages/StoryPage';

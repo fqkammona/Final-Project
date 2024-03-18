@@ -1,0 +1,46 @@
+/* Background.css */
+
+:root {
+    /* Color variables */
+    --lightBlue: #bfe4ed;
+    --darkBlue: #65a1dc;
+    --lightPink: #fdd4d6;
+    --darkPink: #eab0e0;
+    --lightPurple: #c1b2d3;
+    --darkPurple: #745e8d;
+    --lightBrown: #d0c9a7;
+    --mediumBrown: #a59966;
+    --darkBrown: #534f33;
+    --lightGreen: #92d955;
+    --darkGreen: #84c950;
+    --yellow: #f3eb8a;
+    --red: #a74a43;
+    --white: #fdfdff;
+    --shadow: #1E2019;
+    --tealGreen: #C7E6D4;
+    --lightSky: #D9FCFE;
+  }
+
+
+  .background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+  }
+  
+  .sky {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    background: var(--lightSky);
+  }
+  
+  .hills {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+  }
+  

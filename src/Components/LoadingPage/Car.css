@@ -1,0 +1,146 @@
+:root {
+  --lightRed: #F94748; 
+  --darkRed: #ED4545;
+  --lightGray: #d5d0d0;
+  --darkGray: #4D4D4D;
+  --window: #B9DCE7;
+  --borderBlack: #000000; 
+}
+
+:root {
+  /* Color variables */
+  --lightBlue: #bfe4ed;
+  --darkBlue: #65a1dc;
+  --lightPink: #fdd4d6;
+  --darkPink: #eab0e0;
+  --lightPurple: #c1b2d3;
+  --darkPurple: #745e8d;
+  --lightBrown: #d0c9a7;
+  --mediumBrown: #a59966;
+  --darkBrown: #534f33;
+  --lightGreen: #92d955;
+  --darkGreen: #84c950;
+  --yellow: #f3eb8a;
+  --red: #a74a43;
+  --white: #fdfdff;
+  --shadow: #1E2019;
+  --tealGreen: #C7E6D4;
+}  
+
+.container-car {
+  position: relative;
+  width: 200px;
+  height: 80px;
+  top: 100px; /* Added 'px' to the value */
+  margin: 0 auto; /* Center the car container horizontally */
+}
+
+.car-upper {
+  position: absolute;
+  width: 190px; /* Set the width to match the width of the house or as needed. */
+  height: 35px;
+  display: flex; /* Will help align the wheels and the base */
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Align the items to the bottom */
+}
+
+.car-top {
+  position: absolute;
+  width: 120px;
+  height: 23px;
+  background-color: var(--lightPurple);
+  transform: rotate(-180deg);
+  bottom: 0;
+  border-radius: 0 0 10px 20px;
+}
+
+
+.car-lower {
+  position: absolute;
+  width: 200px; /* Set the width to match the width of the house or as needed. */
+  height: 45px;
+  bottom: 0;
+  display: flex; /* Will help align the wheels and the base */
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Align the items to the bottom */
+}
+
+.car-bottom {
+  position: absolute;
+  width: 155px;
+  height: 13px;
+  top: 23px;
+  background-color: var(--lightGray);
+  border-radius: 2px;
+  border: 2px solid var(--lightGray);
+
+}
+
+.car-bottom::before {
+  content: ''; /* Necessary for the pseudo-element to work */
+  position: absolute; /* Absolute positioning relative to the .car-bottom */
+  top: -4px; /* Adjust these values to match the border thickness */
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 4px; /* Slightly larger radius for the rounded corners */
+  border: 2px solid var(--borderBlack); /* The second border */
+}
+
+.car-body {
+  position: absolute;
+  transform: rotate(-180deg);
+  top: 0px;
+  width: 150px;
+  height: 23px;
+  background-color: var(--lightPurple);
+  border-radius: 0 0 10px 20px;
+}
+
+.car-body::before {
+  content: '';
+  position: absolute;
+  top: -2px; /* These values depend on how thick you want the outer border */
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: inherit; /* This will inherit the border-radius of the .car-body */
+  border: 2px solid var(--borderBlack);
+  z-index: -1; /* Ensure it is behind the .car-body */
+}
+
+.wheel1,
+.wheel2 {
+  position: absolute;
+  width: 30px; /* Diameter of the wheel */
+  height: 30px; /* Diameter of the wheel */
+  background-color: var(--darkGray);
+  border-radius: 50%; /* Makes the element circular */
+  border: 2px solid var(--borderBlack);
+  bottom: 0px; /* Half the height of the wheel to position it correctly */
+}
+
+.wheel1 {
+  left: 30px; /* Position from the left side of .car-lower */
+}
+
+.wheel2 {
+  right: 30px; /* Position from the right side of .car-lower */
+}
+
+/* Adding the lighter inner circle for the wheels */
+.wheel1::before,
+.wheel2::before {
+  content: '';
+  position: absolute;
+  top: 4px; /* Positioning the inner circle */
+  left: 4px;
+  width: 18px; /* Diameter of the inner circle */
+  height: 18px;
+  border: 2px solid var(--borderBlack);
+  background-color: var(--lightGray);
+  border-radius: 50%;
+}
+
+
+

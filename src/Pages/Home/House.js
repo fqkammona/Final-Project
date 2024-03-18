@@ -12,11 +12,13 @@ const House = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container-house'>
       {/* Roof structure with poles */}
-      <div className="roof">
-        <div className="chimney">
-           {generateSmokeElements()}
+      <div className="roof-container">
+        <div className="roof">
+          <div className="chimney">
+             {generateSmokeElements()}
+          </div>
         </div>
         <div className="pole left-pole"></div>
         <div className="pole right-pole"></div>

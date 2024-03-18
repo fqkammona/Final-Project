@@ -16,10 +16,18 @@
     --white: #fdfdff;
     --shadow: #1E2019;
     --tealGreen: #C7E6D4;
-  }
+  }  
 
+  .container-house {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
   .houseBase {
-    width: calc(100% - 80px); /* Reduces width to account for margin */
+    position: relative;
+    width: 215px; /* Reduces width to account for margin */
     height: 200px; /* Adjusts height to account for margin */
     background: linear-gradient(
       to bottom,
@@ -27,13 +35,18 @@
       var(--lightPink) 25% /* Pink color covers the bottom 3/4 */
     );
   }
+
+  .roof-container {
+    position: absolute;
+    width: 250px; /* Set the width to match the width of the house or as needed. */
+    height: 325px;
+    z-index: 10;
+  }
   
   .roof {
-    width: calc(100% - 40px); /* Roof is as wide as the house base */
+    width: 250px; /* Roof takes the full width of the roof-container */
     height: 80px; /* This is the height of the actual roof element, not the slanted roof */
     position: absolute;
-    bottom: 65%;
-    z-index: 10;
   }
   
   /* Styles for the chimney on the roof */
@@ -126,17 +139,18 @@
     background-color: var(--white);
     width: 7px; /* Width of the poles */
     position: absolute;
-    bottom: -190px; /* Position so the top is under the roof and extends to the house base */
-    height: calc(50% + 160px); /* Height is calculated to extend from under the roof to the house base */
+    bottom: 61px;
+    height: 210px; /* Height is calculated to extend from under the roof to the house base */
   }
   
   .left-pole {
-    left: 10px; /* Position the left pole */
+    left: 7px; /* Position the left pole */
     z-index: -1;
   }
   
   .right-pole {
-    right: 10px; /* Position the right pole */
+    right: 7px; /* Position the right pole */
+    z-index: -1;
   }
   
   /* Styles for the window containers */

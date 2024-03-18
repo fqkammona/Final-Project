@@ -1,72 +1,52 @@
-/* NeonTextAnimation.css */
-@keyframes neon {
-    from {
-      filter: brightness(0);
-    }
-    to {
-      filter: brightness(1);
-    }
-  }
-  
-  @keyframes blink {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  
-  .neonText {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    font-size: 10vw; /* Responsive font size */
-    font-weight: bold;
-    color: transparent; /* Initially transparent */
-    -webkit-text-stroke: 2px #5714ff; /* Neon Green outline */
-    text-transform: uppercase;
-    animation: neon 1.5s ease-in-out infinite alternate;
-    margin: 0; /* Remove default margins */
-  }
-  
-  .filledText {
-    color: #5714ff; /* Fills the text with Neon Green color */
-    -webkit-text-stroke: 0; /* Removes the outline */
-  }
-  
-  /* Adjust font size based on viewport width */
-  @media (max-width: 600px) {
-    .neonText {
-      font-size: 15vw;
-    }
-  }
-  
-  /* Adjust font size for larger screens */
-  @media (min-width: 1024px) {
-    .neonText {
-      font-size: 8vw;
-    }
-  }
-  
-  .blinkCursor {
-    border-right: 0.1em solid #ff3314;
-    animation: blink 1s step-end infinite;
-  }
-  
-  .typingEffect {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 5s steps(10, end), blink-caret 0.75s step-end infinite;
-  }
+/* LoginLoadingPage.css */
+
+:root {
+  /* Color variables */
+  --lightBlue: #bfe4ed;
+  --darkBlue: #65a1dc;
+  --lightPink: #fdd4d6;
+  --darkPink: #eab0e0;
+  --lightPurple: #c1b2d3;
+  --darkPurple: #745e8d;
+  --lightBrown: #d0c9a7;
+  --mediumBrown: #a59966;
+  --darkBrown: #534f33;
+  --lightGreen: #92d955;
+  --darkGreen: #84c950;
+  --yellow: #f3eb8a;
+  --red: #a74a43;
+  --white: #fdfdff;
+  --shadow: #1E2019;
+  --tealGreen: #C7E6D4;
+}
+
+:root {
+  /* ... other variables ... */
+  --houseWidth: 300px; /* Example value, replace with your house width */
+  --carWidth: 200px;   /* Example value, replace with your car width */
+}
+
+.loadingPageContainer {
+  display: flex;
+  justify-content: flex-end; /* Keeps children aligned to the right side */
+  align-items: flex-start; /* Aligns children to the top of the container */
+  height: 100vh; /* Full viewport height */
+  overflow-y: hidden; /* Prevents horizontal scrolling */
+}
+
+.houseContainer {
+  position: relative;
+  margin-top: 100px;
+  bottom: 0px;
+  z-index: 9; 
+}
+
+.carContainer {
+  position: relative; /* This ensures that the car can move freely */
+  margin-top: 420px;
+  z-index: 8; 
+  left: 0; /* Start from the far left */
+ 
+}
+
+
