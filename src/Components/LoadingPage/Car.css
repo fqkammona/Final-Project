@@ -1,13 +1,4 @@
 :root {
-  --lightRed: #F94748; 
-  --darkRed: #ED4545;
-  --lightGray: #d5d0d0;
-  --darkGray: #4D4D4D;
-  --window: #B9DCE7;
-  --borderBlack: #000000; 
-}
-
-:root {
   /* Color variables */
   --lightBlue: #bfe4ed;
   --darkBlue: #65a1dc;
@@ -25,6 +16,12 @@
   --white: #fdfdff;
   --shadow: #1E2019;
   --tealGreen: #C7E6D4;
+  --lightRed: #F94748; 
+  --darkRed: #ED4545;
+  --lightGray: #d5d0d0;
+  --darkGray: #4D4D4D;
+  --window: #B9DCE7;
+  --borderBlack: #000000; 
 }  
 
 .container-car {

@@ -28,25 +28,67 @@
 
 .loadingPageContainer {
   display: flex;
-  justify-content: flex-end; /* Keeps children aligned to the right side */
+  justify-content: flex-end; /* Ensures items align to the end of the container (right side) */
   align-items: flex-start; /* Aligns children to the top of the container */
   height: 100vh; /* Full viewport height */
-  overflow-y: hidden; /* Prevents horizontal scrolling */
+  position: relative; /* This is important for absolute positioning within the container */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
+
 .houseContainer {
-  position: relative;
   margin-top: 100px;
+  margin-right: 50px;
   bottom: 0px;
-  z-index: 9; 
+  background-color: var(--lightGre);
+  margin-left: auto; /* This will push the house to the right side of its container */
 }
+
 
 .carContainer {
   position: relative; /* This ensures that the car can move freely */
-  margin-top: 420px;
+  margin-top: 540px;
   z-index: 8; 
   left: 0; /* Start from the far left */
- 
+}
+
+.roadContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Adjust the height as needed */
+  background-color: #333; /* Dark asphalt color */
+  z-index: 7; /* Ensure it's below the car and house */
+}
+
+.roadLine {
+  position: absolute;
+  top: 50%; /* Center vertically in the road container */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Height of the road line */
+  background-color: #fff; /* White road line color */
+  z-index: 8;
+}
+
+.welcomeMessage {
+  position: absolute;
+  top: -100px; /* Start off-screen */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 1s ease-out; /* Transition for the message */
+  z-index: 10; /* Above other elements */
+  font-size: 2rem;
+  color: var(--darkBlue); /* Example color, change as needed */
+  opacity: 0; /* Start with the message invisible */
+  transition: top 1s ease-out, opacity 1s ease-in; /* Transition for top and opacity */
+}
+
+/* Position the message properly after the car stops */
+.loadingPageContainer .welcomeMessage {
+  top: 10vh; /* Position the message at 10% from the top of the viewport */
+  opacity: 1; /* Make the message visible */
 }
 
 
