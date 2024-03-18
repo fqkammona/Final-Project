@@ -31,21 +31,21 @@
 
 .mountain-container {
   position: relative;
-  width: 100%;
-  height: 100vh;
+  width: 100%; /* This can stay as a percentage to fill the width of the viewport */
+  height: 100vh; /* Consider changing to pixels if you need a specific height */
   overflow: hidden;
 }
 
 .mountain-sky {
   position: relative;
-  width: 100%;
-  height: 50%;
+  width: 100%; /* Full width */
+  height: 50vh; /* Consider changing to pixels for a specific height */
   background: var(--skyBlue);
 }
 
 .big-cloud {
   position: absolute;
-  top: 40%;
+  top: 40%; /* Consider converting to pixels if needed */
   bottom: 0;
   left: 0;
   right: 0;
@@ -55,14 +55,61 @@
 .big-cloud::before {
   content: '';
   position: absolute;
-  height: 4em;
-  width: 4em;
+  height: 64px; /* Assuming 1em = 16px, 4em becomes 64px */
+  width: 84px; /* Same conversion as height */
   background-color: var(--cloud-color);
   bottom: 110%;
-  left: 250px;
+  left: 270px; /* Already in pixels */
   border-radius: 50%;
-  box-shadow: -100px 50px 0 4em var(--cloud-color), -250px 100px 0 2em var(--cloud-color), 75px 100px 0 5em var(--cloud-color), 250px 25px 0 4em var(--cloud-color), 370px 25px 0 0 var(--cloud-color), 400px 125px 0 5em var(--cloud-color), 500px 50px 0 2em var(--cloud-color), 590px 75px 0 0 var(--cloud-color), 690px 75px 0 3em var(--cloud-color);
+  box-shadow: 
+    -100px 50px 0 64px var(--cloud-color), 
+    -250px 100px 0 32px var(--cloud-color), 
+    75px 100px 0 80px var(--cloud-color), 
+    250px 25px 0 64px var(--cloud-color), 
+    370px 25px 0 0 var(--cloud-color), 
+    400px 125px 0 80px var(--cloud-color), 
+    500px 50px 0 32px var(--cloud-color), 
+    590px 75px 0 0 var(--cloud-color), 
+    690px 75px 0 48px var(--cloud-color),
+    75px 100px 0 80px var(--cloud-color), 
+    250px 25px 0 64px var(--cloud-color), 
+    370px 25px 0 0 var(--cloud-color), 
+    400px 125px 0 80px var(--cloud-color);
 }
 
- 
+.mountain {
+  position: absolute;
+  bottom: 0;
+  left: 35px; /* Consider converting to pixels for a fixed position */
+  border-style: solid;
+  border-color: transparent transparent #93A4B4 transparent;
+  border-width: 704px 416px; /* Converted from 44em 26em assuming 1em = 16px */
+}
+
+
+/* Sun styles remain the same */
+.sun {
+  position: absolute;
+  top: 10%;
+  right: 50px;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  background-color: var(--yellow);
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 8px 2px var(--yellow); /* Optional glow effect */
+}
+
+/* Modified light rays animation */
+@keyframes raysGrow {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
 
