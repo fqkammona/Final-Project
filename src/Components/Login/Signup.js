@@ -10,7 +10,7 @@ import { FaUser } from 'react-icons/fa'; // Person icon
 import { AiFillEye } from 'react-icons/ai';
 
 import './Signup.css';
-import LoadingPage from '../LoadingPage/LoginLoadingPage'; // Update the path if necessary
+import LoadingPage from '../Login-Loading-Page/LoginLoadingPage'; // Update the path if necessary
 
 const Signup = () => {
   const [email, setEmail] = useState('');

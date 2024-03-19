@@ -4,7 +4,7 @@ import { auth } from '../../firebase-config';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import LoadingPage from '../LoadingPage/LoginLoadingPage'; // Update the path if necessary
+import LoadingPage from '../Login-Loading-Page/LoginLoadingPage'; // Update the path if necessary
 
 const Login = () => {
     const navigate = useNavigate();

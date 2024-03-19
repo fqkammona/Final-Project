@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './LoginLoadingPage.css';
 import Car from './Car';
 import House from '../../Pages/Home/House';
-import Mountains from '../../Pages/Home/Mountains';
+import Mountains from './Mountains';
 
 const LoginLoadingPage = () => {
   const [carPosition, setCarPosition] = useState(-20);
