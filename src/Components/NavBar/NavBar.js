@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './NavBar.css';
+import './Navbar.css';
 import { Link } from 'react-router-dom';
 
 const NavBar = ({ onGirlCodedClick }) => {
