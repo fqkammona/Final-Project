@@ -29,7 +29,7 @@ const Phone = () => {
       {showHouse ? (
         <House />
       ) : (
-        <div className="safe-message">Wherever you go, know you're home is safe.</div> // Display this message when showHouse is false
+        <div className="safe-message">Wherever you go, know you8're home is safe.</div> // Display this message when showHouse is false
       )}
     </div>
   );
