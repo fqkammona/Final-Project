@@ -84,7 +84,6 @@
   background-color: var(--lightGray);
   border-radius: 2px;
   border: 2px solid var(--lightGray);
-
 }
 
 .car-bottom::before {
