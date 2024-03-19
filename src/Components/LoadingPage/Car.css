@@ -51,6 +51,20 @@
   border-radius: 0 0 10px 20px;
 }
 
+.car-top::before {
+  content: '';
+  position: absolute;
+  transform: rotate(-180deg);
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: 0; /* Adjusted to not extend beyond the bottom edge */
+  border-radius: 10px 20px 0 0; /* Adjust to match the top-left and top-right border-radius of .car-top */
+  border: 2px solid var(--borderBlack);
+  border-bottom: none; /* Remove the bottom border */
+  z-index: -1;
+}
+
 
 .car-lower {
   position: absolute;

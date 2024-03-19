@@ -113,3 +113,58 @@
   }
 }
 
+.hill1 {
+  position: absolute;
+  bottom: 0; /* Align to the bottom of its container */
+  left: 0; /* Align to the right of its container instead of the left */
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 456.6px 50px 0 830px; /* This will create the triangle with the right angle at the bottom right */
+  border-color: transparent transparent transparent var(--dark-green); /* Right border is dark green */
+  z-index: 2;
+}
+
+.hill2 {
+  position: absolute;
+  bottom: 0;  /* Align to the bottom of its container */
+  right: 0;  /* Align to the right of its container */
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 356.6px 930px; /* The bottom border is now the wide part and the left border is the tall part */
+  border-color: transparent transparent var(--light-green) transparent; /* The bottom border is light green */
+  z-index: 1;
+}
+
+.tree {
+  position: relative;
+  width: 100px; /* This is now twice the width of the original base triangle */
+  height: 300px; /* Total height of all triangles combined is now doubled */
+  left: 100px; /* Adjust positioning from the left as needed */
+  bottom: 100px; /* Adjust positioning from the bottom as needed */
+  z-index: 3;
+}
+
+.tree-part {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: solid 50px transparent; /* Double the size for the base triangle */
+  border-right: solid 50px transparent; /* Double the size for the base triangle */
+  border-bottom: solid 80px #38845E; /* Color and height of the triangle doubled */
+}
+
+.tree-bottom {
+  bottom: 0; /* Position from the bottom of the container */
+}
+
+.tree-middle {
+  bottom: 60px; /* This is now twice as much offset from the bottom as before */
+  border-bottom: solid 70px #38845E; /* Slightly smaller than the bottom */
+}
+
+.tree-top {
+  bottom: 120px; /* This is now twice as much offset from the bottom as before */
+  border-bottom: solid 60px #38845E; /* Smallest triangle */
+}
