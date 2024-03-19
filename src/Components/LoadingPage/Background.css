@@ -19,60 +19,68 @@
     --shadow: #1E2019;
     --tealGreen: #C7E6D4;
     --lightSky: #D9FCFE;
-  }
-
-
-  .background {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    --dark-green: #044946;
+    --light-green: #38845E;
   }
   
   .sky {
-    position: relative;
+    position: absolute;
     width: 100%;
-    height: 50%;
+    height: 40%;
     background: var(--lightSky);
   }
-
   
   .hill {
     position: absolute;
-    bottom: 0;
+    bottom: 100px;
     width: 100%;
+  }
+
+  @keyframes continuousBlurAnimation {
+    0%, 100% {
+      filter: blur(2px); /* A subtle blur to always be present */
+    }
+    50% {
+      filter: blur(4px); /* Slightly increase the blur */
+    }
   }
   
   .largeHill {
-    background: var(--lightGreen);
-    height: 300px; /* Adjust the height as needed */
-    clip-path: polygon(
-      0% 100%, 
-      5% 80%, 
-      10% 60%, 
-      15% 45%, 
-      20% 30%, 
-      25% 20%, 
-      30% 10%, 
-      35% 5%, 
-      40% 4%, 
-      45% 5%, 
-      50% 10%, 
-      55% 20%, 
-      60% 35%, 
-      65% 50%, 
-      70% 65%, 
-      75% 80%, 
-      80% 90%, 
-      85% 95%, 
-      90% 98%, 
-      95% 99%, 
-      100% 100%
-    );
-    z-index: 2;
+      background: var(--lightGreen);
+      height: 400px;
+      left: -200px;
+      clip-path: polygon(
+        0% 100%, 
+        5% 80%, 
+        10% 60%, 
+        15% 45%, 
+        20% 30%, 
+        25% 20%, 
+        30% 10%, 
+        35% 5%, 
+        40% 4%, 
+        45% 5%, 
+        50% 10%, 
+        55% 20%, 
+        60% 35%, 
+        65% 50%, 
+        70% 65%, 
+        75% 80%, 
+        80% 90%, 
+        85% 95%, 
+        90% 98%, 
+        95% 99%, 
+        100% 100%
+      );
+      z-index: 2;
+      /* Apply the continuous blur animation */
+      animation: continuousBlurAnimation 5s ease-in-out infinite;
   }
-  
-  
-  
- 
-  
+
+  .smallHill-container{
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    bottom: 0;
+    background-color: var(--light-green);
+  }

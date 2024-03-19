@@ -1,0 +1,21 @@
+ 
+:root {
+    /* Color variables */
+    --lightBlue: #B6DFED;
+    --firstMountain: #BBDBD9;
+    --secondMountain: #86B6B6; /* Example colors */
+    --thirdMountain: #398380;
+    --fourthMountain: #004B4D; 
+    --fifthMountain: #00383B;
+    --whiteClouds: #FBFEFF;
+  }
+
+  .sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 100%; /* Adjust based on your design */
+    background: var(--lightBlue); /* Sky gradient */
+  }
+  

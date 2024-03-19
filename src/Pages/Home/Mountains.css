@@ -29,15 +29,8 @@
   --cloud-color: #E4EFF3;
 }
 
-.mountain-container {
-  position: relative;
-  width: 100%; /* This can stay as a percentage to fill the width of the viewport */
-  height: 100vh; /* Consider changing to pixels if you need a specific height */
-  overflow: hidden;
-}
-
 .mountain-sky {
-  position: relative;
+  position: absolute;
   width: 100%; /* Full width */
   height: 50vh; /* Consider changing to pixels for a specific height */
   background: var(--skyBlue);
@@ -97,7 +90,7 @@
   height: 100px;
   background-color: var(--yellow);
   border-radius: 50%;
-  z-index: 10;
+  z-index: 1;
   box-shadow: 0 0 8px 2px var(--yellow); /* Optional glow effect */
 }
 
@@ -132,17 +125,17 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 0 356.6px 930px; /* The bottom border is now the wide part and the left border is the tall part */
+  border-width: 0 0 456.6px 1330px; /* The bottom border is now the wide part and the left border is the tall part */
   border-color: transparent transparent var(--light-green) transparent; /* The bottom border is light green */
   z-index: 1;
 }
 
 .tree {
-  position: relative;
+  position: absolute;
   width: 100px; /* This is now twice the width of the original base triangle */
   height: 300px; /* Total height of all triangles combined is now doubled */
-  left: 100px; /* Adjust positioning from the left as needed */
-  bottom: 100px; /* Adjust positioning from the bottom as needed */
+  left: 70px; /* Adjust positioning from the left as needed */
+  bottom: 170px; /* Adjust positioning from the bottom as needed */
   z-index: 3;
 }
 

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './LoginLoadingPage.css';
 import Car from './Car';
 import House from '../../Pages/Home/House';
-import Background from './Background';
+import Mountains from '../../Pages/Home/Mountains';
 
 const LoginLoadingPage = () => {
   const [carPosition, setCarPosition] = useState(-20);
@@ -29,7 +29,7 @@ const LoginLoadingPage = () => {
             // Set timeout for redirecting after 5 seconds
             setTimeout(() => {
               navigate('/dashboard'); // Use the navigate function from useNavigate hook
-            }, 5000);
+            }, 40000);
             return stopPosition;
           }
           return nextPosition;
@@ -48,6 +48,7 @@ const LoginLoadingPage = () => {
       <div className="roadContainer">
         <div className="roadLine"></div>
       </div>
+      <Mountains />
       <div className="carContainer" style={{ left: `${carPosition}px` }}>
         <Car />
       </div>

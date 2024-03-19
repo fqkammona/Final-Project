@@ -35,15 +35,13 @@
   overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
-
 .houseContainer {
   margin-top: 100px;
   margin-right: 50px;
   bottom: 0px;
-  background-color: var(--lightGre);
+  z-index: 8; 
   margin-left: auto; /* This will push the house to the right side of its container */
 }
-
 
 .carContainer {
   position: relative; /* This ensures that the car can move freely */

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './HomePage.css';
 import Phone from './Home/Phone';
-import Mountains from './Home/Mountains';
+import Mountains from './Home/MountainRanges';
 
 const HomePage = () => {
   const [showComponent, setShowComponent] = useState('phone');
