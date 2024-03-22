@@ -6,7 +6,7 @@
   --thirdMountain: #398380;
   --fourthMountain: #004B4D; 
   --fifthMountain: #00383B;
-  ----cloud-color: #ffffff;
+  --cloud-color: #ffffff;
 }
 
 .MountainRangesContainer {
@@ -14,10 +14,8 @@
   align-items: center;
   height: 100vh;
   position: relative;
- 
 }
 
-/* Use viewport height (vh) units to maintain aspect ratio relative to the height of the screen */
 .sky {
   position: absolute;
   width: 100%; /* Full width */
@@ -25,48 +23,76 @@
   background: var(--lightBlue);
 }
 
-.sky.animate {
-  animation: slideDownFromTop 1.2s ease forwards;
-  animation-delay: 2s;
+.MountainRanges-sun {
+  position: absolute;
+  top: 23%;
+  right: 40%;
+  transform: translateX(-50%);
+  width: 190px;
+  height: 190px;
+  background-color: var(--cloud-color);
+  border-radius: 50%;
+  z-index: 0;
+  box-shadow: 0 0 8px 2px var(--cloud-color); /* Optional glow effect */
 }
 
 /* Set your SVGs to a percentage width of the parent container to maintain aspect ratio */
 .mountain1, .mountain2, .mountain3, .mountain4, .mountain5, .cloud1, .cloud2 {
   position: absolute;
+  z-index: 1;
 }
 
- .sky, .mountain1, .mountain2, .mountain3, .mountain4, .mountain5, .cloud1, .cloud2 {
+ .sky, .mountain1, .mountain2, .mountain3, .mountain4, .mountain5, .cloud1, .cloud2, .MountainRanges-sun {
   visibility: hidden;
 }
 
-.cloud1.animate {
-  animation: slideInFromLeft 1s ease forwards;
-  animation-delay: 2s; /* Starts slightly after the mountains begin to animate */
-}
-
-.cloud2.animate {
-  animation: slideInFromRight 1s ease forwards;
-  animation-delay: 2s; /* Starts after cloud1 begins to animate */
-}
-
-.mountain1.animate {
-  animation: popUpMountain 2.2s ease-out forwards;
-  animation-delay: 1.9s; /* Adjust as needed */
-}
-
-.mountain3.animate {
-  animation: popUpMountain 1.5s ease-out forwards;
-  animation-delay: 2s; /* This should be greater than the delay of mountain5 to ensure it pops up after */
-}
-
+/* Group 1 */
 .mountain4.animate {
   animation: popUpMountain 2s ease-out forwards;
-  animation-delay: 0.2s; /* This should be greater than the delay of mountain5 to ensure it pops up after */
+  animation-delay: 0.2s;  
 }
 
 .mountain5.animate {
   animation: popUpMountain 1.2s ease-out forwards;
   animation-delay: 0.5s; /* Adjust as needed */
+}
+
+/* Group 2 */
+.sky.animate {
+  animation: slideDownFromTop 1.2s ease forwards;
+  animation-delay: 2s;
+}
+
+/* Group 3 */
+.mountain1.animate {
+  animation: popUpMountain 3s ease-out forwards;
+  animation-delay: 1.9s; /* Adjust as needed */
+}
+
+.mountain3.animate {
+  animation: popUpMountain 1.5s ease-out forwards;
+  animation-delay: 2s; 
+}
+
+/* Group 4 */
+.cloud1.animate {
+  animation: slideInFromLeft 1s ease forwards;
+  animation-delay: 2s; 
+}
+
+.cloud2.animate {
+  animation: slideInFromRight 1s ease forwards;
+  animation-delay: 2s; 
+}
+
+/*Group 5 */
+.MountainRanges-sun.animate {
+  animation: popUpMountain 3.2s ease-out forwards;
+  animation-delay: 1.8s; 
+}
+
+.mountain2.animate {
+  animation: popUpMountain 3.5s ease-out forwards;
 }
 
 @keyframes slideInFromLeft {
@@ -124,5 +150,3 @@
     visibility: visible;
   }
 }
-
-

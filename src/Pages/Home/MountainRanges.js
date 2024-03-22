@@ -25,8 +25,8 @@ function MountainRanges() {
       <Cloud1 className={animate ? "cloud1 animate" : "cloud1"} />
       <Cloud2 className={animate ? "cloud2 animate" : "cloud2"} />
       <Mountain1 className={animate ? "mountain1 animate" : "mountain1"} />
-      <Mountain2 className="mountain2" />
-      <div className="MountainRanges-sun"></div>
+      <Mountain2 className={animate ? "mountain2 animate" : "mountain2"} />
+      <div className={animate ? "MountainRanges-sun animate" : "MountainRanges-sun"}></div>
       <Mountain3 className={animate ? "mountain3 animate" : "mountain3"} />
       <Mountain4 className={animate ? "mountain4 animate" : "mountain4"} />
       <Mountain5 className={animate ? "mountain5 animate" : "mountain5"} />
