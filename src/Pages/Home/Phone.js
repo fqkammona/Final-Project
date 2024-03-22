@@ -14,7 +14,7 @@ const Phone = () => {
     // New useEffect for changing the display after 5 seconds
     const fadeTimer = setTimeout(() => {
       setShowHouse(false); // Hide the House component after 5 seconds
-    }, 5000);
+    }, 3000);
 
     return () => {
       clearInterval(timer); // Cleanup the interval on component unmount

@@ -1,0 +1,105 @@
+ 
+:root {
+    /* Color variables */
+    --lightBlue: #ade4f5;
+    --firstMountain: #BBDBD9;
+    --secondMountain: #86B6B6; /* Example colors */
+    --thirdMountain: #398380;
+    --fourthMountain: #004B4D; 
+    --fifthMountain: #00383B;
+    ----cloud-color: #ffffff;
+  }
+
+  .sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 100%; /* Adjust based on your design */
+    background: var(--lightBlue); /* Sky gradient */
+  }
+
+  @keyframes popUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  
+  @keyframes dropDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+  }
+  
+  .mountain-5-animation {
+    animation: popUp 0.5s ease-out forwards;
+  }
+  
+  .mountain-4-animation {
+    animation: popUp 0.5s ease-out forwards 0.5s; /* Delay to follow Mountain 5 */
+  }
+  
+  @keyframes sunRise {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .sun-animation {
+    animation: sunRise 2s ease forwards;
+  }
+
+  
+  /* Continue creating similar classes and keyframes for other animations */
+  
+
+   
+:root {
+    /* Color variables */
+    --lightBlue: #ade4f5;
+    --firstMountain: #BBDBD9;
+    --secondMountain: #86B6B6; /* Example colors */
+    --thirdMountain: #398380;
+    --fourthMountain: #004B4D; 
+    --fifthMountain: #00383B;
+    ----cloud-color: #ffffff;
+  }
+  
+  
+  @keyframes cloudEntrance {
+    from {
+      /* Start from off-screen on the left */
+      transform: translate(-100%, 450px) scale(0.3);
+    }
+    to {
+      /* End at the final desired location */
+      transform: translate(30px, 140px) scale(0.3);
+    }
+  }
+  
+  .custom-cloud {
+    transform: scale(0.3) translate(100px, 450px);
+    fill: var(--cloud-color);
+    animation: cloudEntrance 2s ease-out forwards;
+    animation-delay: 0.5s; /* Add a delay */
+  }
+
+  @keyframes anotherCloudEntrance {
+    from {
+      /* Start from off-screen on the left */
+      transform: translate(100%, 450px) scale(0.4);
+    }
+    to {
+      /* End at the final desired location */
+      transform: translate(700px, 100px) scale(0.4);
+    }
+  }
+  .another-cloud {
+    transform: scale(0.4) translate(1800px, 400px);
+    fill: var(--cloud-color);
+    animation: anotherCloudEntrance 2s ease-out ;
+    animation-delay: 0.5s; /* Add a delay */
+  }
+ 
+  .mountain1 {
+    fill: var(--firstMountain);
+  }
+  

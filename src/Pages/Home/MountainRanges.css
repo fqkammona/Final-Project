@@ -1,47 +1,26 @@
- 
 :root {
-    /* Color variables */
-    --lightBlue: #ade4f5;
-    --firstMountain: #BBDBD9;
-    --secondMountain: #86B6B6; /* Example colors */
-    --thirdMountain: #398380;
-    --fourthMountain: #004B4D; 
-    --fifthMountain: #00383B;
-    ----cloud-color: #ffffff;
-  }
+  /* Color variables */
+  --lightBlue: #ade4f5;
+  --firstMountain: #BBDBD9;
+  --secondMountain: #86B6B6; /* Example colors */
+  --thirdMountain: #398380;
+  --fourthMountain: #004B4D; 
+  --fifthMountain: #00383B;
+  ----cloud-color: #ffffff;
+}
 
-  .sky {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 100%; /* Adjust based on your design */
-    background: var(--lightBlue); /* Sky gradient */
-  }
-  
-  @keyframes slideInFromLeft {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes slideInFromRight {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-  
-  .custom-cloud {
-    animation: slideInFromLeft 0.5s ease-out forwards;
-  }
-  
-  .another-cloud {
-    animation: slideInFromRight 0.5s ease-out forwards;
-  }
-  
+/* Use viewport height (vh) units to maintain aspect ratio relative to the height of the screen */
+.sky {
+  position: absolute;
+  width: 100%; /* Full width */
+  height: 100%; /* Adjust the vh value to suit your design */
+  background: var(--lightBlue);
+
+}
+
+/* Set your SVGs to a percentage width of the parent container to maintain aspect ratio */
+.mountain1, .mountain2, .mountain3, .mountain4, .mountain5, .cloud1, .cloud2 {
+  position: absolute;
+
+}
+

@@ -9,7 +9,7 @@ const HomePage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowComponent('mountains');
-    }, 10000); // 5000ms = 5 seconds
+    }, 5000); // 5000ms = 5 seconds
     return () => clearTimeout(timer);
   }, []);
 
