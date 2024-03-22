@@ -9,18 +9,120 @@
   ----cloud-color: #ffffff;
 }
 
+.MountainRangesContainer {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+ 
+}
+
 /* Use viewport height (vh) units to maintain aspect ratio relative to the height of the screen */
 .sky {
   position: absolute;
   width: 100%; /* Full width */
   height: 100%; /* Adjust the vh value to suit your design */
   background: var(--lightBlue);
+}
 
+.sky.animate {
+  animation: slideDownFromTop 1.2s ease forwards;
+  animation-delay: 2s;
 }
 
 /* Set your SVGs to a percentage width of the parent container to maintain aspect ratio */
 .mountain1, .mountain2, .mountain3, .mountain4, .mountain5, .cloud1, .cloud2 {
   position: absolute;
-
 }
+
+ .sky, .mountain1, .mountain2, .mountain3, .mountain4, .mountain5, .cloud1, .cloud2 {
+  visibility: hidden;
+}
+
+.cloud1.animate {
+  animation: slideInFromLeft 1s ease forwards;
+  animation-delay: 2s; /* Starts slightly after the mountains begin to animate */
+}
+
+.cloud2.animate {
+  animation: slideInFromRight 1s ease forwards;
+  animation-delay: 2s; /* Starts after cloud1 begins to animate */
+}
+
+.mountain1.animate {
+  animation: popUpMountain 2.2s ease-out forwards;
+  animation-delay: 1.9s; /* Adjust as needed */
+}
+
+.mountain3.animate {
+  animation: popUpMountain 1.5s ease-out forwards;
+  animation-delay: 2s; /* This should be greater than the delay of mountain5 to ensure it pops up after */
+}
+
+.mountain4.animate {
+  animation: popUpMountain 2s ease-out forwards;
+  animation-delay: 0.2s; /* This should be greater than the delay of mountain5 to ensure it pops up after */
+}
+
+.mountain5.animate {
+  animation: popUpMountain 1.2s ease-out forwards;
+  animation-delay: 0.5s; /* Adjust as needed */
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+
+@keyframes popUpMountain {
+  0% {
+    transform: translateY(100%);
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+
+@keyframes slideDownFromTop {
+  0% {
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+
 
