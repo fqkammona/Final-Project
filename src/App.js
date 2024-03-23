@@ -5,6 +5,7 @@ import LoadingPage from './Components/LoadingPage/LoadingPage';
 import Login from './Components/Login/Login';
 import Signup from './Components/Login/Signup';
 import HomePage from './Pages/HomePage';
+import Background from './Components/LoadingPage/LoadingPage';
 import House from './Pages/Home/House';
 import Phone from './Pages/Home/Phone';
 import Car from './Components/Login-Loading-Page/Car'
@@ -33,7 +34,7 @@ const App = () => {
   const handleGirlCodedClick = () => {
     // Ensure this function is used or remove if not needed.
     setShowLoading(true);
-    const timer = setTimeout(() => setShowLoading(false), 5000); // Adjust time as needed
+    const timer = setTimeout(() => setShowLoading(false), 20000); // Adjust time as needed
     return () => clearTimeout(timer);
   };
 
