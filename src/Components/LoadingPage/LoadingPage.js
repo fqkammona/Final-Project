@@ -6,8 +6,8 @@ const LoadingPage = () => {
   const fullText = 'GIRL CODED';
   const [text, setText] = useState('');
   const [typingComplete, setTypingComplete] = useState(false);
+  const [startFadeOut, setStartFadeOut] = useState(false);
   const typingDelay = 150; // milliseconds
-  const redirectDelay = 3000; // 5 seconds
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,22 +19,26 @@ const LoadingPage = () => {
         setText(fullText.slice(0, text.length + 1));
       }, typingDelay);
     } else {
-      setTypingComplete(true); // Set typingComplete to true when typing is finished
+      setTypingComplete(true); // Typing is finished
+      setStartFadeOut(true); // Start fade-out effect sooner
+
       redirectTimeout = setTimeout(() => {
-        navigate('/home');
-      }, redirectDelay);
+        navigate('/home'); // Navigate after fade-out and delay
+      }, 4500); // Adjusted for longer fade-out duration
     }
 
     return () => {
       clearTimeout(typingTimeout);
       clearTimeout(redirectTimeout);
     };
-  }, [text, fullText, navigate]);
+  }, [text, navigate]);
 
   return (
-    <div className={typingComplete ? "neonText filledText" : "neonText"}>
-      {text}
-      <span className="blinkCursor" />
+    <div className={`loadingPage ${startFadeOut ? "fadeOut" : ""}`}>
+      <div className={`${typingComplete ? "neonText filledText" : "neonText"}`}>
+        {text}
+        <span className="blinkCursor" />
+      </div>
     </div>
   );
 };

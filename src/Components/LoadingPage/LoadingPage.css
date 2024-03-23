@@ -1,4 +1,3 @@
-/* NeonTextAnimation.css */
 @keyframes neon {
   from {
     filter: brightness(0);
@@ -17,12 +16,14 @@
   }
 }
 
-@keyframes typing {
+@keyframes fadeOutToBlack {
   from {
-    width: 0;
+    opacity: 1;
+    background-color: transparent;
   }
   to {
-    width: 100%;
+    opacity: 0;
+    background-color: black;
   }
 }
 
@@ -34,25 +35,24 @@
   font-size: 10vw; /* Responsive font size */
   font-weight: bold;
   color: transparent; /* Initially transparent */
-  -webkit-text-stroke: 2px #5714ff; /* Neon Green outline */
+  -webkit-text-stroke: 2px #5714ff; /* Neon outline */
   text-transform: uppercase;
   animation: neon 1.5s ease-in-out infinite alternate;
   margin: 0; /* Remove default margins */
 }
 
 .filledText {
-  color: #5714ff; /* Fills the text with Neon Green color */
+  color: #5714ff; /* Fills the text with Neon color */
   -webkit-text-stroke: 0; /* Removes the outline */
 }
 
-/* Adjust font size based on viewport width */
+
 @media (max-width: 600px) {
   .neonText {
     font-size: 15vw;
   }
 }
 
-/* Adjust font size for larger screens */
 @media (min-width: 1024px) {
   .neonText {
     font-size: 8vw;
@@ -60,13 +60,37 @@
 }
 
 .blinkCursor {
-  border-right: 0.1em solid #ff3314;
+  border-right: 0.1em solid #ff3314; /* Cursor color */
   animation: blink 1s step-end infinite;
 }
 
-.typingEffect {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 5s steps(10, end), blink-caret 0.75s step-end infinite;
+@keyframes fadeOutToBlack {
+  0% {
+    background-color: transparent;
+    opacity: 1;
+  }
+  100% {
+    background-color: black;
+    opacity: 1;
+  }
+}
+
+.loadingPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  transition: background-color 2s ease-in-out; /* Adjusted for a smoother transition */
+}
+
+.fadeOut {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  animation: fadeOutToBlack 3s forwards; /* Slower fade to black */
 }
