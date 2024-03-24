@@ -1,111 +1,61 @@
-.loadingPage {
+/* Sets up the container to center its contents and transitions the background color */
+.loading-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
   height: 100vh;
-  position: relative;
-  background-color: transparent;
-  overflow: hidden;
+  font-size: 24px;
+  font-weight: bold;
+  transition: background-color 1.3s;
+  background-color: white;
 }
 
-.loadingPage::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.95); /* Initial dark background */
-  transition: opacity 1s ease-out;
-  opacity: 0; /* Start hidden */
-  z-index: 1;
+/* Changes the background color of the container to black */
+.loading-container.fade-to-black {
+  background-color: black;
 }
 
-/* Text Animations */
-.neonText, .filledText {
-  z-index: 3; /* Ensure text is above the spotlight */
-  position: relative;
+@keyframes fadeOutText {
+  from {
+    opacity: 1; /* Fully visible starting point */
+  }
+  to {
+    opacity: 0; /* Fully transparent endpoint */
+  }
 }
 
-.fadeOut {
-  animation: fadeOutToBlack 1.5s forwards;
+
+/* Defines an animation for the text color to fade in from transparent to purple */
+@keyframes fadeInColor {
+  from {
+    color: transparent;
+  }
+  to {
+    color: rgba(87, 20, 255, 1);
+  }
 }
 
-.neonText {
+/* Initial style for the Logo, including setup for text stroke and transparent fill color */
+.Logo {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   font-size: 10vw;
   font-weight: bold;
-  color: transparent;
   -webkit-text-stroke: 2px #5714ff;
   text-transform: uppercase;
-  animation: neon 1.5s ease-in-out infinite alternate;
   margin: 0;
+  color: transparent;
+  opacity: 1;
 }
 
-.filledText {
-  color: #5714ff;
-  -webkit-text-stroke: 0;
-  transition: color 1s ease-out;
+/* Triggers the fadeInColor animation to fill the text color */
+.Logo.fill-text {
+  animation: fadeInColor 2s ease-out 1s forwards;
 }
 
-/* Phone Component Animations */
-.showPhone .phoneComponent {
-  animation: fadePhoneIn 1s ease-out forwards;
-  animation-delay: 0.5s; /* Delay for spotlight effect */
-  opacity: 0; /* Start invisible */
-}
-
-.phoneFadeOut .phoneComponent {
-  animation: fadePhoneOut 1s ease-out forwards;
-  animation-fill-mode: forwards;
-  animation-delay: 4.5s; /* Wait 4.5 seconds before fading out */
-}
-
-/* Keyframes */
-@keyframes neon {
-  from { filter: brightness(0); }
-  to { filter: brightness(1); }
-}
-
-@keyframes fadeTextColorToBlack {
-  to {
-    color: black;
-    -webkit-text-stroke: 0;
-  }
-}
-
-@keyframes fadeOutToBlack {
-  to {
-    background-color: black;
-    opacity: 1;
-  }
-}
-
-@keyframes fadePhoneIn {
-  0% { 
-    opacity: 0;
-    transform: scale(0);
-  }
-  100% { 
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fadePhoneOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  .neonText { font-size: 15vw; }
-}
-
-@media (min-width: 1024px) {
-  .neonText { font-size: 8vw; }
+/* Applies the fadeOutText animation to fade both the fill and the stroke */
+.Logo.fade-text-to-black {
+  animation: fadeOutText forwards; /* The 3s delay ensures this starts after the fill animation completes */
 }
