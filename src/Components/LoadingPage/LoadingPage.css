@@ -21,7 +21,6 @@
   z-index: 1;
 }
 
-
 /* Defines an animation to fade out the text by decreasing its opacity */
 @keyframes fadeOutText {
   from {
@@ -65,35 +64,36 @@
   animation: fadeOutText 2s ease-out forwards; /* Adjusted to match your fade effect timing */
 }
 
-/* Define keyframes for the spotlight coming in animation */
 @keyframes spotlightComeIn {
   from {
-    width: 0;
-    height: 0;
-    background: transparent;
-    box-shadow: 0 0 0 1000px rgba(0,0,0,0.7);
+    transform: translate(-50%, -50%) scale(0.1); /* Start scaled down */
+    opacity: 0.5; /* Make sure it's somewhat visible at the start */
+    box-shadow: 0 0 0 1000px rgba(0,0,0,0.7); /* Start with a slightly darker shadow */
   }
   to {
-    width: 850px; /* Full width of the spotlight */
-    height: 850px; /* Full height of the spotlight */
-    background: radial-gradient(circle, rgba(255,255,255,0.8) 20%, transparent 70%);
-    box-shadow: 0 0 0 2000px rgba(0,0,0,0.7);
+    transform: translate(-50%, -50%) scale(1); /* Scale to full size */
+    opacity: 1; /* Fully visible */
+    box-shadow: 0 0 0 2000px rgba(0,0,0,0.7); /* Final shadow size */
   }
 }
 
-/* Base style for the spotlight, initially hidden */
 .spotlight {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  width: 850px; /* Define full size */
+  height: 850px; /* Define full size */
   border-radius: 50%;
-  transition: all 1.3s ease; /* You might adjust or remove this based on your animation */
-  pointer-events: none; /* Ensures clicks pass through to elements below */
+  /* Increase the center color brightness and adjust the gradient transition for more focus */
+  background: radial-gradient(circle, rgba(255,255,255,1) 20%, transparent 65%);
+  transform: translate(-50%, -50%) scale(0.1); /* Start small */
+  opacity: 0; /* Start fully transparent */
+  pointer-events: none;
+  animation-fill-mode: forwards; /* Ensures the final state of the animation is maintained */
+  box-shadow: 0 0 0 2000px rgba(0,0,0,0.8); /* Darken the shadow for more contrast */
 }
 
-/* Style when the spotlight is visible */
 .spotlight.spotlight-visible {
-  animation: spotlightComeIn 2.5s forwards; /* Use your animation */
+  animation: spotlightComeIn 2.5s ease-out forwards; /* Use the animation */
 }
 
