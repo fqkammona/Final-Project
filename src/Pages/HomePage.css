@@ -9,54 +9,9 @@
   overflow: hidden;
 }
 
-.phone-containerr {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0; /* Initially invisible */
-  transition: opacity 2s ease-in-out;
-  z-index: 2; /* Make sure phone is above the spotlight */
-}
-
-.phone-containerr.visible {
-  opacity: 1; /* Make visible when class 'visible' is added */
-}
-
-.component {
+.show-mountains {
   position: absolute;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
 
-.component.visible {
-  opacity: 1;
-}
-
-.spotllight {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(
-    circle at var(--spotlight-x) var(--spotlight-y),
-    transparent 0px, /* Start with full transparency */
-    rgba(255, 255, 0, 0.0) 100px, /* Start introducing the yellow color but fully transparent */
-  
-  );
-  pointer-events: none;
-  transition: opacity 1s ease-out;
-  --spotlight-x: 50%; /* Default center x */
-  --spotlight-y: 50%; /* Default center y */
-}
-
-
-.visible {
-  opacity: 1;
-}
-
-.hidden {
-  opacity: 0;
 }
