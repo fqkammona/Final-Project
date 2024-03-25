@@ -35,33 +35,33 @@ const App = () => {
   const handleGirlCodedClick = () => {
     // Ensure this function is used or remove if not needed.
     setShowLoading(true);
-    const timer = setTimeout(() => setShowLoading(false), 27000); // Adjust time as needed
+    const timer = setTimeout(() => setShowLoading(false), 17000); // Adjust time as needed
     return () => clearTimeout(timer);
   };
 
   return (
     <AuthProvider>
-      <Router>
-        {showLoading ? (
-          <LoadingPage />
-        ) : (
-          <>
-            <NavbarContainer /> {/* Use the new NavbarContainer component */}
-            <Routes>
-              <Route path="/" element={<Navigate replace to="/LoadingPage" />} />
-              <Route path="/home" element={<HomePage />} />
-              <Route path="/frequently-asked-questions" element={<FAQpage />} />
+    <Router>
+      {showLoading ? (
+        <LoadingPage />
+      ) : (
+        <div className={`fade-in-content ${!showLoading && 'visible'}`}>
+          <NavbarContainer /> {/* Use the new NavbarContainer component */}
+          <Routes>
+            <Route path="/" element={<Navigate replace to="/home" />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/frequently-asked-questions" element={<FAQpage />} />
               <Route path="/meet-the-team" element={<TeamPage />} />
               <Route path="/our-story" element={<StoryPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/settings" element={<Settings />} />
-            </Routes>
-          </>
-        )}
-      </Router>
-    </AuthProvider>
+          </Routes>
+        </div>
+      )}
+    </Router>
+  </AuthProvider>
   );
 };
 

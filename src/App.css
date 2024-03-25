@@ -7,3 +7,11 @@
   padding-top: 70px; /* Example value, adjust as needed */
 }
 
+/* Add this to your CSS file */
+.fade-in-content {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.fade-in-content.visible {
+  opacity: 1;
+}
