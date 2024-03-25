@@ -49,12 +49,12 @@
 /* Group 1 */
 .mountain4.animate {
   animation: popUpMountain 2s ease-out forwards;
-  animation-delay: 0.2s;  
+  animation-delay: 0s;  
 }
 
 .mountain5.animate {
   animation: popUpMountain 1.2s ease-out forwards;
-  animation-delay: 0.5s; /* Adjust as needed */
+  animation-delay: 0.3s; /* Adjust as needed */
 }
 
 /* Group 2 */

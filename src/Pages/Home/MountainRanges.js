@@ -17,7 +17,7 @@ function MountainRanges() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimate(true);
-    }, 5000); // Trigger animation after 5 seconds
+    }, 0); // Trigger animation after 5 seconds
 
     return () => clearTimeout(timer); // Clean up the timer if the component unmounts
   }, []);

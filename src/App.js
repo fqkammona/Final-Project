@@ -8,6 +8,7 @@ import HomePage from './Pages/HomePage';
 import Background from './Components/LoadingPage/LoadingPage';
 import House from './Pages/Home/House';
 import Phone from './Pages/Home/Phone';
+import MountainRanges from './Pages/Home/MountainRanges';
 import Car from './Components/Login-Loading-Page/Car'
 import Mountains from './Components/Login-Loading-Page/Mountains';
 import FAQpage from './Pages/FAQpage';
@@ -34,7 +35,7 @@ const App = () => {
   const handleGirlCodedClick = () => {
     // Ensure this function is used or remove if not needed.
     setShowLoading(true);
-    const timer = setTimeout(() => setShowLoading(false), 25000); // Adjust time as needed
+    const timer = setTimeout(() => setShowLoading(false), 27000); // Adjust time as needed
     return () => clearTimeout(timer);
   };
 
@@ -47,7 +48,7 @@ const App = () => {
           <>
             <NavbarContainer /> {/* Use the new NavbarContainer component */}
             <Routes>
-              <Route path="/" element={<Navigate replace to="/home" />} />
+              <Route path="/" element={<Navigate replace to="/LoadingPage" />} />
               <Route path="/home" element={<HomePage />} />
               <Route path="/frequently-asked-questions" element={<FAQpage />} />
               <Route path="/meet-the-team" element={<TeamPage />} />

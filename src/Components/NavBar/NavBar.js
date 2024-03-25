@@ -36,6 +36,7 @@ const NavBar = ({ onGirlCodedClick }) => {
             <Button as={Link} to="/login" variant="primary" className="sign-in-button">Login</Button>
             <Navbar.Collapse id="basic-navbar-nav" className="centered-collapse">
                 <Nav className="mx-auto">
+                    <Link to="/home" className="nav-link" onClick={handleNavItemClick}>HOME</Link>
                     <Link to="/our-story" className="nav-link" onClick={handleNavItemClick}>OUR STORY</Link>
                     <Link to="/frequently-asked-questions" className="nav-link" onClick={handleNavItemClick}>FAQ</Link>
                     <Link to="/meet-the-team" className="nav-link" onClick={handleNavItemClick}>MEET THE TEAM</Link>

@@ -149,5 +149,5 @@
 }
 
 .phone-container.fade-out-phone {
-  animation: fadeOutPhone 6s ease-in-out forwards;
+  animation: fadeOutPhone 4s ease-in-out forwards;
 }
