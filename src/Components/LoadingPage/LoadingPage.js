@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './LoadingPage.css';
+// Import the Phone component
+import Phone from '../../Pages/Home/Phone'; // Adjust the import path according to your file structure
 
 function LoadingPage() {
   const [text, setText] = useState('');
@@ -7,45 +9,46 @@ function LoadingPage() {
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isFillActive, setIsFillActive] = useState(false);
   const [isFadeToBlackActive, setIsFadeToBlackActive] = useState(false);
-  const [isSpotlightActive, setIsSpotlightActive] = useState(false); // State for the spotlight effect
-  const [seconds, setSeconds] = useState(0); // State to keep track of seconds elapsed for debugging
+  const [isSpotlightActive, setIsSpotlightActive] = useState(false);
+  const [isSpotlightFull, setIsSpotlightFull] = useState(false);
+  const [seconds, setSeconds] = useState(0);
+  // State to manage the visibility of the Phone component
+  const [isPhoneVisible, setIsPhoneVisible] = useState(false);
 
   useEffect(() => {
     const fullText = 'GIRL CODED';
     let index = 0;
-    const typeSpeed = 150;
 
-    const typeLetter = () => {
+    const typeInterval = setInterval(() => {
       if (index < fullText.length) {
         setText(fullText.slice(0, index + 1));
         index++;
-        setTimeout(typeLetter, typeSpeed);
       } else {
         setIsTypingComplete(true);
-
-        setTimeout(() => {
-          setIsFillActive(true);
-
-          setTimeout(() => {
-            setIsFadeToBlackActive(true);
-          }, 5000); // 5s delay to start fading to black after fill
-        }, 900); // Delay to start filling after typing is complete
+        clearInterval(typeInterval);
       }
-    };
+    }, 150);
 
-    typeLetter();
+    const fillTimer = setTimeout(() => {
+      setIsFillActive(true);
+    }, 2000);
 
-    // Schedule spotlight to appear after 10 seconds
+    const fadeTimer = setTimeout(() => {
+      setIsFadeToBlackActive(true);
+    }, 5000);
+
     const spotlightTimer = setTimeout(() => {
       setIsSpotlightActive(true);
-    }, 10000);
+    }, 8000);
 
-    // Timer to stop showing the loading screen after 35 seconds
+    const spotlightFullTimer = setTimeout(() => {
+      setIsSpotlightFull(true);
+    }, 15000);
+
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
     }, 35000);
 
-    // Setup a timer to increment and log seconds elapsed
     const secondsTimer = setInterval(() => {
       setSeconds((prevSeconds) => {
         const newSeconds = prevSeconds + 1;
@@ -54,27 +57,34 @@ function LoadingPage() {
       });
     }, 1000);
 
+    // Set a timer to show the Phone component after 10 seconds
+    const phoneTimer = setTimeout(() => {
+      setIsPhoneVisible(true);
+    }, 10000);
+
     return () => {
+      clearInterval(typeInterval);
+      clearTimeout(fillTimer);
+      clearTimeout(fadeTimer);
       clearTimeout(loadingTimer);
-      clearTimeout(spotlightTimer); // Clear the spotlight timer on cleanup
-      clearInterval(secondsTimer); // Clear the seconds timer on cleanup
+      clearTimeout(spotlightTimer);
+      clearInterval(secondsTimer);
+      clearTimeout(spotlightFullTimer);
+      // Clear the phone timer on cleanup
+      clearTimeout(phoneTimer);
     };
   }, []);
 
-  // Inside your component's return statement
-  
-  const containerClasses = `loading-container ${isTypingComplete ? 'fade-to-black' : ''} ${isSpotlightActive ? 'transparent-background' : ''}`;
-  const logoClasses = `Logo ${isFillActive ? 'fill-text' : ''} ${isFadeToBlackActive ? 'fade-text-to-black' : ''}`;
-  const spotlightClasses = `spotlight ${isSpotlightActive ? 'spotlight-visible' : ''}`; // Manage spotlight visibility
-
   if (!isLoading) {
-    return null; // Or redirect to another page or show content
+    return null;
   }
 
   return (
-    <div className={containerClasses}>
-      {isSpotlightActive && <div className={spotlightClasses}></div>}
-      <div className={logoClasses}>{text}</div>
+    <div className={`loading-container ${isTypingComplete ? 'fade-to-black' : ''} ${isSpotlightActive ? 'transparent-background' : ''} ${isSpotlightFull ? 'background-white' : ''}`}>
+      {isSpotlightActive && <div className={`spotlight ${isSpotlightActive ? 'spotlight-visible' : ''} ${isSpotlightFull ? 'spotlight-expand' : ''}`}></div>}
+      <div className={`Logo ${isFillActive ? 'fill-text' : ''} ${isFadeToBlackActive ? 'fade-text-to-black' : ''}`}>{text}</div>
+      {/* Render the Phone component based on its visibility state */}
+      {isPhoneVisible && <Phone />}
     </div>
   );
 }

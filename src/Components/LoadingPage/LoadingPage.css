@@ -16,9 +16,9 @@
   background-color: black;
 }
 
-/* Makes the background of the container transparent */
+/* Makes the background of the container transparent black */
 .loading-container.transparent-background {
-  z-index: 1;
+  background-color: black;
 }
 
 /* Defines an animation to fade out the text by decreasing its opacity */
@@ -73,7 +73,7 @@
   to {
     transform: translate(-50%, -50%) scale(1); /* Scale to full size */
     opacity: 1; /* Fully visible */
-    box-shadow: 0 0 0 2000px rgba(0,0,0,0.7); /* Final shadow size */
+    box-shadow: 0 0 0 2000px rgba(0,0,0,0.3); /* Final shadow size with more transparency */
   }
 }
 
@@ -84,16 +84,40 @@
   width: 850px; /* Define full size */
   height: 850px; /* Define full size */
   border-radius: 50%;
-  /* Increase the center color brightness and adjust the gradient transition for more focus */
-  background: radial-gradient(circle, rgba(255,255,255,1) 20%, transparent 65%);
+  background: radial-gradient(circle, rgba(255,255,255,1) 30%, transparent 60%);
   transform: translate(-50%, -50%) scale(0.1); /* Start small */
   opacity: 0; /* Start fully transparent */
   pointer-events: none;
   animation-fill-mode: forwards; /* Ensures the final state of the animation is maintained */
-  box-shadow: 0 0 0 2000px rgba(0,0,0,0.8); /* Darken the shadow for more contrast */
+  box-shadow: 0 0 0 2000px rgb(0, 0, 0); /* Soften the shadow around the spotlight with more transparency */
 }
 
 .spotlight.spotlight-visible {
   animation: spotlightComeIn 2.5s ease-out forwards; /* Use the animation */
 }
+
+@keyframes spotlightGoOut {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 2000px rgb(0, 0, 0); /* Final shadow size with more transparency */
+  }
+  to {
+    transform: translate(-50%, -50%) scale(50); /* Scale up to ensure it fills the screen */
+    opacity: 0;
+    box-shadow: 0 0 0 10000px white; /* Change to a large white shadow that fills the screen */
+  }
+}
+
+.spotlight.spotlight-expand {
+  animation: spotlightGoOut 4s ease-in-out forwards; /* Use the animation */
+}
+
+/* Makes the background of the container white */
+.loading-container.background-white {
+  transition: background-color 2s;
+  background-color: white !important;
+}
+
+
 
