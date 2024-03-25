@@ -22,12 +22,6 @@
     z-index: 1;
   }
   
-  /* Text Animations */
-  .neonText, .filledText {
-    z-index: 3; /* Ensure text is above the spotlight */
-    position: relative;
-  }
-  
   .fadeOut {
     animation: fadeOutToBlack 1.5s forwards;
   }

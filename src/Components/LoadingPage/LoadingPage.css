@@ -8,6 +8,7 @@
   font-weight: bold;
   transition: background-color 1.3s;
   background-color: white;
+  position: relative; /* Needed for absolute positioning of children */
 }
 
 /* Changes the background color of the container to black */
@@ -15,6 +16,13 @@
   background-color: black;
 }
 
+/* Makes the background of the container transparent */
+.loading-container.transparent-background {
+  z-index: 1;
+}
+
+
+/* Defines an animation to fade out the text by decreasing its opacity */
 @keyframes fadeOutText {
   from {
     opacity: 1; /* Fully visible starting point */
@@ -23,7 +31,6 @@
     opacity: 0; /* Fully transparent endpoint */
   }
 }
-
 
 /* Defines an animation for the text color to fade in from transparent to purple */
 @keyframes fadeInColor {
@@ -40,13 +47,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   font-size: 10vw;
   font-weight: bold;
   -webkit-text-stroke: 2px #5714ff;
   text-transform: uppercase;
-  margin: 0;
-  color: transparent;
+  color: transparent; /* Starts without fill */
   opacity: 1;
 }
 
@@ -57,5 +62,38 @@
 
 /* Applies the fadeOutText animation to fade both the fill and the stroke */
 .Logo.fade-text-to-black {
-  animation: fadeOutText forwards; /* The 3s delay ensures this starts after the fill animation completes */
+  animation: fadeOutText 2s ease-out forwards; /* Adjusted to match your fade effect timing */
 }
+
+/* Define keyframes for the spotlight coming in animation */
+@keyframes spotlightComeIn {
+  from {
+    width: 0;
+    height: 0;
+    background: transparent;
+    box-shadow: 0 0 0 1000px rgba(0,0,0,0.7);
+  }
+  to {
+    width: 850px; /* Full width of the spotlight */
+    height: 850px; /* Full height of the spotlight */
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 20%, transparent 70%);
+    box-shadow: 0 0 0 2000px rgba(0,0,0,0.7);
+  }
+}
+
+/* Base style for the spotlight, initially hidden */
+.spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: all 1.3s ease; /* You might adjust or remove this based on your animation */
+  pointer-events: none; /* Ensures clicks pass through to elements below */
+}
+
+/* Style when the spotlight is visible */
+.spotlight.spotlight-visible {
+  animation: spotlightComeIn 2.5s forwards; /* Use your animation */
+}
+
