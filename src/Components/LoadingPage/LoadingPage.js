@@ -12,8 +12,8 @@ function LoadingPage() {
   const [isSpotlightActive, setIsSpotlightActive] = useState(false);
   const [isSpotlightFull, setIsSpotlightFull] = useState(false);
   const [seconds, setSeconds] = useState(0);
-  // State to manage the visibility of the Phone component
-  const [isPhoneVisible, setIsPhoneVisible] = useState(false);
+  const [isPhoneFadeIn, setIsPhoneFadeIn] = useState(false);
+  const [isPhoneFadeOut, setIsPhoneFadeOut] = useState(false);
 
   useEffect(() => {
     const fullText = 'GIRL CODED';
@@ -41,8 +41,14 @@ function LoadingPage() {
       setIsSpotlightActive(true);
     }, 6500);
 
+     // Set a timer to show the Phone component after 10 seconds
+     const phoneTimer = setTimeout(() => {
+      setIsPhoneFadeIn(true);
+    }, 8000);
+
     const spotlightFullTimer = setTimeout(() => {
       setIsSpotlightFull(true);
+      setIsPhoneFadeOut(true);
     }, 15000);
 
     const loadingTimer = setTimeout(() => {
@@ -56,11 +62,6 @@ function LoadingPage() {
         return newSeconds;
       });
     }, 1000);
-
-    // Set a timer to show the Phone component after 10 seconds
-    const phoneTimer = setTimeout(() => {
-      setIsPhoneVisible(true);
-    }, 10000);
 
     return () => {
       clearInterval(typeInterval);
@@ -79,7 +80,7 @@ function LoadingPage() {
   const containerClasses = `loading-container ${isTypingComplete ? 'fade-to-black' : ''} ${isSpotlightActive ? 'transparent-background' : ''} ${isSpotlightFull ? 'background-white' : ''}`;
   const logoClasses = `Logo ${isFillActive ? 'fill-text' : ''} ${isFadeToBlackActive ? 'fade-text-to-black' : ''}`;
   const spotlightClasses = `spotlight ${isSpotlightActive ? 'spotlight-visible' : ''} ${isSpotlightFull ? 'spotlight-expand' : ''}`;
-  const phoneClasses = `phone-container ${isPhoneVisible ? 'fade-in' : ''}`;
+  const phoneClasses = `phone-container ${isPhoneFadeIn ? 'fade-in-phone' : ''} ${isPhoneFadeOut ? 'fade-out-phone' : ''}`;
 
   if (!isLoading) {
     return null;
@@ -88,8 +89,8 @@ function LoadingPage() {
   return (
     <div className={containerClasses}>
       {isSpotlightActive && <div className={spotlightClasses}></div>}
-      {isPhoneVisible && <Phone className={phoneClasses} />}
-      {!isPhoneVisible && <div className={logoClasses}>{text}</div>} 
+      {isPhoneFadeIn && <div className={phoneClasses}> <Phone /> </div>}
+      {!isPhoneFadeIn && <div className={logoClasses}>{text}</div>} 
     </div>
   );
 }

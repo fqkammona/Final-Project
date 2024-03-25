@@ -43,7 +43,7 @@
 
 /* Initial style for the Logo, including setup for text stroke and transparent fill color */
 .Logo {
-  position: relative;
+  position: absolute;
   justify-content: center;
   align-items: center;
   font-size: 10vw;
@@ -117,15 +117,37 @@
   background-color: white !important;
 }
 
-.phone-container {
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  opacity: 0; /* Initially invisible */
-  transition: opacity 2s ease-in-out;
-  z-index: 1; /* Make sure phone is above the spotlight */
+/* Animation for fading in */
+@keyframes fadeInPhone {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.phone-container.isPhoneVisibleble {
-  opacity: 1; /* Make visible when class 'visible' is added */
+/* Animation for fading in */
+@keyframes fadeOutPhone {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Initial state of phone container */
+.phone-container {
+  opacity: 0; /* Ensure it starts invisible */
+  /* Ensure other necessary styles are applied, e.g., positioning */
+}
+
+/* Apply the animation when the phone is supposed to be visible */
+.phone-container.fade-in-phone {
+  animation: fadeInPhone 2.5s ease-in-out forwards;
+}
+
+.phone-container.fade-out-phone {
+  animation: fadeOutPhone 6s ease-in-out forwards;
 }
