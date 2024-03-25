@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginLoadingPage.css';
 import Car from './Car';
-import House from '../../Pages/Home/House';
+import House from '../LoadingPage/House';
 import Mountains from './Mountains';
 
 const LoginLoadingPage = () => {
@@ -29,7 +29,7 @@ const LoginLoadingPage = () => {
             // Set timeout for redirecting after 5 seconds
             setTimeout(() => {
               navigate('/dashboard'); // Use the navigate function from useNavigate hook
-            }, 40000);
+            }, 1000);
             return stopPosition;
           }
           return nextPosition;

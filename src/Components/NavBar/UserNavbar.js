@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-const UserNavbar = () => {
+const UserNavbar = ({}) => {
     const { logout } = useAuth();
     const navigate = useNavigate(); // Use useNavigate for redirection
     const [expanded, setExpanded] = useState(false);
@@ -27,7 +27,8 @@ const UserNavbar = () => {
 
     return (
         <Navbar bg={isSmallScreen ? "white" : "transparent"} expand="lg" className={`custom-navbar ${isSmallScreen ? "small-screen" : ""}`} expanded={expanded}>
-            <div className='navbar-brand'>LOGGED ON</div> 
+
+            <Link to="/live-feed" className="navbar-brand" onClick={handleNavItemClick}>LIVE FEED</Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => setExpanded(expanded => !expanded)} />
             <Button variant="primary" className="sign-in-button" onClick={handleLogout}>Log Out</Button>
             <Navbar.Collapse id="basic-navbar-nav" className="centered-collapse">

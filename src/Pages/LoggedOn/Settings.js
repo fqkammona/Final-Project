@@ -3,7 +3,6 @@ import { db } from '../../firebase-config';
 import { useAuth } from '../../AuthContext';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
-
 const Settings = ({ userId }) => {
   // States for form fields
   const { currentUser } = useAuth();

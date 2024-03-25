@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './LoadingPage.css';
-import Phone from '../../Pages/Home/Phone'; // Adjust the import path according to your file structure
+import Phone from './Phone'; // Adjust the import path according to your file structure
 
 function LoadingPage() {
   const [text, setText] = useState('');
