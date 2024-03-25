@@ -17,7 +17,8 @@
 
 /* Makes the background of the container transparent black */
 .loading-container.transparent-background {
-  background-color: black;
+  transition: background-color 1s;
+  background-color: rgb(16, 16, 16);
 }
 
 /* Defines an animation to fade out the text by decreasing its opacity */
@@ -67,12 +68,11 @@
   from {
     transform: translate(-50%, -50%) scale(0.1); /* Start scaled down */
     opacity: 0.5; /* Make sure it's somewhat visible at the start */
-    box-shadow: 0 0 0 1000px rgba(0,0,0,0.7); /* Start with a slightly darker shadow */
+    box-shadow: 0 0 0 1000px rgba(16, 16, 16, 0.6); /* Start with a slightly darker shadow */
   }
   to {
     transform: translate(-50%, -50%) scale(1); /* Scale to full size */
     opacity: 1; /* Fully visible */
-    box-shadow: 0 0 0 2000px rgba(0,0,0,0.3); /* Final shadow size with more transparency */
   }
 }
 
@@ -80,15 +80,14 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 850px; /* Define full size */
-  height: 850px; /* Define full size */
+  width: 950px; /* Define full size */
+  height: 950px; /* Define full size */
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,1) 30%, transparent 60%);
+  background: radial-gradient(circle, rgba(255,255,255,1) 30%, transparent 70%);
   transform: translate(-50%, -50%) scale(0.1); /* Start small */
   opacity: 0; /* Start fully transparent */
   pointer-events: none;
   animation-fill-mode: forwards; /* Ensures the final state of the animation is maintained */
-  box-shadow: 0 0 0 2000px rgb(0, 0, 0); /* Soften the shadow around the spotlight with more transparency */
 }
 
 .spotlight.spotlight-visible {
@@ -99,7 +98,7 @@
   from {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
-    box-shadow: 0 0 0 2000px rgb(0, 0, 0); /* Final shadow size with more transparency */
+    box-shadow: 0 0 0 2000px rgb(16, 16, 16); /* Final shadow size with more transparency */
   }
   to {
     transform: translate(-50%, -50%) scale(50); /* Scale up to ensure it fills the screen */

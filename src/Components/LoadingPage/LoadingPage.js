@@ -39,7 +39,7 @@ function LoadingPage() {
 
     const spotlightTimer = setTimeout(() => {
       setIsSpotlightActive(true);
-    }, 8000);
+    }, 6500);
 
     const spotlightFullTimer = setTimeout(() => {
       setIsSpotlightFull(true);

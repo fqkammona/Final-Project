@@ -44,7 +44,7 @@
     circle at var(--spotlight-x) var(--spotlight-y),
     transparent 0px, /* Start with full transparency */
     rgba(255, 255, 0, 0.0) 100px, /* Start introducing the yellow color but fully transparent */
-    rgba(0, 0, 0, 0.95) 400px /* Outer edge where the spotlight fades to black */
+  
   );
   pointer-events: none;
   transition: opacity 1s ease-out;
