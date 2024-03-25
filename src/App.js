@@ -34,7 +34,7 @@ const App = () => {
   const handleGirlCodedClick = () => {
     // Ensure this function is used or remove if not needed.
     setShowLoading(true);
-    const timer = setTimeout(() => setShowLoading(false), 36000); // Adjust time as needed
+    const timer = setTimeout(() => setShowLoading(false), 25000); // Adjust time as needed
     return () => clearTimeout(timer);
   };
 

@@ -47,7 +47,7 @@ function LoadingPage() {
 
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 35000);
+    }, 23000);
 
     const secondsTimer = setInterval(() => {
       setSeconds((prevSeconds) => {
@@ -70,21 +70,26 @@ function LoadingPage() {
       clearTimeout(spotlightTimer);
       clearInterval(secondsTimer);
       clearTimeout(spotlightFullTimer);
-      // Clear the phone timer on cleanup
       clearTimeout(phoneTimer);
     };
   }, []);
 
+  // Define class strings based on state
+  // Inside your component's return statement
+  const containerClasses = `loading-container ${isTypingComplete ? 'fade-to-black' : ''} ${isSpotlightActive ? 'transparent-background' : ''} ${isSpotlightFull ? 'background-white' : ''}`;
+  const logoClasses = `Logo ${isFillActive ? 'fill-text' : ''} ${isFadeToBlackActive ? 'fade-text-to-black' : ''}`;
+  const spotlightClasses = `spotlight ${isSpotlightActive ? 'spotlight-visible' : ''} ${isSpotlightFull ? 'spotlight-expand' : ''}`;
+  const phoneClasses = `phone-container ${isPhoneVisible ? 'fade-in' : ''}`;
+
   if (!isLoading) {
     return null;
   }
-
+ 
   return (
-    <div className={`loading-container ${isTypingComplete ? 'fade-to-black' : ''} ${isSpotlightActive ? 'transparent-background' : ''} ${isSpotlightFull ? 'background-white' : ''}`}>
-      {isSpotlightActive && <div className={`spotlight ${isSpotlightActive ? 'spotlight-visible' : ''} ${isSpotlightFull ? 'spotlight-expand' : ''}`}></div>}
-      <div className={`Logo ${isFillActive ? 'fill-text' : ''} ${isFadeToBlackActive ? 'fade-text-to-black' : ''}`}>{text}</div>
-      {/* Render the Phone component based on its visibility state */}
-      {isPhoneVisible && <Phone />}
+    <div className={containerClasses}>
+      {isSpotlightActive && <div className={spotlightClasses}></div>}
+      {isPhoneVisible && <Phone className={phoneClasses} />}
+      {!isPhoneVisible && <div className={logoClasses}>{text}</div>} 
     </div>
   );
 }

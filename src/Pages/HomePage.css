@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-.phone-container {
+.phone-containerr {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@
   z-index: 2; /* Make sure phone is above the spotlight */
 }
 
-.phone-container.visible {
+.phone-containerr.visible {
   opacity: 1; /* Make visible when class 'visible' is added */
 }
 

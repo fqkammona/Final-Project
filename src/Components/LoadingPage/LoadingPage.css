@@ -1,16 +1,15 @@
+
 /* Sets up the container to center its contents and transitions the background color */
 .loading-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-size: 24px;
-  font-weight: bold;
   transition: background-color 1.3s;
   background-color: white;
-  position: relative; /* Needed for absolute positioning of children */
+  position: relative; 
+  overflow: hidden;
 }
-
 /* Changes the background color of the container to black */
 .loading-container.fade-to-black {
   background-color: black;
@@ -43,7 +42,7 @@
 
 /* Initial style for the Logo, including setup for text stroke and transparent fill color */
 .Logo {
-  display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   font-size: 10vw;
@@ -78,7 +77,7 @@
 }
 
 .spotlight {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   width: 850px; /* Define full size */
@@ -119,5 +118,15 @@
   background-color: white !important;
 }
 
+.phone-container {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Initially invisible */
+  transition: opacity 2s ease-in-out;
+  z-index: 1; /* Make sure phone is above the spotlight */
+}
 
-
+.phone-container.isPhoneVisibleble {
+  opacity: 1; /* Make visible when class 'visible' is added */
+}

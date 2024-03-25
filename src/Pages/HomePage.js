@@ -24,7 +24,7 @@ const HomePage = () => {
 
   return (
     <div className='home-container'>
-      <div className={`phone-container ${showComponent === 'phone' ? 'visible' : 'hidden'}`}>
+      <div className={`phone-containerr ${showComponent === 'phone' ? 'visible' : 'hidden'}`}>
         <Phone />
       </div>
       <div className={`component mountains ${showComponent === 'mountains' ? 'visible' : 'hidden'}`}>
