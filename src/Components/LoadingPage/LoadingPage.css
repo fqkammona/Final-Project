@@ -12,6 +12,7 @@
 }
 /* Changes the background color of the container to black */
 .loading-container.fade-to-black {
+  transition: background-color 1s;
   background-color: black;
 }
 

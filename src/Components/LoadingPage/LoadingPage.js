@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './LoadingPage.css';
 import Phone from '../../Pages/Home/Phone'; // Adjust the import path according to your file structure
 
-function LoadingPage() {
+function LoadingPage({ style }) {
   const [text, setText] = useState('');
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isFillActive, setIsFillActive] = useState(false);
@@ -53,17 +53,22 @@ function LoadingPage() {
   }, []);
 
   // Define class strings based on state
-  // Inside your component's return statement
   const containerClasses = `loading-container ${isTypingComplete ? 'fade-to-black' : ''} ${isSpotlightActive ? 'transparent-background' : ''} ${isSpotlightFull ? 'background-white' : ''}`;
   const logoClasses = `Logo ${isFillActive ? 'fill-text' : ''} ${isFadeToBlackActive ? 'fade-text-to-black' : ''}`;
   const spotlightClasses = `spotlight ${isSpotlightActive ? 'spotlight-visible' : ''} ${isSpotlightFull ? 'spotlight-expand' : ''}`;
   const phoneClasses = `phone-container ${isPhoneFadeIn ? 'fade-in-phone' : ''} ${isPhoneFadeOut ? 'fade-out-phone' : ''}`;
+
+  // Apply inline styles without overriding CSS class styles
+  const combinedStyle = {
+    ...style,
+    // Ensure that the CSS class styles are applied correctly by not overwriting them here
+  };
  
   return (
-    <div className={containerClasses}>
+    <div className={containerClasses} style={combinedStyle}>
       {isSpotlightActive && <div className={spotlightClasses}></div>}
-      {isPhoneFadeIn && <div className={phoneClasses}> <Phone /> </div>}
-      {!isPhoneFadeIn && <div className={logoClasses}>{text}</div>} 
+      {isPhoneFadeIn && <div className={phoneClasses}><Phone /></div>}
+      {!isPhoneFadeIn && <div className={logoClasses}>{text}</div>}
     </div>
   );
 }
