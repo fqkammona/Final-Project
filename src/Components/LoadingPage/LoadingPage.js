@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './LoadingPage.css';
 import Phone from '../../Pages/Home/Phone'; // Adjust the import path according to your file structure
 
-function LoadingPage({ style }) {
+function LoadingPage() {
   const [text, setText] = useState('');
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isFillActive, setIsFillActive] = useState(false);
   const [isFadeToBlackActive, setIsFadeToBlackActive] = useState(false);
   const [isSpotlightActive, setIsSpotlightActive] = useState(false);
   const [isSpotlightFull, setIsSpotlightFull] = useState(false);
-  const [seconds, setSeconds] = useState(0);
   const [isPhoneFadeIn, setIsPhoneFadeIn] = useState(false);
   const [isPhoneFadeOut, setIsPhoneFadeOut] = useState(false);
 
@@ -37,17 +36,8 @@ function LoadingPage({ style }) {
       setIsPhoneFadeOut(true);
     }, 15000);
 
-    const secondsTimer = setInterval(() => {
-      setSeconds((prevSeconds) => {
-        const newSeconds = prevSeconds + 1;
-        console.log(`Seconds elapsed: ${newSeconds}`);
-        return newSeconds;
-      });
-    }, 1000);
-
     return () => {
       clearInterval(typeInterval);
-      clearInterval(secondsTimer);
       clearTimeout(spotlightFullTimer);
     };
   }, []);
@@ -57,15 +47,9 @@ function LoadingPage({ style }) {
   const logoClasses = `Logo ${isFillActive ? 'fill-text' : ''} ${isFadeToBlackActive ? 'fade-text-to-black' : ''}`;
   const spotlightClasses = `spotlight ${isSpotlightActive ? 'spotlight-visible' : ''} ${isSpotlightFull ? 'spotlight-expand' : ''}`;
   const phoneClasses = `phone-container ${isPhoneFadeIn ? 'fade-in-phone' : ''} ${isPhoneFadeOut ? 'fade-out-phone' : ''}`;
-
-  // Apply inline styles without overriding CSS class styles
-  const combinedStyle = {
-    ...style,
-    // Ensure that the CSS class styles are applied correctly by not overwriting them here
-  };
  
   return (
-    <div className={containerClasses} style={combinedStyle}>
+    <div className={containerClasses}>
       {isSpotlightActive && <div className={spotlightClasses}></div>}
       {isPhoneFadeIn && <div className={phoneClasses}><Phone /></div>}
       {!isPhoneFadeIn && <div className={logoClasses}>{text}</div>}

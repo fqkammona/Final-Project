@@ -11,10 +11,6 @@
   transition: opacity 1s ease-out;
 }
 
-.fade-out {
-  opacity: 0;
-}
-
 .fade-in {
   animation: fadeInAnimation 1s ease-out forwards;
 }
@@ -26,4 +22,12 @@
   to {
     opacity: 1;
   }
+}
+.main-contentt {
+  opacity: 0; /* Start invisible */
+  transition: opacity 1s ease-out;
+}
+
+.fade-in {
+  opacity: 1; /* Fade to visible */
 }

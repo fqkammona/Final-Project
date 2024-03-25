@@ -22,7 +22,7 @@ const App = () => {
     // Start fading in the homepage before hiding the loading page
     const contentTimer = setTimeout(() => {
       setContentVisible(true); // Begin fading in the homepage
-    }, 21000); // Adjust timing as needed
+    }, 19001); // Adjust timing as needed
 
     const loadingTimer = setTimeout(() => {
       setShowLoading(false); // Hide loading page after a delay
