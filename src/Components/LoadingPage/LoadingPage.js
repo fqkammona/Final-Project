@@ -13,7 +13,7 @@ function LoadingPage() {
   const [isPhoneFadeOut, setIsPhoneFadeOut] = useState(false);
 
   useEffect(() => {
-    const fullText = 'GIRL CODED';
+    const fullText = 'GIRL C0DED';
     let index = 0;
 
     const typeInterval = setInterval(() => {

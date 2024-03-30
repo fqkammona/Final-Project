@@ -31,7 +31,7 @@ const NavBar = ({ onGirlCodedClick }) => {
 
     return (
         <Navbar bg={isSmallScreen ? "white" : "transparent"} expand="lg" className={`custom-navbar ${isSmallScreen ? "small-screen" : ""}`} expanded={expanded}>
-            <Link to="/" className="navbar-brand" onClick={() => { onGirlCodedClick(); handleNavItemClick(); }}>GIRL CODED</Link>
+            <Link to="/" className="navbar-brand" onClick={() => { onGirlCodedClick(); handleNavItemClick(); }}>GIRL C0DED</Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => setExpanded(expanded => !expanded)} />
             <Button as={Link} to="/login" variant="primary" className="sign-in-button">Login</Button>
             <Navbar.Collapse id="basic-navbar-nav" className="centered-collapse">

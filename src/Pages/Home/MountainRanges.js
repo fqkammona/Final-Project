@@ -11,16 +11,8 @@ import Cloud from './Clouds/Cloud'; // Import the Cloud component
 import './MountainRanges.css';
 
 function MountainRanges() {
-  const [animate, setAnimate] = useState(false);
+  const [animate, setAnimate] = useState(true);
   const clouds = useMovingClouds(); // Use the custom hook to manage moving clouds
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimate(true);
-    }, 0); // Trigger animation after 5 seconds
-
-    return () => clearTimeout(timer); // Clean up the timer if the component unmounts
-  }, []);
 
   return (
     <div className="MountainRangesContainer">
