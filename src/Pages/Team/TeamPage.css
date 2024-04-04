@@ -1,29 +1,26 @@
-/* TeamPage.css */
 .team-page {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 50px 0;
+  flex-direction: column; /* Stack children vertically */
+  background: white;
+  background: #f1f1f1; /* Default color of the line */
+  justify-content: flex-start; /* Aligns children to the start of the container */
+  text-align: center;
+  height: 100vh;
+  width: 100%;
 }
 
 .team-text {
-  text-align: center;
-  margin-bottom: 10px;
+  font-size: 55px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 70px; /* Adds space between the text and the form */
 }
 
-.team-text h1 {
-  font-size: 48px;
-  background: linear-gradient(to right, #4c6ef5, #b96af5);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  transition: 0.3s;
-}
-
-.team-text h1:hover {
-  background: linear-gradient(to right, #294de6, #8e44ad);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.team-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Aligns children to the start of the container */
+  align-items: center;
+  width: 100%;
+  margin-top: 20px; /* Adds space between the text and the form */
 }

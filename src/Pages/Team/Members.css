@@ -42,6 +42,8 @@
     align-items: center;
     justify-content: center;
     background: linear-gradient(to right, #4c6ef5, #b96af5);
+    background: linear-gradient(to right, #398380, #BBDBD9);
+    background: linear-gradient(to right, #86B6B6, #BBDBD9);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     z-index: 2; /* Ensures that the front face is above the back face when not flipped */
   }
@@ -75,6 +77,9 @@
   .member-back {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background: linear-gradient(to left, #4c6ef5, #b96af5);
+    background: linear-gradient(to left, #398380, #BBDBD9);
+    background: linear-gradient(to left, #004B4D, #86B6B6);
+    background: linear-gradient(to left, #86B6B6, #BBDBD9);
     transform: rotateY(180deg); /* Rotate back face 180 degrees to hide it */
     display: flex;
     flex-direction: column; /* Stack children vertically */

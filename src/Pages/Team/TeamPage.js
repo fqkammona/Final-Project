@@ -29,10 +29,10 @@ const membersData = [
 const TeamPage = () => {
   return (
     <div className="team-page">
-      <div className="team-text">
-        <h1>Our Team!</h1>
-      </div>
+      <div className="team-text">Our Team</div>
+      <div className="team-form">
       <MembersList members={membersData} />
+      </div>
     </div>
   );
 };
