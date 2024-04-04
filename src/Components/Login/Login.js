@@ -4,6 +4,7 @@ import { auth } from '../../firebase-config';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { MdEmail } from 'react-icons/md'; // Email icon
 import LoadingPage from '../Login-Loading-Page/LoginLoadingPage'; // Update the path if necessary
 
 const Login = () => {
@@ -24,14 +25,14 @@ const Login = () => {
         const password = event.target.password.value;
 
         signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            // setLoading(false); // You could stop loading here or let the LoadingPage handle the navigation
-            // navigate('/dashboard', { state: { email: email } });
-          })
-          .catch((error) => {
-            setLoading(false); // Stop loading and show error
-            setError('Login failed. Please try again.');
-          });
+            .then((userCredential) => {
+                // setLoading(false); 
+                // navigate('/dashboard', { state: { email: email } });
+            })
+            .catch((error) => {
+                setLoading(false); // Stop loading and show error
+                setError('Login failed. Please try again.');
+            });
     };
 
     // If loading, render the LoadingPage instead of the login form
@@ -41,24 +42,40 @@ const Login = () => {
 
     return (
         <div className='login-page'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="login-form">
                 <div className='login-title'>Login</div>
                 {error && <div className="error">{error}</div>}
-                <label className='input-label'>Email</label>
-                <input name="email" type="text" placeholder="Type your email" required />
-                <label className='input-label'>Password</label>
-                <div className="password-container">
-                    <input
-                        name="password"
-                        type={passwordVisible ? "text" : "password"}
-                        placeholder="Type your password"
-                        required
-                    />
-                    <button type="button" onClick={togglePasswordVisibility} className="toggle-password">
-                        {passwordVisible ? <AiFillEyeInvisible /> : <AiFillEye />}
-                    </button>
+                <div className="input-group">
+                    <div className="input-with-icon">
+                        <MdEmail className="input-icon" />
+                        <input
+                            name="email"
+                            type="text"
+                            className="input-field"
+                            placeholder="Email"
+                            required
+                        />
+                        <span className='input-box-line'></span>
+                    </div>
                 </div>
-                <button className='login-button' type="submit">LOGIN</button>
+                <div className="input-group">
+                    <div className="input-with-icon">
+                        {passwordVisible ? (
+                            <AiFillEyeInvisible className="input-icon" onClick={togglePasswordVisibility} />
+                        ) : (
+                            <AiFillEye className="input-icon" onClick={togglePasswordVisibility} />
+                        )}
+                        <input
+                            name="password"
+                            type={passwordVisible ? "text" : "password"}
+                            className="input-field"
+                            placeholder="Password"
+                            required
+                        />
+                        <span className='input-box-line'></span>
+                    </div>
+                </div>
+                <button className="login-button" type="submit">Login In</button>
                 <button className='sign-up-button' type="button" onClick={() => navigate('/signup')}>Create Account</button>
             </form>
         </div>

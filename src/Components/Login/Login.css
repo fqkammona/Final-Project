@@ -1,101 +1,49 @@
 .login-page {
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(to right, #a1c4fd, #c2e9fb); /* Adjust the gradient colors as needed */
+  background: #BBDBD9;
+  height: 100vh; /* Use the full height of the viewport */
+  width: 100%; /* Use the full width of the viewport, this is optional if your container is already full width */
 }
 
-/* Title a.k.a Login */
-.login-title {
-  display: block;
-  font-family: Poppins-Bold;
-  font-size: 48px; /* Slightly larger to match the increased form size */
-  color: #333;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.input-label {
-  color: black;
-  font-family: Poppins-Bold;
-  padding-top: 4px;
-}
-
-form {
+.login-form {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  width: 50%;
-  max-width: 600px;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  background-color: #ffffff;
+  width: 100%; 
+  padding: 50px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 0;
 }
 
-input {
-  border: none;
-  font-family: Poppins-Bold;
-  border-bottom: 2px solid #ccc;
-  padding: 0 15px 15px 0;
-  font-size: 20px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-input:focus {
-  outline: none;
-  border-bottom: 2px solid #007bff;
+.login-title {
+  font-size: 25px; /* Size of the time text */
+  padding-bottom: 5px;
+  font-weight: bold; /* Makes the font bold */
+  text-transform: uppercase; /* Converts text to uppercase */
 }
 
 .login-button {
-  background-color: #007bff;
-  font-family: Poppins-Bold;
-  border-radius: 5px;
-  padding: 15px 30px;
-  font-size: 20px;
-  margin-top: 20px;
-  color: white;
+  width: 100%;
+  padding: 10px 0;
+  border: 1px solid #dadddd;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: #86B6B6;
+  color: #ffffff;
+  font-weight: bold; /* Makes the font bold */
+  text-transform: uppercase; /* Converts text to uppercase */
 }
 
-.login-button:hover {
-  background-color: #0056b3;
-}
-
-.sign-up-button{
-  color: red;
+.sign-up-button {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  cursor: pointer;
   background-color: transparent;
-  border: none;
-  margin-top: 20px;
-  margin-bottom: 0;
-}
-
-.sign-up-button:hover{
-  color: #0056b3;
-}
-.password-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.toggle-password {
-  background: none;
-  border: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
-  padding: 0 15px;
-  margin-left: auto;
-}
-
-.error {
-  color: red;
-  margin-bottom: 15px;
+  color: #00383B;
+  text-transform: uppercase; /* Converts text to uppercase */
 }

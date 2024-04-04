@@ -21,7 +21,7 @@ const Signup = () => {
   const [address, setAddress] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -142,7 +142,7 @@ const Signup = () => {
             <span className='input-box-line'></span>
           </div>
         </div>
-        <button className="signup-botton" type="submit" disabled={loading}>Sign Up</button>
+        <button className="signup-button" type="submit" disabled={loading}>Sign Up</button>
       </form>
     </div>
   );

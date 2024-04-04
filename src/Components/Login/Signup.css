@@ -14,6 +14,7 @@
   align-items: center;
   max-width: 500px;
   width: 100%; 
+  background-color: #ffffff;
   padding: 50px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 0;
@@ -22,6 +23,7 @@
 .title {
   font-size: 25px; /* Size of the time text */
   padding-bottom: 5px;
+  color: black;
   font-weight: bold; /* Makes the font bold */
   text-transform: uppercase; /* Converts text to uppercase */
 }
@@ -90,7 +92,7 @@ input-group {
   background-position: -100% 0;
 }
 
-.signup-botton {
+.signup-button {
   width: 100%;
   padding: 10px 0;
   border: 1px solid #dadddd;
