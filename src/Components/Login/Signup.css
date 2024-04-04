@@ -1,50 +1,104 @@
 .signup-page {
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(to right, #a1c4fd, #c2e9fb); /* Adjust the gradient colors as needed */
+  background: linear-gradient(to right, #398380, #BBDBD9);
+  height: 100vh; /* Use the full height of the viewport */
+  width: 100%; /* Use the full width of the viewport, this is optional if your container is already full width */
 }
 
-.input-group {
+.signup-form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px; /* Or any space you want between input groups */
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  width: 100%; 
+  padding: 50px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 0;
 }
 
-.input-label {
-  color: black;
+.title {
+  font-size: 25px; /* Size of the time text */
+  padding-bottom: 5px;
+  font-weight: bold; /* Makes the font bold */
+  text-transform: uppercase; /* Converts text to uppercase */
+}
+
+input-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensure full width */
+  margin-bottom: 15px;
 }
 
 .input-with-icon {
   display: flex;
-  align-items: center;
-  position: relative;
-  border: none;
-  border-bottom: 2px solid #000;
-  transition: border-bottom-color 0.3s ease; /* Transition for the border color */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Ensure full width */
 }
 
 .input-icon {
-  color: black;
-  margin-right: 5px;
+  margin-right: 10px; /* Adds space between the icon and the input field */
+  fill: #004B4D; /* Sets the inside color of the SVG icon */
+  outline: black;
 }
 
 .input-field {
-  flex: 1;
+  flex: 1; /* This will make the input field fill up the remaining space */
+  padding: 10px;
+  margin: 0;
   border: none;
-  padding: 5px 0; /* Adjust padding to vertically center text */
-  background-color: transparent; /* Ensures the input field does not cover the border */
 }
 
-/* Remove outline and box-shadow on focus */
+.input-group {
+  margin-bottom: 15px; /* Adds space between each input group */
+}
+
 .input-field:focus {
-  border: none;
+  outline: none; /* Removes the default outline */
+  border-color: transparent; /* Optional: Changes the border color to a light blue when focused */
 }
 
-/* Change the border-bottom-color to red when the input-with-icon is focused */
-.input-with-icon:focus-within {
-  border-bottom-color: blue; /* Red bottom border on focus */
+.input-box-line {
+  display: block; /* This makes the span take up the entire width */
+  position: absolute; /* Position relative to its nearest positioned ancestor */
+  bottom: 0; /* Align it at the bottom */
+  left: 0; /* Align it to the left */
+  right: 0; /* Span to the right */
+  height: 2px; /* Height of the line */
+  background-color: #dadddd; /* Default color of the line */
+  transition: background-color 0.3s; /* Smooth transition for color change */
 }
+
+.input-field:focus + .input-box-line {
+  animation: loadEffect 2s; /* Apply the loading effect animation */
+}
+
+/* Define the keyframes for the loading effect */
+@keyframes loadEffect {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Apply a linear gradient to the .input-box-line which moves during the animation */
+.input-field:focus + .input-box-line {
+  background: linear-gradient(to right, #dadddd, #004B4D );
+  background-size: 200% 100%;
+  background-position: -100% 0;
+}
+
+.signup-botton {
+  width: 100%;
+  padding: 10px 0;
+  border: 1px solid #dadddd;
+  cursor: pointer;
+  background-color: #86B6B6;
+  color: #ffffff;
+  font-weight: bold; /* Makes the font bold */
+  text-transform: uppercase; /* Converts text to uppercase */
+  /* Add any additional styles you may need */
+}
+
