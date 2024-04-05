@@ -1,0 +1,136 @@
+.tv-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tv {
+    width: 900px;
+    height: 600px;
+    background-color: #AA746C;
+    display: flex;
+    position: relative;
+    align-items: center;
+    border-radius: 25px;
+    border: 2px solid black;
+    box-shadow:
+        10px 10px 20px rgba(0, 0, 0, 0.15), /* Bottom right shadow */
+        -10px -10px 20px rgba(0, 0, 0, 0.15), /* Top left shadow */
+        inset -5px -5px 10px rgba(0, 0, 0, 0.15), /* Top left inset shadow */
+        inset 5px 5px 15px rgba(0, 0, 0, 0.15); /* Bottom right inset shadow */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow on hover */
+}
+
+  
+  .screen-border {
+    width: 75%; /* Adjusted width for screen border */
+    height: 90%; /* Adjusted height for screen border */
+    background-color: #FDE6BD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3%;
+    border: 2px solid black;
+    border-radius: 10px; /* Rounded edges for the screen */
+    padding: 15px; /* Optional: adds space inside the border */
+  }
+  
+  .screen {
+    width: 97%; /* Full width of the border padding */
+    height: 97%; /* Full height of the border padding */
+    background-color: #D3D3D3;
+    border: 2px solid black;
+    border-radius: 15px; /* Rounded edges for the screen */
+  }
+  
+  .side-box {
+    width: 17%; /* Adjusted width for the side box */
+    height: 90%; /* Adjusted height for the side box */
+    background-color: #AA746C;;
+    position: absolute;
+    right: 0;
+    margin-right: 3%;
+    top: 50%;
+    border-radius: 15px; /* Rounded edges for the side box */
+    border: 2px solid black;
+    transform: translateY(-50%); /* Centers the box vertically */
+    display: flex; /* Added to align children later on */
+    align-items: center; /* Added to align children later on */
+    justify-content: center; /* Added to align children later on */
+    padding: 15px; /* Optional: adds space inside the box */
+  }
+
+  .dial-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; /* Fill the parent container */
+    width: 100%;
+  }
+  
+  .dial {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    border-radius: 50%; /* Makes it circular */
+    background-color: #966753; /* Dial color */
+    border: 2px solid #000; /* Dial border */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .dial-control {
+    width: 25%; /* Adjust size as needed */
+    height: 103%; /* Adjust size as needed */
+    border-radius: 3px; /* Rounded edges for the screen */
+    background-color: #CC9986; /* Dial color */
+    border: 2px solid #000; /* Dial border */
+    display: flex;
+    transform: rotate(15deg); 
+    align-items: center;
+    justify-content: center;
+  }
+
+  .last-dial {
+    transform: rotate(-35deg); 
+  }
+  
+  .dial:not(:last-child) {
+    margin-bottom: 20px; /* Space between dials */
+  }
+  
+  .speaker-container {
+    position: absolute;
+    bottom: 5px; /* Aligns with the padding of the side-box */
+    width: 95%;
+    height: 50%;
+  }
+  
+  .speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* Increased columns for a wider speaker */
+    grid-template-rows: repeat(14, 1fr); /* Maintains the number of rows */
+    gap: 10px; /* Adjust space between dots if necessary */
+    margin-left: 5px;
+    margin-top: 7px;
+    margin-right: 5px;
+  }
+
+  .speaker {
+    width: 100%; /* Fill the width of the side-box */
+    height: 100%; /* Adjust height as needed */
+    background-color: #A86169;; /* Speaker color */
+    border: 2px solid #000; /* Speaker border */
+    border-radius: 8px; /* Rounded edges for the speaker */
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dot {
+    width: 7px; /* Size of the dot */
+    height: 7px; /* Size of the dot */
+    border-radius: 50%; /* Makes it circular */
+    background-color: #000; /* Dot color */
+  }
