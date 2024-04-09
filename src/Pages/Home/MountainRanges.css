@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  position: relative;
+
 }
 
 .sky {
@@ -22,6 +22,8 @@
   height: 100%; /* Adjust the vh value to suit your design */
   background: var(--lightBlue);
 }
+
+
 
 .MountainRanges-sun {
   position: absolute;
@@ -40,6 +42,7 @@
 .mountain1, .mountain2, .mountain3, .mountain4, .mountain5, .cloud1, .cloud2 {
   position: absolute;
   z-index: 1;
+ 
 }
 
  .sky, .mountain1, .mountain2, .mountain3, .mountain4, .mountain5, .cloud1, .cloud2, .MountainRanges-sun {

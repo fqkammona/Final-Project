@@ -1,18 +1,53 @@
-/* HomePage.css */
-
-.home-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* StoryPage.css */
+.story-container {
+  padding-top: 30px; /* Height of the stop-line */
+  width: 100%;
   position: relative;
   overflow: hidden;
+  height: 280vh; /* Adjust based on total content height */
+
 }
 
-
-.show-mountains {
-  position: absolute;
+.stop-line {
+  position: fixed;
+  background-color: white;
+  height: 60px;
+  top: 0px; /* Height of the navbar + any desired offset */
+  left: 0;
   width: 100%;
-  height: 100%;
+  border-bottom: 10px solid green;
+  z-index: 10; /* Higher than the navbar if it should go above it */
+}
 
+.story-tv-container {
+  width: 100%;
+  height: 100vh;
+  padding-top: 90px; /* Height of the stop-line */
+  background: red;
+}
+
+.tv-display{
+  position: absolute;
+  left: 150px;
+ 
+}
+
+.story-phone-container {
+  padding-top: 20px; /* Height of the stop-line */
+  z-index: 8;
+  width: 100%;
+  height: 80vh;
+  left: 50px;
+  background: yellow;
+  border-top: 10px solid green;
+}
+
+.phone-display{
+  position: relative;
+  left: 150px;
+}
+
+.story-team-container {
+  width: 100%;
+  height: 100vh;
 }

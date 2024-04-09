@@ -4,8 +4,11 @@
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  position: relative; 
+  position: relative;
+
+ /* border-bottom: 2px solid #dadddd;  Add this line for a pink bottom border */
 }
+
 
 /* Style the sign-in button with absolute positioning, set its right and top positions, remove border, add shadow, set background color, and vertically center it */
 .sign-in-button {
