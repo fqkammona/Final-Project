@@ -39,7 +39,6 @@ const NavBar = ({ onGirlCodedClick }) => {
                     <Link to="/home" className="nav-link" onClick={handleNavItemClick}>HOME</Link>
                     <Link to="/our-story" className="nav-link" onClick={handleNavItemClick}>OUR STORY</Link>
                     <Link to="/frequently-asked-questions" className="nav-link" onClick={handleNavItemClick}>FAQ</Link>
-                    <Link to="/meet-the-team" className="nav-link" onClick={handleNavItemClick}>MEET THE TEAM</Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
