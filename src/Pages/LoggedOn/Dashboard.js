@@ -30,7 +30,7 @@ const Dashboard = () => {
       <div className='dashboard-header'>
         {currentUser ? <h1>Welcome, {firstName}!</h1> : <h1>Welcome!</h1>}
         <div className="icon-row">
-          <div className="icon-container" onClick={() => navigate('/live-feed')}>
+          <div className="icon-container" onClick={() => navigate('/settings')}>
             <FaCog className="icon" />
             <span className="icon-title">Settings</span>
           </div>
