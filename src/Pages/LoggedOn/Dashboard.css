@@ -1,10 +1,65 @@
-.home {
-    min-height: 100vh; 
-    background:  white;
-    backface-visibility: hidden;
-  }
-  
-  .header{
-    padding-top: 70px;
-    color: red;
-  }
+
+.dashboard-home {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ffffff 30%, #ade4f5 30% 100%);
+  background: linear-gradient(to bottom, #ade4f5 30%, #ffffff 30% 100%);
+  background: linear-gradient(to bottom, #BBDBD9 30%, #ffffff 30% 100%);
+  backface-visibility: hidden;
+}
+
+.dashboard-header {
+  padding-top: 70px;
+  color: black;
+  text-align: center; /* Ensures all content within the header is centered */
+}
+
+.icon-row {
+  display: flex; /* Enables flexbox for the row */
+  justify-content: center; /* Centers the row content horizontally */
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  max-width: 900px; /* Adjust based on your design preference */
+  margin: auto; /* Centers the row container in the parent */
+  padding-top: 20px; /* Adds padding to top for better alignment within the blue section */
+}
+
+.icon-container {
+  margin: 30px; /* Adds more spacing between icons */
+  width: 150px; /* Width of the icon container */
+  height: 180px; /* Increased height to accommodate title */
+  background-color: #fff; /* White background for contrast in the blue section */
+  display: flex; /* Uses flexbox for centering */
+  flex-direction: column; /* Aligns items in a column */
+  justify-content: center; /* Centers the icon vertically */
+  align-items: center; /* Centers the icon horizontally */
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* Adds shadow to each container */
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  border-radius: 15px; /* Optional: Adds rounded corners to the container */
+}
+
+.icon-container:hover {
+  background-color: #dadddd; /* Darker gray on hover for visual feedback */
+  background-color: #bebebe; /* Darker gray on hover for visual feedback */
+  box-shadow: 0px 4px 20px rgba(0,150,150,0.75); /* Enhanced shadow to create a glowing effect */
+  transform: scale(1.05); /* Slightly increases the size of the container on hover */
+}
+
+.icon {
+  font-size: 68px; /* Icon size */
+  color: #86B6B6;
+  transition: color 0.3s; /* Smooth color transition during hover */
+  pointer-events: none; /* Makes the icon not clickable, passing the event to the container */
+}
+
+.icon-container:hover .icon {
+  color: #00BFFF; /* Changes color to emphasize the hover state */
+  color: #a4e3e3;
+}
+
+.icon-title {
+  margin-top: 10px; /* Space between icon and text */
+  font-size: 16px; /* Text size */
+  color: #333; /* Text color */
+  font-weight: bold; /* Makes the font bold */
+  text-transform: uppercase; /* Makes the title uppercase */
+}
