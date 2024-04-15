@@ -12,7 +12,7 @@ import NavBar from './Components/NavBar/NavBar';
 import UserNavbar from './Components/NavBar/UserNavbar';
 import Dashboard from './Pages/LoggedOn/Dashboard';
 import LiveFeed from './Pages/LoggedOn/LiveFeed';
-import Settings from './Pages/LoggedOn/Settings';
+import Settings from './Pages/LoggedOn/Settings/Settings';
 import './App.css'; // Make sure to include the CSS file for animations
 
 const App = () => {
