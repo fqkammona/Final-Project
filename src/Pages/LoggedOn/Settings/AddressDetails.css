@@ -1,10 +1,10 @@
 .address-container {
     background-color: #fff;
+    margin: 20px;
     padding: 20px;
     color: black;
-    display: flex;
+    box-sizing: border-box; /* Makes sure padding does not add to the width */
 }
-
 .address-form {
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@
     background: red;
     border: none;
     border-radius: 2px;
-    width: 100%;
+    width: 100%; /* Ensures that input fields use full width of the container */
 }
 
 input[disabled] {

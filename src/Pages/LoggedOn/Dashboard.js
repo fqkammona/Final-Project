@@ -38,7 +38,7 @@ const Dashboard = () => {
             <BsCalendar4Event className="icon" />
             <span className="icon-title">Events</span>
           </div>
-          <div className="icon-container" onClick={() => navigate('/live-feed')}>
+          <div className="icon-container" onClick={() => navigate('/notifications')}>
             <IoPhonePortraitOutline className="icon" />
             <span className="icon-title">notifications</span>
           </div>

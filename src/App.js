@@ -11,6 +11,7 @@ import StoryPage from './Pages/StoryPage';
 import NavBar from './Components/NavBar/NavBar';
 import UserNavbar from './Components/NavBar/UserNavbar';
 import Dashboard from './Pages/LoggedOn/Dashboard';
+import Notifications from './Pages/LoggedOn/Notifications';
 import LiveFeed from './Pages/LoggedOn/LiveFeed';
 import Settings from './Pages/LoggedOn/Settings/Settings';
 import './App.css'; // Make sure to include the CSS file for animations
@@ -61,6 +62,7 @@ const App = () => {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/live-feed" element={<LiveFeed />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/notifications" element={<Notifications />} />
             </Routes>
           </div>
         )}

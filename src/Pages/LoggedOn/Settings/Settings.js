@@ -20,7 +20,6 @@ const Settings = () => {
     postalCode: '',
     country: ''
   });
-  const [isEditable, setIsEditable] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -92,8 +91,6 @@ const Settings = () => {
       });
   };
 
-  const toggleEdit = () => setIsEditable(!isEditable);
-
   return (
     <div className='settings-page'>
       {loading ? <p>Loading...</p> : (
@@ -104,7 +101,7 @@ const Settings = () => {
               type="text"
               value={personalInfo.firstName}
               onChange={e => setPersonalInfo({ ...personalInfo, firstName: e.target.value })}
-              disabled={!isEditable}
+
             />
           </div>
           <div>
@@ -113,7 +110,7 @@ const Settings = () => {
               type="text"
               value={personalInfo.lastName}
               onChange={e => setPersonalInfo({ ...personalInfo, lastName: e.target.value })}
-              disabled={!isEditable}
+     
             />
           </div>
           <div>
@@ -122,7 +119,7 @@ const Settings = () => {
               type="email"
               value={personalInfo.email}
               onChange={e => setPersonalInfo({ ...personalInfo, email: e.target.value })}
-              disabled={!isEditable}
+        
             />
           </div>
           <div>
@@ -131,7 +128,7 @@ const Settings = () => {
               type="tel"
               value={personalInfo.phoneNumber}
               onChange={e => setPersonalInfo({ ...personalInfo, phoneNumber: e.target.value })}
-              disabled={!isEditable}
+              
             />
           </div>
           <AddressDetails
@@ -139,12 +136,8 @@ const Settings = () => {
             setAddressDetails={setAddressDetails}
             onUpdate={handleAddressUpdate}
           />
-
-
-          <button type="button" onClick={toggleEdit}>
-            {isEditable ? 'Disable Editing' : 'Update Information'}
-          </button>
-          <button type="submit" disabled={loading || !isEditable}>
+      
+          <button type="submit" >
             Update Profile
           </button>
           {error && <p className="error">{error}</p>}

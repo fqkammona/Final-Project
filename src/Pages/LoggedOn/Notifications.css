@@ -1,0 +1,17 @@
+.notifications-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Use the full height of the viewport */
+    width: 100%; /* Use the full width of the viewport, this is optional if your container is already full width */
+}
+
+.notification-button {
+   
+    background-color: #007bff;
+   
+}
+
+.notification-button:hover {
+    background-color: #0056b3;
+}
