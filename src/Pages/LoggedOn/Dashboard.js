@@ -34,7 +34,7 @@ const Dashboard = () => {
             <FaCog className="icon" />
             <span className="icon-title">Settings</span>
           </div>
-          <div className="icon-container" onClick={() => navigate('/live-feed')}>
+          <div className="icon-container" onClick={() => navigate('/events-page')}>
             <BsCalendar4Event className="icon" />
             <span className="icon-title">Events</span>
           </div>

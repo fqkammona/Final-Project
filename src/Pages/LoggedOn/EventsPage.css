@@ -1,0 +1,60 @@
+.events-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .events-form > div {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .events-date-picker, .events-group-box {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .events-group-box h3 {
+    margin-top: 0;
+  }
+  
+  .events-checkbox-item {
+    margin: 5px 0;
+  }
+  
+  .events-form label {
+    margin-bottom: 5px;
+  }
+  
+  .events-checkbox {
+    margin-right: 5px;
+  }
+  
+  .events-submit-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 800px) {
+    .events-form {
+      flex-direction: column;
+    }
+    .events-form > div {
+      width: 100%;
+      max-width: none;
+    }
+  }
+  

@@ -3,6 +3,7 @@ import { useAuth } from '../../AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase-config';
 import { doc, getDoc } from 'firebase/firestore';
+
 import './Notifications.css';
 
 function Notifications() {
