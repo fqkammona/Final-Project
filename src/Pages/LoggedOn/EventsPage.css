@@ -1,3 +1,11 @@
+.events-page-container{
+    background: linear-gradient(to right, #398380, #BBDBD9);
+    background: #398380;
+
+
+    height: 100vh; /* Use the full height of the viewport */
+}
+
 .events-form {
     display: flex;
     justify-content: space-between;
@@ -8,35 +16,21 @@
   
   .events-form > div {
     flex: 1;
+    background-color: red;
     min-width: 200px;
     max-width: 300px;
+    height: 300px;;
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
     box-sizing: border-box;
-  }
-  
-  .events-date-picker, .events-group-box {
-    display: flex;
     flex-direction: column;
   }
-  
-  .events-group-box h3 {
-    margin-top: 0;
-  }
-  
-  .events-checkbox-item {
-    margin: 5px 0;
-  }
-  
-  .events-form label {
-    margin-bottom: 5px;
-  }
-  
-  .events-checkbox {
-    margin-right: 5px;
-  }
+
+  .group-box-general-objects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
   
   .events-submit-btn {
     padding: 10px 20px;
@@ -58,3 +52,8 @@
     }
   }
   
+ 
+
+.events-date-input, .events-text-input {
+    margin-bottom: 10px;
+}
