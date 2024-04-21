@@ -12,10 +12,27 @@ function EventsPage() {
     const [eventLabel, setEventLabel] = useState('');
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [minDate, setMinDate] = useState(new Date(Date.now() + 30 * 60000));
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(setUser);
-        return unsubscribe;
+        return () => unsubscribe();
+    }, []);
+
+    useEffect(() => {
+        setIsFormValid(
+            eventLabel.trim() !== '' &&
+            startDate >= minDate &&
+            recognizedObjects.length > 0
+        );
+    }, [eventLabel, startDate, recognizedObjects, minDate]);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setMinDate(new Date(Date.now() + 30 * 60000));
+        }, 60000);
+        return () => clearInterval(timer);
     }, []);
 
     const handleDateChange = (date) => setStartDate(date);
@@ -31,8 +48,8 @@ function EventsPage() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!user) {
-            console.error('No user is logged in!');
+        if (!isFormValid) {
+            console.error('The form is not valid!');
             return;
         }
 
@@ -54,28 +71,50 @@ function EventsPage() {
 
     return (
         <div className="events-page-container">
-            <form className="events-form" onSubmit={handleSubmit}>
-                <div className="events-date-label-box">
-                    <label>Event Label:</label>
-                    <input
-                        type="text"
-                        value={eventLabel}
-                        onChange={handleLabelChange}
-                        className="events-text-input"
-                    />
-                    <label>Date/Time:</label>
-                    <DatePicker
-                        selected={startDate}
-                        onChange={handleDateChange}
-                        showTimeSelect
-                        dateFormat="Pp"
-                        timeIntervals={30}
-                        className="events-date-input"
-                    />
+        <form className="events-form" onSubmit={handleSubmit}>
+            <h1 className="events-page-title">Events Form</h1>
+            <div className="requirements-box">
+                <p>Please ensure all fields are properly filled:</p>
+                <ul>
+                    <li>Enter a valid event label</li>
+                    <li>Select a future date and time (at least 30 minutes ahead)</li>
+                    <li>Select at least one object from the checkboxes below</li>
+                </ul>
+            </div>
+            <div className="form-content">
+                <div className="events-group-box information-box">
+                    <h3>Information</h3>
+                    <div className="input-wrapper">
+                        <label className="input-label">Event Label:</label>
+                        <input
+                            type="text"
+                            value={eventLabel}
+                            onChange={handleLabelChange}
+                            className="events-text-input"
+                        />
+                    </div>
+                    <div className="input-wrapper">
+                        <label className="input-label">Date/Time:</label>
+                        <DatePicker
+                            selected={startDate}
+                            onChange={handleDateChange}
+                            showTimeSelect
+                            dateFormat="Pp"
+                            timeIntervals={30}
+                            minDate={minDate}
+                            className="events-date-input"
+                        />
+                    </div>
+                    </div>
+                    <CheckBoxSection className="group-box-general-objects" title="General Objects" items={['People', 'Cars', 'Bicycles', 'Trucks', 'Cat', 'Dog']} onChange={handleObjectChange} />
+                    <CheckBoxSection className="group-box-people" title="People" items={['Fatima', 'Diego', 'Serena']} onChange={handleObjectChange} />
                 </div>
-                <CheckBoxSection className="group-box-general-objects" title="General Objects" items={['people', 'cars', 'bicycles', 'trucks', 'cat', 'dog']} onChange={handleObjectChange} />
-                <CheckBoxSection className="group-box-people" title="People" items={['Fatima', 'Diego', 'Serena']} onChange={handleObjectChange} />
-                <button className="events-submit-btn" type="submit">Submit</button>
+                <input
+                    type="submit"
+                    value="Submit"
+                    className="submit-button"
+                    disabled={!isFormValid}
+                />
             </form>
         </div>
     );
@@ -85,9 +124,15 @@ const CheckBoxSection = ({ className, title, items, onChange }) => (
     <div className={`events-group-box ${className}`}>
         <h3>{title}</h3>
         {items.map(item => (
-            <div key={item} className="events-checkbox-item">
-                <input type="checkbox" value={item} onChange={onChange} className="events-checkbox" /> {item}
-            </div>
+            <label key={item} className="events-checkbox-item">
+                <span className="events-checkbox-label">{item}</span>
+                <input
+                    type="checkbox"
+                    value={item}
+                    onChange={onChange}
+                    className="events-checkbox"
+                />
+            </label>
         ))}
     </div>
 );
