@@ -52,8 +52,8 @@ const Signup = () => {
         firstName,
         lastName,
         email,
-        phoneNumber: phoneNumber || "Pending Update", // Default or entered value
-        address: address || "Pending Update", // Default or entered value
+        phoneNumber: "Pending Update", // Default or entered value
+        address:  "Pending Update", 
         completed: false  // Initial value set to false
       });
       navigate('/dashboard');

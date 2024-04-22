@@ -15,27 +15,31 @@ import Notifications from './Pages/LoggedOn/Notifications';
 import EventsPage from './Pages/LoggedOn/EventsPage';
 import LiveFeed from './Pages/LoggedOn/LiveFeed';
 import Settings from './Pages/LoggedOn/Settings/Settings';
-import './App.css'; // Make sure to include the CSS file for animations
+import './App.css';
 
 const App = () => {
   const [showLoading, setShowLoading] = useState(true);
-  const [contentVisible, setContentVisible] = useState(false); // New state to manage content visibility
+  const [contentVisible, setContentVisible] = useState(false);
   
   useEffect(() => {
-    // Start fading in the homepage before hiding the loading page
     const contentTimer = setTimeout(() => {
-      setContentVisible(true); // Begin fading in the homepage
-    }, 19001); // Adjust timing as needed
+      setContentVisible(true);
+    }, 19001);
 
     const loadingTimer = setTimeout(() => {
-      setShowLoading(false); // Hide loading page after a delay
-    }, 19000); // Ensure this is longer than the contentTimer
+      setShowLoading(false);
+    }, 19000);
 
     return () => {
       clearTimeout(contentTimer);
       clearTimeout(loadingTimer);
     };
   }, []);
+
+  const PrivateRoute = ({ element: Component, ...rest }) => {
+    const { currentUser } = useAuth();
+    return currentUser ? <Component {...rest} /> : <Navigate to="/login" />;
+  };
 
   const NavbarContainer = () => {
     const { currentUser } = useAuth();
@@ -60,11 +64,11 @@ const App = () => {
               <Route path="/our-story" element={<StoryPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/live-feed" element={<LiveFeed />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/notifications" element={<Notifications />} />
-              <Route path="/events-page" element={<EventsPage />} />
+              <Route path="/dashboard" element={<PrivateRoute element={Dashboard} />} />
+              <Route path="/live-feed" element={<PrivateRoute element={LiveFeed} />} />
+              <Route path="/settings" element={<PrivateRoute element={Settings} />} />
+              <Route path="/notifications" element={<PrivateRoute element={Notifications} />} />
+              <Route path="/events-page" element={<PrivateRoute element={EventsPage} />} />
             </Routes>
           </div>
         )}
