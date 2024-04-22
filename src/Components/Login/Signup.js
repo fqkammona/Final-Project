@@ -3,9 +3,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
 import { auth, db } from '../../firebase-config';
 import { useNavigate } from 'react-router-dom';
-import { IoMdHome } from 'react-icons/io'; // House icon
 import { MdEmail } from 'react-icons/md'; // Email icon
-import { FaMobileAlt } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa'; // Person icon
 import { FaLock } from "react-icons/fa";
 import { FaLockOpen } from "react-icons/fa";
@@ -32,30 +30,31 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     // Simple password validation
     if (password.length < 8 || !/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
       alert("Password must be at least 8 characters long and include both letters and numbers.");
       setLoading(false);
       return;
     }
-
+  
     // Check if passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match.");
       setLoading(false);
       return;
     }
-
+  
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // Set default values for phoneNumber and address
+      // Set default values for phoneNumber, address, and add 'Completed' as false
       await setDoc(doc(db, 'users', userCredential.user.uid), {
         firstName,
         lastName,
         email,
         phoneNumber: phoneNumber || "Pending Update", // Default or entered value
-        address: address || "Pending Update" // Default or entered value
+        address: address || "Pending Update", // Default or entered value
+        completed: false  // Initial value set to false
       });
       navigate('/dashboard');
     } catch (error) {
