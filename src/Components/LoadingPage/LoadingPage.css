@@ -1,38 +1,19 @@
-
-/* Sets up the container to center its contents and transitions the background color */
 .loading-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  transition: background-color 1.3s;
+  transition: background-color 1s;
   background-color: white;
   position: relative; 
   overflow: hidden;
 }
-/* Changes the background color of the container to black */
+
 .loading-container.fade-to-black {
   transition: background-color 1s;
   background-color: black;
 }
 
-/* Makes the background of the container transparent black */
-.loading-container.transparent-background {
-  transition: background-color 1s;
-  background-color: rgb(16, 16, 16);
-}
-
-/* Defines an animation to fade out the text by decreasing its opacity */
-@keyframes fadeOutText {
-  from {
-    opacity: 1; /* Fully visible starting point */
-  }
-  to {
-    opacity: 0; /* Fully transparent endpoint */
-  }
-}
-
-/* Defines an animation for the text color to fade in from transparent to purple */
 @keyframes fadeInColor {
   from {
     color: transparent;
@@ -42,7 +23,15 @@
   }
 }
 
-/* Initial style for the Logo, including setup for text stroke and transparent fill color */
+@keyframes fadeOutText {
+  from {
+    opacity: 1; /* Fully visible starting point */
+  }
+  to {
+    opacity: 0; /* Fully transparent endpoint */
+  }
+}
+
 .Logo {
   position: absolute;
   justify-content: center;
@@ -51,104 +40,14 @@
   font-weight: bold;
   -webkit-text-stroke: 2px #5714ff;
   text-transform: uppercase;
-  color: transparent; /* Starts without fill */
+  color: transparent;
   opacity: 1;
 }
 
-/* Triggers the fadeInColor animation to fill the text color */
 .Logo.fill-text {
-  animation: fadeInColor 2s ease-out 1s forwards;
+  animation: fadeInColor 0.15s ease-out 1.9s forwards;
 }
 
-/* Applies the fadeOutText animation to fade both the fill and the stroke */
-.Logo.fade-text-to-black {
-  animation: fadeOutText 2s ease-out forwards; /* Adjusted to match your fade effect timing */
-}
-
-@keyframes spotlightComeIn {
-  from {
-    transform: translate(-50%, -50%) scale(0.1); /* Start scaled down */
-    opacity: 0.5; /* Make sure it's somewhat visible at the start */
-    box-shadow: 0 0 0 1000px rgba(16, 16, 16, 0.6); /* Start with a slightly darker shadow */
-  }
-  to {
-    transform: translate(-50%, -50%) scale(1); /* Scale to full size */
-    opacity: 1; /* Fully visible */
-  }
-}
-
-.spotlight {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 950px; /* Define full size */
-  height: 950px; /* Define full size */
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,1) 30%, transparent 70%);
-  transform: translate(-50%, -50%) scale(0.1); /* Start small */
-  opacity: 0; /* Start fully transparent */
-  pointer-events: none;
-  animation-fill-mode: forwards; /* Ensures the final state of the animation is maintained */
-}
-
-.spotlight.spotlight-visible {
-  animation: spotlightComeIn 2.5s ease-out forwards; /* Use the animation */
-}
-
-@keyframes spotlightGoOut {
-  from {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-    box-shadow: 0 0 0 2000px rgb(16, 16, 16); /* Final shadow size with more transparency */
-  }
-  to {
-    transform: translate(-50%, -50%) scale(50); /* Scale up to ensure it fills the screen */
-    opacity: 0;
-    box-shadow: 0 0 0 10000px white; /* Change to a large white shadow that fills the screen */
-  }
-}
-
-.spotlight.spotlight-expand {
-  animation: spotlightGoOut 4s ease-in-out forwards; /* Use the animation */
-}
-
-/* Makes the background of the container white */
-.loading-container.background-white {
-  transition: background-color 2s;
-  background-color: white !important;
-}
-
-/* Animation for fading in */
-@keyframes fadeInPhone {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Animation for fading in */
-@keyframes fadeOutPhone {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-/* Initial state of phone container */
-.phone-container {
-  opacity: 0; /* Ensure it starts invisible */
-  /* Ensure other necessary styles are applied, e.g., positioning */
-}
-
-/* Apply the animation when the phone is supposed to be visible */
-.phone-container.fade-in-phone {
-  animation: fadeInPhone 2.5s ease-in-out forwards;
-}
-
-.phone-container.fade-out-phone {
-  animation: fadeOutPhone 4s ease-in-out forwards;
+.Logo.fade-out {
+  animation: fadeOutText 2s ease-out forwards;
 }

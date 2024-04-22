@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth } from './firebase-config'; // Ensure this path is correct
+import { onAuthStateChanged, signOut, getAuth } from 'firebase/auth';
+import { auth } from './firebase-config'; // Make sure this is correctly imported
 
 const AuthContext = createContext();
 
@@ -11,9 +11,22 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
-            setCurrentUser(user);
+            if (user) {
+                // Force a token refresh whenever the auth state changes
+                user.getIdToken(true).then(() => {
+                    setCurrentUser(user);
+                }).catch(error => {
+                    console.error("Error refreshing token", error);
+                    if (error.code === 'auth/user-token-expired' || error.code === 'auth/user-not-found') {
+                        // Force logout if the token is invalid or the user is not found
+                        signOut(auth);
+                    }
+                });
+            } else {
+                // No user is signed in
+                setCurrentUser(null);
+            }
         });
-        // Clean up the subscription on unmount
         return unsubscribe;
     }, []);
 
