@@ -30,13 +30,12 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
-
 }
 
 .form-content {
   display: flex;
-  justify-content: space-between; /* Spacing between children */
-  flex-wrap: wrap; /* Allow wrapping */
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .events-group-box {
@@ -49,18 +48,16 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
-  width: calc(33.333% - 20px); /* Three boxes per row - adjust the margin */
+  width: calc(33.333% - 20px);
 }
 
 .events-group-box h3 {
-  text-align: center; /* Center aligns the text */
-  font-weight: bold; /* Makes the text bold */
-  color: #fff; /* Sets the text color to white */
-  color: black; /* Sets the text color to white */
-  margin-bottom: 10px; /* Spacing below the title */
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
 }
 
-/* Adjustments for checkbox item layout */
 .events-checkbox-item {
   background-color: white;
   border: 2px solid #ccc;
@@ -76,24 +73,26 @@
   margin-left: 8px;
 }
 
-/* Styling for input fields */
 .events-date-input,
 .events-text-input {
   width: 100%;
   margin-bottom: 10px;
 }
 
-/* Styles for the submit button */
 .submit-button {
   background-color: #BBDBD9;
-  margin: 10px;
+  background-color: #86B6B6;
+  color: #ffffff;
   padding: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
   border: 1px solid #ccc;
   box-sizing: border-box;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
-  width: calc(33.333% - 20px); /* Three boxes per row - adjust the margin */
+  width: calc(33.333% - 20px);
+  margin: 0 auto; /* Center the button horizontally */
 }
 
 .submit-button:disabled {
@@ -106,11 +105,13 @@
   flex-direction: column;
 }
 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 800px) {
   .events-group-box {
     width: 100%;
-    margin: 10px; /* Adjust margin for vertical stacking */
+    margin: 10px;
   }
-
+  .submit-button {
+    width: 95%;
+    margin: 10px;
+  }
 }
