@@ -1,14 +1,14 @@
 .home-container {
   display: flex;
-  height: 100vh;
+  flex-direction: column; /* Stack content vertically */
+  min-height: 100vh; /* Use min-height instead of height to allow container to grow */
   position: relative;
-  overflow: hidden;
 }
 
 .content-wrapper {
-  display: flex;
-  width: 100%; /* Ensure it covers the full width of its parent */
-  height: 100%; /* Ensure it covers the full height of its parent */
+  display: flex; /* Keep this as a row flex container */
+  width: 100%; /* It will take the full width of its parent */
+  min-height: 100vh; /* Minimum height is the height of the viewport */
 }
 
 .text-container {
@@ -59,6 +59,12 @@
   transform-origin: bottom;
   transform: scale(0.7); /* Scale down the phones */
 }
+
+.timeline-wrapper {
+  width: 100%; /* Full width */
+}
+
+
 @media (max-width: 768px) {
   .Phone-container-background {
     height: calc(40vw * 2); /* Update this to the height of the phones when scaled */

@@ -1,0 +1,32 @@
+.notification-box {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    background: linear-gradient(90deg, rgba(255,175,189,1) 0%, rgba(255,195,160,1) 100%);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .notification-icon {
+    font-size: 24px; /* Icon size */
+    color: white; /* Icon color */
+    margin-right: 10px;
+  }
+  
+  .notification-info {
+    flex-grow: 1;
+  }
+  
+  .notification-sender {
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+  }
+  
+  .notification-message {
+    font-size: 14px;
+    color: white;
+    opacity: 0.9;
+  }
+  

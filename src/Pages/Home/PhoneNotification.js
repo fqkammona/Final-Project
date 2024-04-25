@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { IoIosBatteryFull } from "react-icons/io";
-import { FaHeart } from "react-icons/fa";
 import { FaWifi } from "react-icons/fa";
 import './PhoneNotification.css';
+import NotificationMessage from './NotificationMessage';
 
 const PhoneNotification = () => {
     const [currentTime, setCurrentTime] = useState('');
@@ -40,13 +40,7 @@ const PhoneNotification = () => {
             <div className="battery-icon"><IoIosBatteryFull /></div>
             <div className="date-notification">{currentDate}</div>
             <div className="time-notification">{currentTime}</div>
-            <div className="notification-box">
-              <div className="notification-icon"><FaHeart /></div>
-              <div className="notification-info">
-                <div className="notification-sender">GIRL C0DED</div>
-                <div className="notification-message">Sirena has arrived at home</div>
-              </div>
-            </div>
+            <NotificationMessage message="Sirena has arrived at home" />
           </>
         )}
       </div>

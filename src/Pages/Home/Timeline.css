@@ -1,0 +1,146 @@
+.timeline-page {
+    width: 100%;
+    min-height: 33vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.event-box-display,
+.notification-box-display {
+    min-height: 33vh;
+    /* Adjust height or min-height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    /* Space between boxes when stacked */
+}
+
+.notification-box-display {
+    width: 55%;
+    /* Set to 25% for larger screens */
+    background-color: #f0f0f0;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.event-box-display {
+    width: 35%;
+    /* Set to 25% for larger screens */
+    margin-left: 30px;
+    background-color: #fdd4d6;
+    /* Assuming default color for the example */
+}
+
+.event-title,
+.notification-title {
+    width: 100%;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-align: center;
+    /* Center the text horizontally */
+    margin-top: 10px;
+    /* Provide some space from the top edge */
+    color: black;
+    /* Text color for visibility */
+}
+
+.mock-alert {
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Adjust for exact centering */
+    min-width: 300px;
+    background: #f0f0f0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 10;
+    /* Ensure it's above other content */
+}
+
+.mock-alert-content {
+    text-align: center;
+}
+
+.mock-alert p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.mock-alert-ok-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Responsive design with media query */
+@media (max-width: 768px) {
+    .timeline-page {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .event-box-display {
+        margin-left: 0px;
+    }
+
+    .final-box-display {
+        margin-right: 0px;
+    }
+
+    .event-box-display,
+    .notification-box-display {
+        width: 90%;
+    }
+
+    .mock-alert {
+        position: static;
+        /* Optional: Change position if needed */
+        transform: none;
+        margin: 0 auto;
+        /* Center the alert in the viewport */
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.notification-fade-in {
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: calc(1s + var(--index) * 1s);
+    position: relative;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
