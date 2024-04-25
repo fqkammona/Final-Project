@@ -40,7 +40,7 @@
     position: absolute;
     width: 250px; /* Set the width to match the width of the house or as needed. */
     height: 325px;
-    z-index: 10;
+    z-index: 3;
   }
   
   .roof {

@@ -1,31 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './HomePage.css';
 import Phone from '../Components/LoadingPage/Phone';
-import Mountains from './Home/MountainRanges';
+import PhoneNotification from './Home/PhoneNotification';
 
 const HomePage = () => {
-  const [showPhone, setShowPhone] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPhone(false);
-    }, 5000); // 5000 milliseconds = 5 seconds
-
-    return () => clearTimeout(timer); // Clean up the timer
-  }, []);
-
   return (
     <div className='home-container'>
-      {showPhone ? (
-        <div className='show-phone'>
-          <Phone />
-          <div>Where ever you go, know your home is safe</div>
+      <div className='content-wrapper'>
+        <div className='text-container'>
+          <div>Wherever you go,</div>
+          <div>Know your home is safe</div>
         </div>
-      ) : (
-        <div className='show-mountains'>
-          <Mountains />
+        <div className='Phone-container'>
+          <div className='Phone-container-background'>
+            <div className='phone-background-box'></div>
+            <div className='phone-one'>
+              <div className='phone-one-setting'><PhoneNotification /></div>
+            </div>
+            <div className='phone-two'>
+              <div className='phone-two-setting'><Phone /></div>
+            </div>
+
+          </div>
+
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,117 @@
+:root {
+    /* Color variables */
+    --lightBlue: #bfe4ed;
+    --darkBlue: #65a1dc;
+    --lightPink: #fdd4d6;
+    --darkPink: #eab0e0;
+    --lightPurple: #c1b2d3;
+    --darkPurple: #745e8d;
+    --lightBrown: #d0c9a7;
+    --mediumBrown: #a59966;
+    --darkBrown: #534f33;
+    --lightGreen: #92d955;
+    --darkGreen: #84c950;
+    --yellow: #f3eb8a;
+    --red: #a74a43;
+    --white: #fdfdff;
+    --shadow: #1E2019;
+    --tealGreen: #C7E6D4;
+  }
+
+  .phone-notification {
+    position: relative;
+    width: 320px; /* Represents the width of a phone screen */
+    height: 568px; /* Represents the height of a phone screen */
+    border: 16px solid var(--shadow); /* Gives the phone a border */
+    border-radius: 36px; /* Rounds the corners to mimic a phone's shape */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Background color of the phone screen */
+    box-shadow: 10px 10px 30px rgba(4, 2, 2, 0.25), /* Larger shadow for more depth */
+                 -5px -5px 15px rgba(255, 255, 255, 0.1); /* Slight white glow for added effect */
+  }
+  
+  .notch-notifciation {
+    width: 150px; /* Width of the notch */
+    height: 30px; /* Height of the notch */
+    background-color: var(--shadow); /* Color of the notch */
+    border-radius: 0 0 10px 10px; /* Rounded bottom edges of the notch */
+    position: absolute;
+    top: -1px; /* Adjust to match the thickness of the phone's top border */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .date-notification {
+    position: absolute;
+    top: 35px; /* Set to the height of the notch */
+    color: var(--shadow); /* Set the color to match the notch for visibility */
+    font-size: 20px; /* Adjust font size as needed */
+  }
+  
+  .time-notification {
+    position: absolute;
+    top: 50px; /* Adjust so the time is below the date */
+    color: var(--shadow); /* Set the color for visibility */
+    font-size: 65px; /* Size of the time text, adjust as needed */
+    font-weight: bold;
+  }
+  
+  .notification-box {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 10%; /* Adjust based on your layout */
+    left: 5%;
+    right: 5%;
+    background: linear-gradient(90deg, rgba(255,175,189,1) 0%, rgba(255,195,160,1) 100%);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .notification-icon {
+    font-size: 24px; /* Icon size */
+    color: white; /* Icon color */
+    margin-right: 10px;
+  }
+  
+  .notification-info {
+    flex-grow: 1;
+  }
+  
+  .notification-sender {
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+  }
+  
+  .notification-message {
+    font-size: 14px;
+    color: white;
+    opacity: 0.9;
+  }
+  
+  .phone-notification {
+    /* ... other styles remain unchanged ... */
+    background-color: #000; /* Start with a black background */
+    transition: background-color 0.5s ease-in-out; /* Smooth transition for the background color */
+  }
+  
+  .phone-notification.active {
+    background-color: #f0f0f0; /* Change the background color to original after 1 second */
+    animation: vibrate 0.5s linear;
+  }
+  
+  @keyframes vibrate {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+  }
+  
+  

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ReactComponent as Mountain1 } from './assets/Mountain1.svg';
+import { ReactComponent as Mountain1 } from './assets/Group1.svg';
 import { ReactComponent as Mountain2 } from './assets/Mountain2.svg';
 import { ReactComponent as Mountain3 } from './assets/Mountain3.svg';
 import { ReactComponent as Mountain4 } from './assets/Mountain4.svg';

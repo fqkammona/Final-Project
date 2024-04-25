@@ -1,13 +1,18 @@
 import React from 'react';
 import './FAQpage.css';
+import Mountains from './Home/MountainRanges';
 
 const FAQpage = () => {
+
   return (
-    <div className="homepage-text">
-      <h1>Frequently Asked Questions Page!</h1>
-      <p>Questions</p>
+    <div className='faq-container'>
+      <div className='show-mountains'>
+        <Mountains />
+      </div>
     </div>
   );
 };
+
+
 
 export default FAQpage;
