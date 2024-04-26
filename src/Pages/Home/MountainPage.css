@@ -1,0 +1,17 @@
+.MountainPage-container{
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+}
+
+@media (max-width: 768px) {
+    .MountainPage-container{
+        height: 32vh;
+        bottom: 0;
+        overflow: hidden;
+    }
+}

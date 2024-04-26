@@ -2,13 +2,28 @@ import React from 'react';
 import './HomePage.css';
 import Phone from '../Components/LoadingPage/Phone';
 import PhoneNotification from './Home/PhoneNotification';
-import Timeline from './Home/Timeline'; // Adjust the import path based on your project structure
+import Timeline from './Home/Timeline';
+import TvPage from './Home/TvPage'; // Ensure this is correctly imported
+import MountainRanges from './Home/MountainPage'; // Import the MountPage component
 import { useInView } from 'react-intersection-observer';
 
 const HomePage = () => {
-  const { ref, inView } = useInView({
+  // Hook for Timeline visibility
+  const { ref: timelineRef, inView: timelineInView } = useInView({
     triggerOnce: true,
-    threshold: 0.5,  // Adjust this value based on when you want the Timeline to appear
+    threshold: 0.5, // Adjust if needed
+  });
+
+  // Hook for TvPage visibility
+  const { ref: tvPageRef, inView: tvPageInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.5, // Adjust if needed
+  });
+
+  // Hook for MountPage visibility
+  const { ref: mountPageRef, inView: mountPageInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.5, // Adjust if needed
   });
 
   return (
@@ -29,10 +44,15 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        
       </div>
-      <div ref={ref} className='timeline-wrapper'>
-        {inView && <Timeline />}  
+      <div ref={timelineRef} className='timeline-wrapper'>
+        {timelineInView && <Timeline />}
+      </div>
+      <div ref={tvPageRef} className='tvPage-wrapper'>
+        {tvPageInView && <TvPage />}
+      </div>
+      <div ref={mountPageRef} className='mountPage-wrapper'>
+        {mountPageInView && <MountainRanges />}
       </div>
     </div>
   );

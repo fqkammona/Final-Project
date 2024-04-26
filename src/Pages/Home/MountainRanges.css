@@ -13,17 +13,13 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-
 }
 
 .sky {
-  position: absolute;
-  width: 100%; /* Full width */
+  position: relative;
   height: 100%; /* Adjust the vh value to suit your design */
   background: var(--lightBlue);
 }
-
-
 
 .MountainRanges-sun {
   position: absolute;
@@ -41,6 +37,7 @@
 /* Set your SVGs to a percentage width of the parent container to maintain aspect ratio */
 .mountain1, .mountain2, .mountain3, .mountain4, .mountain5, .cloud1, .cloud2 {
   position: absolute;
+  top: 22px;
   z-index: 1;
  
 }
@@ -63,7 +60,7 @@
 /* Group 2 */
 .sky.animate {
   animation: slideDownFromTop 1.2s ease forwards;
-  animation-delay: 2s;
+  animation-delay: 0s;
 }
 
 /* Group 3 */
