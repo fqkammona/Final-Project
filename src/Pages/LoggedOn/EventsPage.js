@@ -23,14 +23,14 @@ function EventsPage() {
     useEffect(() => {
         setIsFormValid(
             eventLabel.trim() !== '' &&
-            startDate >= minDate &&
+            //startDate >= minDate &&
             recognizedObjects.length > 0
         );
     }, [eventLabel, startDate, recognizedObjects, minDate]);
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setMinDate(new Date(Date.now() + 30 * 60000));
+            setMinDate(new Date(Date.now() + 2 * 60000)); //changed 30 to 2 for testing
         }, 60000);
         return () => clearInterval(timer);
     }, []);
@@ -53,8 +53,12 @@ function EventsPage() {
             return;
         }
 
+        //adding end time
+        //const endTime = new Date(startDate.getTime() + 9 * 60000);
+
         const eventData = {
             timestamp: serverTimestamp(),
+            //endTime: firebase.firestore.Timestamp.fromDate(endTime),
             recognizedObjects,
             label: eventLabel
         };
