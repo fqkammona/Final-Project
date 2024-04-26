@@ -63,7 +63,10 @@ const Timeline = () => {
                     <h2 className="notification-title">Receive a text when the event happens</h2>
                     {activeNotifications.map((message, index) => (
                         <div key={index} className="notification-fade-in">
-                            <NotificationMessage message={message} />
+                            <div className='notification-message-box'>
+                                <NotificationMessage message={message} />
+                            </div>
+                            
                         </div>
                     ))}
                 </div>

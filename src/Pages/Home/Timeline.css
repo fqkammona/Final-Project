@@ -8,8 +8,7 @@
     margin: 0;
 }
 
-.event-box-display,
-.notification-box-display {
+.event-box-display {
     min-height: 33vh;
     /* Adjust height or min-height as needed */
     display: flex;
@@ -20,18 +19,23 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     margin-bottom: 20px;
-    /* Space between boxes when stacked */
 }
 
 .notification-box-display {
     width: 55%;
-    /* Set to 25% for larger screens */
     background-color: #f0f0f0;
-    margin-right: 30px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin-right: 30px;
     gap: 10px;
 }
+
 
 .event-box-display {
     width: 35%;
@@ -122,10 +126,13 @@
     animation: fadeIn 1s ease-out forwards;
 }
 
+.notification-message-box {
+    display: flex;
+    justify-content: center;
+}
 .notification-fade-in {
     animation: fadeInUp 0.5s ease-out forwards;
     animation-delay: calc(1s + var(--index) * 1s);
-    position: relative;
 }
 
 @keyframes fadeIn {
