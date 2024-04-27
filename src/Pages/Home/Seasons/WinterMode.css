@@ -1,0 +1,58 @@
+.winter-sky {
+    position: absolute;
+    width: 100%;
+    border-radius: 15px;
+    height: 100%;
+    background-color: #ADD8E6;
+    overflow: hidden;
+}
+
+.winter-sky-snowman {
+    position: absolute;
+    bottom: 0;
+    left: 45%; /* Center the snowman horizontally */
+    transform: translateX(-50%) scale(0.8); /* Adjust horizontal positioning and scale */
+    transform-origin: bottom; /* Ensures the snowman scales down towards the bottom */
+}
+
+@keyframes fall {
+    0% { transform: translateY(-50px); }
+    100% { transform: translateY(100vh); }
+  }
+  
+  .snowflake {
+    position: absolute;
+    top: -50px;
+    background-color: white;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation-name: fall;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  
+  .snow-pile {
+    position: absolute;
+    bottom: 0;  /* Adjust to position at the top */
+    width: 50%;
+    height: 50px;
+    border-radius: 100% 100% 0 0 / 100% 100% 0 0;  /* Flip the border-radius to curve downwards */
+    background-color: white;
+  }
+  
+  
+  .winter-sky::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    z-index: 1;
+  }
+  

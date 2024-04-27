@@ -1,0 +1,135 @@
+.snowman {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.head, .torso, .base {
+    background-color: white;
+    border-radius: 50%;
+}
+
+.head {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hat {
+    position: absolute;
+    top: -25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hat-top {
+    width: 30px;
+    height: 20px;
+    background-color: black;
+}
+
+.hat-brim {
+    width: 40px;
+    height: 10px;
+    background-color: black;
+}
+
+.eye {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    justify-content: space-between;
+    top: 12px;
+}
+
+.eye:first-child {
+    left: 12px;
+}
+
+.eye:last-child {
+    right: 12px;
+}
+
+.nose {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 5px 8px 5px;
+    border-color: transparent transparent orange transparent;
+    position: absolute;
+    top: 20px;
+}
+
+.mouth {
+    width: 20px;
+    height: 8px;
+    border-radius: 0 0 20px 20px;
+    background-color: black;
+    position: absolute;
+    bottom: 10px;
+}
+
+
+
+.base {
+    width: 100px;
+    height: 100px;
+    margin-top: -10px;
+}
+
+.button {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: black;
+    margin: 4px 0;
+}
+
+
+.torso {
+    width: 70px;
+    height: 70px;
+    margin-top: -10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the button-box horizontally and vertically */
+}
+
+.button-box {
+    justify-content: space-between; /* Distribute space between buttons */
+    height: 50%; /* Adjust the height as needed */
+}
+
+.arm-left, .arm-right {
+    width: 5px;
+    height: 50px;
+    background-color: brown;
+    position: absolute;
+}
+
+.arm-left-box, .arm-right-box {
+    height: 100%;
+    width: 10px;
+    position: absolute;
+    bottom: 15px;
+    display: flex;
+    align-items: center;  /* Align arms to the center of the box vertically */
+}
+
+.arm-left-box {
+    left: -5px;  /* Position the left arm box */
+    transform: rotate(-45deg);  /* Rotate the left arm by 45 degrees */
+}
+
+.arm-right-box {
+    right: -5px;  /* Position the right arm box */
+    transform: rotate(45deg);  /* Rotate the right arm by -45 degrees */
+}
+

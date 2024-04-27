@@ -192,13 +192,6 @@
     /* Dot color */
   }
   
-  /* Adjustments for winter mode */
-  .winter-mode .screen {
-    background-color: #ADD8E6;
-    /* Light blue for a winter theme */
-    /* Consider adding snowflake or icicle graphics here */
-  }
-  
   .last-dial-winter-rotated {
     transform: rotate(-165deg);
     /* Additional rotation for winter mode */
