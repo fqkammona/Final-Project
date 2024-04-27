@@ -1,7 +1,8 @@
 import React from 'react';
 import './TvDisplay.css';
 import House from '../../../Components/LoadingPage/House';
-import NightMode from '../Seasons/NightMode'; // Ensure the path is correct
+import NightMode from '../Seasons/NightMode'; 
+import StormMode from '../Seasons/StormMode'; 
 
 class TvDisplay extends React.Component {
     constructor(props) {
@@ -14,8 +15,8 @@ class TvDisplay extends React.Component {
     toggleMode = () => {
         this.setState(prevState => ({
             mode: prevState.mode === 'default' ? 'night-mode' :
-                  prevState.mode === 'night-mode' ? 'storm' :
-                  prevState.mode === 'storm' ? 'winter' : 'default',
+                  prevState.mode === 'night-mode' ? 'storm-mode' :
+                  prevState.mode === 'storm-mode' ? 'winter' : 'default',
         }));
     }
 
@@ -23,7 +24,7 @@ class TvDisplay extends React.Component {
         const { mode } = this.state;
         const dialRotationClass = isLast ?
             (mode === 'night-mode' ? 'last-dial-rotated' :
-             mode === 'storm' ? 'last-dial-storm-rotated' :
+             mode === 'storm-mode' ? 'last-dial-storm-rotated' :
              mode === 'winter' ? 'last-dial-winter-rotated' : '') : '';
         const dialClasses = `dial-control ${isLast ? 'last-dial' : ''} ${dialRotationClass}`;
         return (
@@ -50,7 +51,8 @@ class TvDisplay extends React.Component {
                 <div className="tv">
                     <div className="screen-border">
                         <div className="screen">
-                            {mode === 'night-mode' ? <NightMode /> : <div className='house-tv-setting'><House /></div>}
+                            {mode === 'night-mode' ? <NightMode /> : mode === 'storm-mode' ? <StormMode /> : <div className='house-tv-setting'><House /></div>}
+                       
                         </div>
                     </div>
                     <div className="side-box">

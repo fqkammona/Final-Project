@@ -128,11 +128,7 @@
     transform: rotate(-35deg);
   }
   
-  .storm-mode .screen {
-    background-color: #deb173;
-    /* Dark blue for both modes */
-  }
-  
+ 
   .last-dial-rotated {
     transform: rotate(-55deg);
   }
@@ -208,7 +204,6 @@
     /* Additional rotation for winter mode */
   }
   
- 
   
   .house-tv-setting {
     margin-top: -102px;
