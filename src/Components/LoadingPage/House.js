@@ -20,8 +20,6 @@ const House = () => {
              {generateSmokeElements()}
           </div>
         </div>
-        <div className="pole left-pole"></div>
-        <div className="pole right-pole"></div>
       </div>
       {/* Base of the house */}
       <div className="houseBase">
@@ -31,6 +29,7 @@ const House = () => {
             <div className="crossbar-vertical"></div>
             <div className="crossbar-horizontal"></div>
           </div>
+          
         </div>
         {/* Right window container */}
         <div className="window-container right-window">
@@ -44,6 +43,8 @@ const House = () => {
           <div className="doorknob"></div>
         </div>
       </div>
+      <div className="pole left-pole"></div>
+        <div className="pole right-pole"></div>
       </div>
 );
 };

@@ -20,14 +20,13 @@
 
   .container-house {
     position: relative;
+    background-color: red;
     width: 320px; /* Represents the width of a phone screen */
     height: 400px; /* Represents the height of a phone screen */
   }
   
   .houseBase {
-    position: absolute;
     bottom: 0;
-    left: 52.5px; /* Centers the house base (320px - 215px) / 2 */
     width: 215px; /* Reduces width to account for margin */
     height: 200px; /* Adjusts height to account for margin */
     background: linear-gradient(
@@ -36,52 +35,27 @@
       var(--lightPink) 25% /* Pink color covers the bottom 3/4 */
     );
   }
-  
+
   .roof-container {
     position: absolute;
-    top: 30px;
-    left: 33px; /* Centers the house base (320px - 215px) / 2 */
     width: 250px; /* Set the width to match the width of the house or as needed. */
-    height: 200px;
+    height: 325px;
     z-index: 3;
   }
   
   .roof {
-    position: absolute; /* Updated from relative to absolute */
-    bottom: 0px; /* Aligns the roof at the bottom of the roof-container */
-    width: 100%;
-    height: 50%;
+    width: 250px; /* Roof takes the full width of the roof-container */
+    height: 80px; /* This is the height of the actual roof element, not the slanted roof */
+    position: absolute;
   }
   
-  /* This pseudo-element represents the slanted part of the roof */
-  .roof:before {
-    content: '';
-    position: absolute;
-    width: 50%; /* Only half the width to make the skew affect only one side */
-    height: 105px; /* Height of the slanted part */
-    background-color: var(--darkBrown); /* Roof color */
-    right: 50%; /* Position the pseudo-element on the left side */
-    transform: skewX(-6deg); /* Skew the left side */
-    transform-origin: bottom left;
-  }
-  
-  /* This pseudo-element represents the non-slanted part of the roof */
-  .roof:after {
-    content: '';
-    position: absolute;
-    width: 50%; /* The other half of the width */
-    height: 105px; /* Height of the slanted part */
-    background-color: var(--darkBrown); /* Roof color */
-    left: 50%; /* Position the pseudo-element on the right side */
-  }
-
   /* Styles for the chimney on the roof */
   .chimney {
     width: 30px; /* Width of the chimney */
     height: 40px; /* Height of the chimney */
     background-color: var(--mediumBrown); /* Color of the chimney */
     position: absolute;
-    bottom: 100px; /* Position from the bottom of the roof element */
+    bottom: 80px; /* Position from the bottom of the roof element */
     right: 20%; /* Position from the right side of the roof */
     z-index: 11; /* Ensure the chimney is above the roof */
   }
@@ -138,7 +112,29 @@
       opacity: 0;
     }
   }
-
+  
+  /* This pseudo-element represents the slanted part of the roof */
+  .roof:before {
+    content: '';
+    position: absolute;
+    width: 50%; /* Only half the width to make the skew affect only one side */
+    height: 105px; /* Height of the slanted part */
+    background-color: var(--darkBrown); /* Roof color */
+    right: 50%; /* Position the pseudo-element on the left side */
+    transform: skewX(-6deg); /* Skew the left side */
+    transform-origin: bottom left;
+  }
+  
+  /* This pseudo-element represents the non-slanted part of the roof */
+  .roof:after {
+    content: '';
+    position: absolute;
+    width: 50%; /* The other half of the width */
+    height: 105px; /* Height of the slanted part */
+    background-color: var(--darkBrown); /* Roof color */
+    left: 50%; /* Position the pseudo-element on the right side */
+  }
+  
   .pole {
     background-color: var(--white);
     width: 7px; /* Width of the poles */
@@ -148,14 +144,15 @@
   }
   
   .left-pole {
-    left: 41px; /* Position the left pole */
-
+    left: 7px; /* Position the left pole */
+    z-index: -1;
   }
   
   .right-pole {
-    right: 41px; /* Position the right pole */
+    right: 7px; /* Position the right pole */
+    z-index: -1;
   }
-
+  
   /* Styles for the window containers */
   .window-container {
     width: 35px; /* Width of the window container */
@@ -186,6 +183,11 @@
     right: 10%; /* Position from the right side */
   }
   
+  /* Ensure the houseBase can contain the absolutely positioned window containers */
+  .houseBase {
+    position: relative; /* To position the window containers absolutely within */
+  }
+  
   .crossbar-horizontal {
     background-color: var(--darkPink); /* Pink color for the crossbar */
     position: absolute;
@@ -195,8 +197,8 @@
     transform: translateY(-50%); /* Center the crossbar */
   }
   
-   /* Styles for the door with a white border */
-   .door {
+  /* Styles for the door with a white border */
+  .door {
     width: 60px; /* Width of the door */
     height: 100px; /* Height of the door */
     background-color: var(--darkBrown); /* Door color */
@@ -219,3 +221,4 @@
     top: 50%; /* Position vertically centered */
     transform: translateY(-50%); /* Center the doorknob */
   }
+  

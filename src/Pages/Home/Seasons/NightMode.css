@@ -1,0 +1,50 @@
+.night-sky {
+    position: absolute;
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at top left, #002244 20%, #020111 80%);
+    overflow: hidden;
+}
+
+.moon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at 50% 50%, #FFF, #FFFA);
+    border-radius: 50%;
+    top: 20px;
+    left: 20px;
+    box-shadow: 0 0 8px #FFF, 0 0 15px #FFF, 0 0 30px #FFF; /* Glowing effect */
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 2px #FFF, 0 0 4px #FFF; /* Star glow */
+}
+
+.night-sky-house {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.twinkling-star {
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}

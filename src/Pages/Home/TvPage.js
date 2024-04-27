@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import TV from '../LoggedOn/TV';
+import TvDisplay from './Objects/TvDisplay';
 import './TvPage.css';
 
 const TvPage = () => {
@@ -34,7 +34,7 @@ const TvPage = () => {
                 </div>
                 <div className='tv-display-container'>
                     <div className='tv-setting-display'>
-                        <TV />
+                        <TvDisplay />
                     </div>
                 </div>
             </div>
