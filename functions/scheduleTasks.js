@@ -22,7 +22,8 @@ exports.scheduleListeningTask = functions.firestore
 
 
       const payload =
-      {userId: context.params.userId, eventId: context.params.eventId};
+      JSON.stringify({userId: context.params.userId,
+        eventId: context.params.eventId});
 
       const parent = client.queuePath(project, location, queue);
       const task = {
@@ -32,7 +33,7 @@ exports.scheduleListeningTask = functions.firestore
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(payload), // .toString("base64"),
+          body: Buffer.from(payload).toString("base64"),
         },
         scheduleTime: {
           seconds: Math.round(startTime.getTime() / 1000),
@@ -40,5 +41,5 @@ exports.scheduleListeningTask = functions.firestore
       };
 
       await client.createTask({parent, task});
-      console.log("Task scheduled");
+      console.log("Task scheduled: " + JSON.stringify(task));
     });

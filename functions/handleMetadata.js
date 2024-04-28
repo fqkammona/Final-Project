@@ -6,23 +6,27 @@ if (!admin.apps.length) {
   admin.initializeApp();
 }
 
-exports.matchMetadataWithEvents = functions.firestore
+exports.onMetadataCreate = functions.firestore
     .document("testing/{metadataId}")
     .onCreate(async (snapshot, context) => {
     // Get the newly added metadata
       const metadata = snapshot.data();
+      console.log("Received metadata:", metadata);
 
       // Parse the metadata timestamp and create the time window
       const metadataTimestamp = new Date(metadata.timestamp);
-      const endTimeWindow = new
-      Date(metadataTimestamp.getTime() +
-      9 * 60000); // 9 minutes after the metadata timestamp
+      const endTimeWindow =
+      new Date(metadataTimestamp.getTime() +
+       9 * 60000); // 9 minutes after the metadata timestamp
+      console.log("Metadata timestamp:", metadataTimestamp);
+      console.log("End time window:", endTimeWindow);
 
       // Convert times to Firestore timestamps
       const metadataTimestampFirestore =
       admin.firestore.Timestamp.fromDate(metadataTimestamp);
       const endTimeWindowFirestore =
       admin.firestore.Timestamp.fromDate(endTimeWindow);
+
 
       // Retrieve all events across all users within the time window and compare
       let matchFound = false;
@@ -36,9 +40,12 @@ exports.matchMetadataWithEvents = functions.firestore
             .where("timestamp", "<=", endTimeWindowFirestore)
             .get();
 
+        console.log(`Checking events for user: ${userDoc.id}`);
         // let matchFound = false;
         eventsSnapshot.forEach((eventDoc) => {
           const event = eventDoc.data();
+          console.log(`Comparing event: ${eventDoc.id}`, event);
+
           if (arraysIntersect(event.recognizedObjects, metadata.objects) &&
             (!metadata.faces || arraysIntersect(event.faces, metadata.faces))) {
             console.log(`Yes, match found for User ID: ${userDoc.id} 
@@ -66,6 +73,7 @@ exports.matchMetadataWithEvents = functions.firestore
  * @return {boolean} True if the arrays intersect, false otherwise.
  */
 function arraysIntersect(arr1, arr2) {
+  console.log("(event.faces): " + arr1 + "\n(metadata.faces): " + arr2);
   return arr1 && arr2 && arr1.some((item) => arr2.includes(item));
 }
 
