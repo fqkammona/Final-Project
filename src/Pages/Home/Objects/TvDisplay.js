@@ -4,22 +4,25 @@ import House from '../../../Components/LoadingPage/House';
 import NightMode from '../Seasons/NightMode';
 import StormMode from '../Seasons/StormMode';
 import WinterMode from '../Seasons/WinterMode';
-
+import DayMode from '../Seasons/DayMode';
 class TvDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            mode: 'default', // Can be 'default', 'night', 'storm', or 'winter'
+            mode: 'day-mode', // Set DayMode as the initial default mode
         };
-    }
+    }    
 
     toggleMode = () => {
         this.setState(prevState => ({
-            mode: prevState.mode === 'default' ? 'night-mode' :
+            mode: prevState.mode === 'day-mode' ? 'night-mode' :
                 prevState.mode === 'night-mode' ? 'storm-mode' :
-                    prevState.mode === 'storm-mode' ? 'winter-mode' : 'default',
+                    prevState.mode === 'storm-mode' ? 'winter-mode' :
+                        prevState.mode === 'winter-mode' ? 'day-mode' :
+                            'day-mode', // Keep day-mode as the loop start if it reaches the end of cycle
         }));
     }
+    
 
     renderDial = (isLast) => {
         const { mode } = this.state;
@@ -52,8 +55,7 @@ class TvDisplay extends React.Component {
                 <div className="tv">
                     <div className="screen-border">
                         <div className="screen">
-                            {mode === 'night-mode' ? <NightMode /> : mode === 'storm-mode' ? <StormMode /> : mode === 'winter-mode' ? <WinterMode /> : <div className='house-tv-setting'><House /></div>}
-
+                            {mode === 'night-mode' ? <NightMode /> : mode === 'storm-mode' ? <StormMode /> : mode === 'winter-mode' ? <WinterMode /> : mode === 'day-mode' ? <DayMode /> : <div className='house-tv-setting'><House /></div>}
                         </div>
                     </div>
                     <div className="side-box">

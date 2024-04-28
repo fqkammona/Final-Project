@@ -128,7 +128,6 @@
     transform: rotate(-35deg);
   }
   
- 
   .last-dial-rotated {
     transform: rotate(-55deg);
   }
@@ -196,10 +195,3 @@
     transform: rotate(-165deg);
     /* Additional rotation for winter mode */
   }
-  
-  
-  .house-tv-setting {
-    margin-top: -102px;
-    margin-right: -50px;
-  }
-  

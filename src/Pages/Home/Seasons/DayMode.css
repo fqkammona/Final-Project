@@ -1,0 +1,21 @@
+.day-mode {
+  
+    background-color: #87CEEB; /* Light blue sky */
+
+    position: absolute;
+    width: 100%;
+    border-radius: 15px;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+/* Styling for the sun */
+.sun-day-mode {
+    width: 200px; /* Large, prominent sun */
+    height: 200px;
+    background-color: #FFD700; /* Golden yellow */
+    border-radius: 50%; /* Circular sun */
+    box-shadow: 0 0 80px #FFD700; /* Bright glowing effect */
+}
+
