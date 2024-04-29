@@ -57,13 +57,12 @@
   animation-delay: 0.3s; /* Adjust as needed */
 }
 
-/* Group 2 */
 .sky.animate {
   animation: slideDownFromTop 1.2s ease forwards;
   animation-delay: 0s;
 }
 
-/* Group 3 */
+/* Group 2 */
 .mountain1.animate {
   animation: popUpMountain 3s ease-out forwards;
   animation-delay: 1.9s; /* Adjust as needed */
@@ -74,7 +73,7 @@
   animation-delay: 2s; 
 }
 
-/* Group 4 */
+/* Group 3 */
 .cloud1.animate {
   animation: slideInFromLeft 1s ease forwards;
   animation-delay: 2s; 
@@ -85,7 +84,7 @@
   animation-delay: 2s; 
 }
 
-/*Group 5 */
+/*Group 4 */
 .MountainRanges-sun.animate {
   animation: popUpMountain 3.2s ease-out forwards;
   animation-delay: 1.8s; 

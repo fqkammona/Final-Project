@@ -52,11 +52,7 @@
   transition: all 0.3s ease-in-out; 
 }
 
-/* Add shadow to the navbar when it's scrolled */
-.navbar.scrolled {
-  background-color: white; /* Set the background to white when scrolled */
-  transition: background-color 0.3s; /* Smooth transition for the color change */
-}
+
 
 /* Style the navbar brand with bold weight, large font size, and a specific color */
 .navbar-brand {
