@@ -7,63 +7,105 @@ if (!admin.apps.length) {
 }
 
 exports.onMetadataCreate = functions.firestore
-    .document("testing/{metadataId}")
+    .document("users/{userId}/events/{eventId}") //
     .onCreate(async (snapshot, context) => {
-    // Get the newly added metadata
-      const metadata = snapshot.data();
+    // Listen to 'testing' from (scheduledTime --- scheduledTime + 5-minutes)
+
+      // 1. Get the newly added metadata
+      const metadata = snapshot.data(); // Will contain user form
       console.log("Received metadata:", metadata);
 
+      // 2. Get timestamp from user form
       // Parse the metadata timestamp and create the time window
-      const metadataTimestamp = new Date(metadata.timestamp);
+      const metadataTimestamp = metadata.timestamp.toDate();
       const endTimeWindow =
-      new Date(metadataTimestamp.getTime() +
-       9 * 60000); // 9 minutes after the metadata timestamp
-      console.log("Metadata timestamp:", metadataTimestamp);
-      console.log("End time window:", endTimeWindow);
+    new Date(metadataTimestamp.getTime() +
+     5 * 60000); // endTime
 
-      // Convert times to Firestore timestamps
+      //
+
+      // 3.  Convert times to Firestore timestamps
       const metadataTimestampFirestore =
-      admin.firestore.Timestamp.fromDate(metadataTimestamp);
+    admin.firestore.Timestamp.fromDate(metadataTimestamp);
       const endTimeWindowFirestore =
-      admin.firestore.Timestamp.fromDate(endTimeWindow);
+    admin.firestore.Timestamp.fromDate(endTimeWindow);
+
+      console.log("Firestore start timestamp: " + metadataTimestampFirestore);
+      console.log("Firestore end time stamp: " + endTimeWindowFirestore);
 
 
-      // Retrieve all events across all users within the time window and compare
+      // 4. Retrieve all 'testing' detection events between start-stop time
       let matchFound = false;
-      const usersRef = admin.firestore().collection("users");
-      const usersSnapshot = await usersRef.get();
+      const testRef = admin.firestore().collection("testing");
 
-      for (const userDoc of usersSnapshot.docs) {
-        const eventsRef = userDoc.ref.collection("events");
-        const eventsSnapshot = await eventsRef
-            .where("timestamp", ">=", metadataTimestampFirestore)
-            .where("timestamp", "<=", endTimeWindowFirestore)
+      try {
+        // Fetch the 10 most recent documents based on the 'timestamp' field
+        const recentSnapshot = await testRef
+            .orderBy("timestamp", "desc")
+        // Order by timestamp in descending order
+            .limit(10) // Limit to the newest 10 entries
             .get();
 
-        console.log(`Checking events for user: ${userDoc.id}`);
-        // let matchFound = false;
-        eventsSnapshot.forEach((eventDoc) => {
-          const event = eventDoc.data();
-          console.log(`Comparing event: ${eventDoc.id}`, event);
-
-          if (arraysIntersect(event.recognizedObjects, metadata.objects) &&
-            (!metadata.faces || arraysIntersect(event.faces, metadata.faces))) {
-            console.log(`Yes, match found for User ID: ${userDoc.id} 
-            with Event ID: ${eventDoc.id}`);
-            matchFound = true;
-          // Here you can handle the match as needed
-          }
-        });
+        // Check if the snapshot is empty
+        if (recentSnapshot.empty) {
+          console.log("No recent documents found.");
+        } else {
+          console.log("Newest 10 timestamps:");
+          recentSnapshot.forEach((doc) => {
+            const data = doc.data();
+            console.log(`${doc.id}: ${data.timestamp.toDate()}`);
+          });
+        }
+      } catch (error) {
+        console.error("Failed to retrieve recent documents:", error);
       }
+
+
+      const testSnapshot = await testRef
+          .where("timestamp", ">=", metadataTimestampFirestore)
+          .where("timestamp", "<=", endTimeWindowFirestore)
+          .get();
+
+
+      console.log("testSnapshot is: " + JSON.stringify(testSnapshot));
+
+      // Looping through each detection found in timeframe in 'testing'
+      testSnapshot.forEach((detectDoc) => {
+        const observedMetadata = detectDoc.data();
+        console.log("Oberserving metadata at: " + observedMetadata.timestamp);
+
+        // comparing the user form objects/people to detect with the
+        // detected people/objects in 'testing'
+
+        // Confirming if observed objects are what the user is looking for
+        // let people = false;
+        // let objects = false;
+
+        if (arraysIntersect(metadata.recognizedObjects,
+            observedMetadata.objects)) {
+          matchFound = true;
+          // objects = true;
+          console.log("Detected objects requested");
+        }
+
+        if (arraysIntersect(metadata.recognizedObjects,
+            observedMetadata.faces)) {
+          matchFound = true;
+          // people = true;
+          console.log("Detected people requested");
+        }
+      });
+
 
       if (matchFound) {
         console.log("A match was found, performing subsequent actions...");
-        // Add additional logic to handle the case when a match is found
+      // Add additional logic to handle the case when a match is found
       } else {
         console.log("No matches were found.");
-        // Handle the case when no matches are found
+      // Handle the case when no matches are found
       }
     });
+
 
 // Helper function to check if two arrays have any common elements
 /**
@@ -76,4 +118,3 @@ function arraysIntersect(arr1, arr2) {
   console.log("(event.faces): " + arr1 + "\n(metadata.faces): " + arr2);
   return arr1 && arr2 && arr1.some((item) => arr2.includes(item));
 }
-
