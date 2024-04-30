@@ -107,8 +107,15 @@ exports.onMetadataCreate = functions.firestore
       }
     });
 */
+// Helper function to check if two arrays have any common elements
+/**
+ * Checks if two arrays have any common elements.
+ * @param {Array} arr1 - The first array to compare.
+ * @param {Array} arr2 - The second array to compare.
+ * @return {boolean} True if the arrays intersect, false otherwise.
+ */
 function arraysIntersect(arr1, arr2) {
-  return arr1.some(item => arr2.includes(item));
+  return arr1.some((item) => arr2.includes(item));
 }
 
 exports.handleMetadata = onRequest((req, res) => {
@@ -143,14 +150,11 @@ exports.handleMetadata = onRequest((req, res) => {
           let matchFound = false;
           snapshot.forEach((doc) => {
             const metadata = doc.data();
+            const combinedMetadata = [...metadata.objects, ...metadata.faces];
             console.log("Checking metadata: ", doc.id, metadata);
-            if (arraysIntersect(event.recognizedObjects, metadata.objects)) {
+            if (arraysIntersect(event.recognizedObjects, combinedMetadata)) {
               matchFound = true;
-              console.log("Match found:", doc.id, metadata);
-            }
-            if (arraysIntersect(event.recognizedObjects, metadata.faces)) {
-              matchFound = true;
-              console.log("Match found:", doc.id, metadata);
+              console.log("Match found:", doc.id, combinedMetadata);
             }
           });
 
@@ -171,16 +175,3 @@ exports.handleMetadata = onRequest((req, res) => {
     res.status(500).send("Internal Server Error");
   });
 });
-
-
-// Helper function to check if two arrays have any common elements
-/**
- * Checks if two arrays have any common elements.
- * @param {Array} arr1 - The first array to compare.
- * @param {Array} arr2 - The second array to compare.
- * @return {boolean} True if the arrays intersect, false otherwise.
- */
-function arraysIntersect(arr1, arr2) {
-  console.log("(event.faces): " + arr1 + "\n(metadata.faces): " + arr2);
-  return arr1 && arr2 && arr1.some((item) => arr2.includes(item));
-}
