@@ -51,6 +51,16 @@
   border-radius: 0 0 10px 20px;
 }
 
+.car-window {
+  position: absolute;
+  width: 115px;
+  height: 20px;
+  background: linear-gradient(to top, rgb(189, 218, 227), white);
+  top: 0;
+  border-radius: 0 0 10px 20px;
+  border: 2px solid var(--borderBlack);
+}
+
 .car-top::before {
   content: '';
   position: absolute;

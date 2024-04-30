@@ -8,19 +8,20 @@
 }
 
 /* Style the sign-in button with absolute positioning, set its right and top positions, remove border, add shadow, set background color, and vertically center it */
-.sign-in-button {
+.log-out-button {
   position: absolute; 
   right: 20px; 
   top: 50%; 
+  border-radius: 0;
   border: none; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-  background: #5714ff; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  background: #00383B; 
   transform: translateY(-50%); 
 }
 
 /* Adjust the sign-in button's position for screens smaller than 991px, making it static and aligning it to the end of the container */
 @media (max-width: 991px) {
-  .sign-in-button {
+  .log-out-button {
     position: static; 
     transform: none; 
     margin-left: auto; 
@@ -76,6 +77,9 @@
   transition: all 0.3s ease-in-out; 
 }
 
+.log-out-button:hover{
+  color: white;
+}
 /* Change the color of navigation links on hover */
 .nav-link:hover {
   color: #5714ff; 

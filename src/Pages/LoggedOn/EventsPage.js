@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { useNavigate } from 'react-router-dom';
 import { db, auth } from '../../firebase-config';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, doc, getDoc } from 'firebase/firestore';
 import 'react-datepicker/dist/react-datepicker.css';
 import './EventsPage.css';
 
@@ -14,19 +14,30 @@ function EventsPage() {
     const navigate = useNavigate();
     const [isFormValid, setIsFormValid] = useState(false);
     const [minDate, setMinDate] = useState(new Date(Date.now() + 30 * 60000));
+    const [userProfile, setUserProfile] = useState({ address: '', phoneNumber: '' });
+    const [showUpdateWarning, setShowUpdateWarning] = useState(false);
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(setUser);
+        const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+            setUser(currentUser);
+            if (!currentUser) {
+                navigate('/login'); // Redirect to login if not authenticated
+            }
+        });
         return () => unsubscribe();
-    }, []);
+    }, [navigate]);
 
     useEffect(() => {
+        const needsUpdate = userProfile.address === "Pending Update" || userProfile.phoneNumber === "Pending Update";
+        setShowUpdateWarning(needsUpdate);
+
         setIsFormValid(
             eventLabel.trim() !== '' &&
             startDate >= minDate &&
-            recognizedObjects.length > 0
+            recognizedObjects.length > 0 &&
+            !needsUpdate
         );
-    }, [eventLabel, startDate, recognizedObjects, minDate]);
+    }, [eventLabel, startDate, recognizedObjects, minDate, userProfile]);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -34,6 +45,25 @@ function EventsPage() {
         }, 60000);
         return () => clearInterval(timer);
     }, []);
+
+    useEffect(() => {
+        if (user) {
+            const fetchUserData = async () => {
+                try {
+                    const docRef = doc(db, 'users', user.uid);
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        setUserProfile(docSnap.data());
+                    } else {
+                        console.log("No such document!");
+                    }
+                } catch (error) {
+                    console.error("Error fetching user data: ", error);
+                }
+            };
+            fetchUserData();
+        }
+    }, [user]);
 
     const handleDateChange = (date) => setStartDate(date);
 
@@ -48,6 +78,7 @@ function EventsPage() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         if (!isFormValid) {
             console.error('The form is not valid!');
             return;
@@ -71,7 +102,16 @@ function EventsPage() {
 
     return (
         <div className="events-page-container">
-        <form className="events-form" onSubmit={handleSubmit}>
+            {showUpdateWarning && (
+                <div className="update-warning">
+                    <p>
+                        Your address or phone number requires updating. Please
+                        <button onClick={() => navigate('/settings')} className="update-link-button"> click here </button>
+                        to update your profile.
+                    </p>
+                </div>
+            )}
+            <form className="events-form" onSubmit={handleSubmit}>
             <h1 className="events-page-title">Events Form</h1>
             <div className="requirements-box">
                 <p>Please ensure all fields are properly filled:</p>
@@ -107,7 +147,7 @@ function EventsPage() {
                     </div>
                     </div>
                     <CheckBoxSection className="group-box-general-objects" title="General Objects" items={['People', 'Cars', 'Bicycles', 'Trucks', 'Cat', 'Dog']} onChange={handleObjectChange} />
-                    <CheckBoxSection className="group-box-people" title="People" items={['Fatima', 'Diego', 'Serena']} onChange={handleObjectChange} />
+                    <CheckBoxSection className="group-box-people" title="People" items={['Fatima', 'Diego', 'Sirena']} onChange={handleObjectChange} />
                 </div>
                 <input
                     type="submit"

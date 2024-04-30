@@ -29,10 +29,9 @@ const UserNavbar = ({}) => {
         <Navbar bg={isSmallScreen ? "white" : "transparent"} expand="lg" className={`custom-navbar ${isSmallScreen ? "small-screen" : ""}`} expanded={expanded}>
             <Link to="/live-feed" className="navbar-brand" onClick={handleNavItemClick}>LIVE FEED</Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => setExpanded(expanded => !expanded)} />
-            <Button variant="primary" className="sign-in-button" onClick={handleLogout}>Log Out</Button>
+            <Button variant="primary" className="log-out-button" onClick={handleLogout}>LOG OFF</Button>
             <Navbar.Collapse id="basic-navbar-nav" className="centered-collapse">
                 <Nav className="mx-auto">
-                    <Nav.Link as={Link} to="/dashboard" onClick={handleNavItemClick}>DASHBOARD</Nav.Link>
                     <Nav.Link as={Link} to="/dashboard" onClick={handleNavItemClick}>DASHBOARD</Nav.Link>
                 </Nav>
             </Navbar.Collapse>

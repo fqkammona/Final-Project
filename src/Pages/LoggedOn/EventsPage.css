@@ -21,6 +21,23 @@
   margin: 0 auto;
 }
 
+.update-warning {
+  background-color: #ffcccb; /* Light red background for warning */
+  border: 1px solid #ff0000; /* Red border */
+  border-radius: 5px;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.update-link-button {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  padding: 0;
+  margin: 0 5px;
+  cursor: pointer;
+}
 .requirements-box {
   background-color: #BBDBD9;
   margin: 10px;

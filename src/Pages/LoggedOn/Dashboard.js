@@ -6,6 +6,7 @@ import { FaCog } from 'react-icons/fa';
 import { BsCalendar4Event } from "react-icons/bs";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { IoHelpOutline } from "react-icons/io5";
+import { IoMdBook } from "react-icons/io";
 import { db } from '../../firebase-config';
 import { doc, getDoc } from 'firebase/firestore';
 
@@ -39,8 +40,8 @@ const Dashboard = () => {
             <span className="icon-title">Events</span>
           </div>
           <div className="icon-container" onClick={() => navigate('/notifications')}>
-            <IoPhonePortraitOutline className="icon" />
-            <span className="icon-title">notifications</span>
+            <IoMdBook className="icon" />
+            <span className="icon-title">Logs</span>
           </div>
           <div className="icon-container" onClick={() => navigate('/live-feed')}>
             <IoHelpOutline className="icon" />

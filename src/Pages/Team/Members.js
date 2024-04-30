@@ -19,6 +19,7 @@ const MemberCard = ({ name, title, image, description }) => (
           <div className="member-name-back">{name}</div>
           <div className="member-title-back">{title}</div>
           <div className="member-description">{description}</div>
+          
         </div>
       </div>
     </div>

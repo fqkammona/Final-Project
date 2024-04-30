@@ -12,8 +12,7 @@ const Car = () => {
       </div>
       <div className="car-upper">
         <div className="car-top">
-          <div className="Window1"></div>
-          <div className="Window2"></div>
+        <div className="car-window"></div>
       </div>
       </div>
    </div>
