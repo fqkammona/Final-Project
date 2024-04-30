@@ -16,8 +16,6 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [address, setAddress] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -27,18 +25,18 @@ const Signup = () => {
     setPasswordVisible(!passwordVisible);
   };
 
+  
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
   
-    // Simple password validation
     if (password.length < 8 || !/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
       alert("Password must be at least 8 characters long and include both letters and numbers.");
       setLoading(false);
       return;
     }
   
-    // Check if passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match.");
       setLoading(false);
@@ -47,15 +45,17 @@ const Signup = () => {
   
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // Set default values for phoneNumber, address, and add 'Completed' as false
       await setDoc(doc(db, 'users', userCredential.user.uid), {
         firstName,
         lastName,
         email,
-        phoneNumber: "Pending Update", // Default or entered value
-        address:  "Pending Update", 
-        completed: false  // Initial value set to false
+        phoneNumber: "Pending Update",
+        completed: false
       });
+  
+      // Create an empty address document in the address sub-collection
+      await setDoc(doc(db, 'users', userCredential.user.uid, 'address', 'primary'), {});
+  
       navigate('/dashboard');
     } catch (error) {
       console.error(error);
@@ -64,7 +64,7 @@ const Signup = () => {
       setLoading(false);
     }
   };
-
+  
   if (loading) {
     return <LoadingPage />;
   }

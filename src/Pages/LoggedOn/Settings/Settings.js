@@ -36,14 +36,15 @@ const Settings = () => {
             email: data.email,
             phoneNumber: data.phoneNumber
           });
-          const addressParts = data.address ? data.address.split(', ') : [];
-          setAddressDetails({
-            address: addressParts[0] || '',
-            city: addressParts[1] || '',
-            state: addressParts[2] || '',
-            postalCode: addressParts[3] || '',
-            country: addressParts[4] || ''
-          });
+  
+          // Fetch address details from sub-collection or fields
+          const addressRef = doc(db, 'users', currentUser.uid, 'address', 'primary');
+          getDoc(addressRef)
+            .then((addrSnap) => {
+              if (addrSnap.exists()) {
+                setAddressDetails(addrSnap.data());
+              }
+            })
         } else {
           setError('No user data found');
         }
@@ -55,13 +56,18 @@ const Settings = () => {
         setLoading(false);
       });
   }, [currentUser]);
+  
 
   const handleAddressUpdate = async (newAddressDetails) => {
     setLoading(true);
-    const userRef = doc(db, 'users', currentUser.uid);
-    const fullAddress = `${newAddressDetails.address}, ${newAddressDetails.city}, ${newAddressDetails.state}, ${newAddressDetails.postalCode}, ${newAddressDetails.country}`;
+    const addressRef = doc(db, 'users', currentUser.uid, 'address', 'primary');
+    const updatedAddressDetails = {
+        ...newAddressDetails,
+        Update: true  // Set the Update flag to true when updating the address
+    };
+
     try {
-      await updateDoc(userRef, { address: fullAddress });
+      await updateDoc(addressRef, updatedAddressDetails);
       console.log('Address updated successfully!');
     } catch (error) {
       console.error('Error updating address:', error);
@@ -69,27 +75,33 @@ const Settings = () => {
     } finally {
       setLoading(false);
     }
-  };
+};
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    const userRef = doc(db, 'users', currentUser.uid);
-    const fullAddress = `${addressDetails.address}, ${addressDetails.city}, ${addressDetails.state}, ${addressDetails.postalCode}, ${addressDetails.country}`;
-    updateDoc(userRef, {
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  setLoading(true);
+  const userRef = doc(db, 'users', currentUser.uid);
+  
+  // Check if the conditions are met to mark as completed
+  const isCompleted = personalInfo.phoneNumber !== "Pending Update" && addressDetails.Update;
+
+  try {
+    await updateDoc(userRef, {
       ...personalInfo,
-      address: fullAddress
-    })
-      .then(() => {
-        alert('Profile updated successfully!');
-      })
-      .catch(error => {
-        setError('Error updating profile: ' + error.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+      completed: isCompleted // Update the main user profile with the potentially new completed status
+    });
+    await handleAddressUpdate(addressDetails, isCompleted); // Pass the isCompleted status to the address update
+    console.log('Profile updated successfully!');
+    alert('Profile updated successfully!');
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    setError('Error updating profile: ' + error.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className='settings-page'>

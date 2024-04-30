@@ -1,26 +1,55 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
+import Select from "react-select";
 import './AddressDetails.css';
-import { FaLock, FaUnlock } from "react-icons/fa";
 
-const AddressDetails = ({ addressDetails, setAddressDetails }) => {
-    const [isEditable, setIsEditable] = useState(false);
+const CountrySelect = ({ selectedCountry, setSelectedCountry }) => {
+    const [countries, setCountries] = useState([]);
+  
+    useEffect(() => {
+      fetch(
+        "https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setCountries(data.countries);
+        });
+    }, []);
 
-    const toggleEdit = () => {
-        setIsEditable(!isEditable);
+    const handleCountryChange = (selectedOption) => {
+        setSelectedCountry(selectedOption);
     };
 
+    return (
+        <Select
+          className="country-select"  // Add a custom class name here
+          options={countries}
+          value={selectedCountry}
+          onChange={handleCountryChange}
+        />
+      );
+      
+};
+
+const AddressDetails = ({ addressDetails, setAddressDetails }) => {
     const handleChange = (field, value) => {
         setAddressDetails({ ...addressDetails, [field]: value });
     };
+
+    // Managing the country state here and updating it appropriately
+    const [selectedCountry, setSelectedCountry] = useState(null);
+
+    useEffect(() => {
+        // Assume we initialize it based on some external data
+        if (addressDetails.country) {
+            setSelectedCountry({ label: addressDetails.country, value: addressDetails.country });
+        }
+    }, [addressDetails.country]);
 
     return (
         <div className="address-container">
             <form className="address-form">
                 <div className="header-row">
                     <div className="address-title">Address Details</div>
-                    <div onClick={toggleEdit} className="input-icon">
-                        {isEditable ? <FaUnlock /> : <FaLock />}
-                    </div>
                 </div>
                 <div className="input-row">
                     <div className="input-address">
@@ -31,7 +60,6 @@ const AddressDetails = ({ addressDetails, setAddressDetails }) => {
                             placeholder="Address"
                             value={addressDetails.address}
                             onChange={(e) => handleChange('address', e.target.value)}
-                            disabled={!isEditable}
                         />
                     </div>
                     <div className="input-address">
@@ -42,13 +70,11 @@ const AddressDetails = ({ addressDetails, setAddressDetails }) => {
                             placeholder="City"
                             value={addressDetails.city}
                             onChange={(e) => handleChange('city', e.target.value)}
-                            disabled={!isEditable}
                         />
-                    
                     </div>
                 </div>
                 <div className="input-row">
-                    {['state', 'postalCode', 'country'].map(field => (
+                    {['State', 'Postal Code'].map(field => (
                         <div className="input-address" key={field}>
                             <div className="input-label">{field}</div>
                             <input
@@ -57,11 +83,19 @@ const AddressDetails = ({ addressDetails, setAddressDetails }) => {
                                 placeholder={field}
                                 value={addressDetails[field]}
                                 onChange={(e) => handleChange(field, e.target.value)}
-                                disabled={!isEditable}
                             />
-                    
                         </div>
                     ))}
+                    <div className="input-address">
+                        <div className="input-label">Country</div>
+                        <CountrySelect
+                            selectedCountry={selectedCountry}
+                            setSelectedCountry={(option) => {
+                                setSelectedCountry(option);
+                                handleChange('country', option ? option.label : '');
+                            }}
+                        />
+                    </div>
                 </div>
             </form>
         </div>

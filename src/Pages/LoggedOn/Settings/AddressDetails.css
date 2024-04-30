@@ -4,7 +4,10 @@
     padding: 20px;
     color: black;
     box-sizing: border-box; /* Makes sure padding does not add to the width */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3),  /* Right and bottom shadow */
+                -5px -5px 15px rgba(0, 0, 0, 0.1); /* Left and top shadow for 3D effect */
 }
+
 .address-form {
     display: flex;
     flex-direction: column;
@@ -30,19 +33,18 @@
     margin-right: 20px; /* Space between input fields */
 }
 
-
 .address-field{
     padding: 5px;
-    background: red;
+    background: #e2e1e1;
     border: none;
     border-radius: 2px;
     width: 100%; /* Ensures that input fields use full width of the container */
 }
 
-input[disabled] {
-    background: #e2e1e1;
-}
-
 .input-label{
     color: #004B4D;
+}
+
+.country-select {
+    width: 100%; /* Set the width as needed, 100% will make it full width of its container */
 }
