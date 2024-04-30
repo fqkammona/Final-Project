@@ -37,7 +37,7 @@ exports.onMetadataCreate = functions.firestore
       // 4. Retrieve all 'testing' detection events between start-stop time
       let matchFound = false;
       const testRef = admin.firestore().collection("testing");
-/*
+      /*
       try {
         // Fetch the 10 most recent documents based on the 'timestamp' field
         const recentSnapshot = await testRef

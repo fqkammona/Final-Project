@@ -12,8 +12,9 @@ exports.scheduleListeningTask = functions.firestore
       const eventData = snapshot.data();
       const startTime =
       eventData.timestamp.toDate(); // Timestamp for the event start
-      const endTime = startTime.getTime() + //write endTime as 3 minutes after starts
-      3 * 60000
+      // write endTime as 3 minutes after starts
+      const endTime = startTime.getTime() + 
+      3 * 60000;
       const project = "girl-c0ded";
       const queue = "trigger-listening-function";
       const location =
