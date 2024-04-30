@@ -53,9 +53,7 @@ class TV extends React.Component {
                 <div className="tv">
                     <div className="screen-border">
                         <div className="screen">
-                            <div className='house-tv-setting'>
-                                <House />
-                            </div>
+                            
                         </div>
                     </div>
                     <div className="side-box">

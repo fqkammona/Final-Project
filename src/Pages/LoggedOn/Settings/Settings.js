@@ -54,13 +54,31 @@ const Settings = () => {
         setLoading(false);
       });
   }, [currentUser]);
+  const handleAddressUpdate = async (newAddressDetails) => {
+    setLoading(true);
+    const addressRef = doc(db, 'users', currentUser.uid, 'address', 'primary');
+    const updatedAddressDetails = {
+      ...newAddressDetails,
+      Update: true  // Set the Update flag to true when updating the address
+  };
 
+    try {
+      await updateDoc(addressRef, updatedAddressDetails);
+      console.log('Address updated successfully!');
+    } catch (error) {
+      console.error('Error updating address:', error);
+      setError('Error updating profile: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     const userRef = doc(db, 'users', currentUser.uid);
     try {
       await updateDoc(userRef, personalInfo);
+      await handleAddressUpdate(addressDetails);  
       console.log('Profile updated successfully!');
       alert('Profile updated successfully!');
     } catch (error) {

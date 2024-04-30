@@ -87,7 +87,7 @@ function EventsPage() {
         }
 
         const eventData = {
-            timestamp: serverTimestamp(),
+            timestamp: startDate,
             recognizedObjects,
             label: eventLabel
         };
