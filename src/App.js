@@ -15,6 +15,7 @@ import Notifications from './Pages/LoggedOn/Notifications';
 import EventsPage from './Pages/LoggedOn/EventsPage';
 import LiveFeed from './Pages/LoggedOn/LiveFeed';
 import Settings from './Pages/LoggedOn/Settings/Settings';
+import VideoLogs from './Pages/LoggedOn/VideoLogs';
 import './App.css';
 
 const LogoutOnAccess = ({ children }) => {
@@ -83,6 +84,7 @@ const App = () => {
                   <Route path="/settings" element={<PrivateRoute element={Settings} />} />
                   <Route path="/notifications" element={<PrivateRoute element={Notifications} />} />
                   <Route path="/events-page" element={<PrivateRoute element={EventsPage} />} />
+                  <Route path="/video-logs" element={<PrivateRoute element={VideoLogs} />} />
               </Routes>
           </div>
       </LogoutOnAccess>

@@ -40,7 +40,7 @@ const Dashboard = () => {
             <BsCalendar4Event className="icon" />
             <span className="icon-title">Events</span>
           </div>
-          <div className="icon-container" onClick={() => navigate('/live-feed')}>
+          <div className="icon-container" onClick={() => navigate('/video-logs')}>
             <FaPhotoVideo className="icon" />
             <span className="icon-title">Video Logs</span>
           </div>
