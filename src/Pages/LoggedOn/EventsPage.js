@@ -28,9 +28,10 @@ function EventsPage() {
     }, [navigate]);
 
     useEffect(() => {
-        const needsUpdate = userProfile.address === "Pending Update" || userProfile.phoneNumber === "Pending Update";
+        // Assuming 'completed' is a boolean field in userProfile indicating if the profile is fully updated
+        const needsUpdate = !userProfile.completed;
         setShowUpdateWarning(needsUpdate);
-
+    
         setIsFormValid(
             eventLabel.trim() !== '' &&
             startDate >= minDate &&
@@ -38,6 +39,7 @@ function EventsPage() {
             !needsUpdate
         );
     }, [eventLabel, startDate, recognizedObjects, minDate, userProfile]);
+    
 
     useEffect(() => {
         const timer = setInterval(() => {
