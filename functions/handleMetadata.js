@@ -1,11 +1,12 @@
-const functions = require("firebase-functions");
+// const functions = require("firebase-functions");
 const admin = require("firebase-admin");
+const {onRequest} = require("firebase-functions/v2/https");
 
 // Initialize the Firebase Admin SDK if it hasn't been initialized yet
 if (!admin.apps.length) {
   admin.initializeApp();
 }
-
+/*
 exports.onMetadataCreate = functions.firestore
     .document("users/{userId}/events/{eventId}") //
     .onCreate(async (snapshot, context) => {
@@ -37,7 +38,7 @@ exports.onMetadataCreate = functions.firestore
       // 4. Retrieve all 'testing' detection events between start-stop time
       let matchFound = false;
       const testRef = admin.firestore().collection("testing");
-      /*
+
       try {
         // Fetch the 10 most recent documents based on the 'timestamp' field
         const recentSnapshot = await testRef
@@ -59,7 +60,7 @@ exports.onMetadataCreate = functions.firestore
       } catch (error) {
         console.error("Failed to retrieve recent documents:", error);
       }
-*/
+
 
       const testSnapshot = await testRef
           .where("timestamp", ">=", metadataTimestampFirestore)
@@ -105,6 +106,71 @@ exports.onMetadataCreate = functions.firestore
       // Handle the case when no matches are found
       }
     });
+*/
+function arraysIntersect(arr1, arr2) {
+  return arr1.some(item => arr2.includes(item));
+}
+
+exports.handleMetadata = onRequest((req, res) => {
+  console.log("Received body:", req.body);
+  const {userId, eventId} = req.body;
+
+  // Fetch event info and set up time window
+  const eventRef =
+   admin.firestore().collection("users")
+       .doc(userId).collection("events").doc(eventId);
+
+  eventRef.get().then((doc) => {
+    if (!doc.exists) {
+      console.log("No such event: ", eventId);
+      return res.status(404).send("Event not found");
+    }
+
+    const event = doc.data();
+    const eventStartTime = event.timestamp.toDate();
+    const eventEndTime = new Date(eventStartTime.getTime() + 5 * 60000);
+
+    console.log("Event Time Window: ", eventStartTime, " to ", eventEndTime);
+
+    const metadataRef = admin.firestore().collection("testing");
+    metadataRef
+        .where("timestamp", ">=",
+            admin.firestore.Timestamp.fromDate(eventStartTime))
+        .where("timestamp", "<=",
+            admin.firestore.Timestamp.fromDate(eventEndTime))
+        .get()
+        .then((snapshot) => {
+          let matchFound = false;
+          snapshot.forEach((doc) => {
+            const metadata = doc.data();
+            console.log("Checking metadata: ", doc.id, metadata);
+            if (arraysIntersect(event.recognizedObjects, metadata.objects)) {
+              matchFound = true;
+              console.log("Match found:", doc.id, metadata);
+            }
+            if (arraysIntersect(event.recognizedObjects, metadata.faces)) {
+              matchFound = true;
+              console.log("Match found:", doc.id, metadata);
+            }
+          });
+
+          if (matchFound) {
+            console.log("Match found for Event: ", eventId);
+            res.status(200).send("Match found");
+          } else {
+            console.log("No matches found for Event: ", eventId);
+            res.status(404).send("No matches found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching metadata:", error);
+          res.status(500).send("Error checking for matches");
+        });
+  }).catch((error) => {
+    console.error("Error fetching event:", error);
+    res.status(500).send("Internal Server Error");
+  });
+});
 
 
 // Helper function to check if two arrays have any common elements

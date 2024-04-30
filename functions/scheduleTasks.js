@@ -13,13 +13,14 @@ exports.scheduleListeningTask = functions.firestore
       const startTime =
       eventData.timestamp.toDate(); // Timestamp for the event start
       // write endTime as 3 minutes after starts
-      const endTime = startTime.getTime() + 
-      3 * 60000;
+      const endTime =
+      new Date(startTime.getTime() + 5 * 60000);
+
       const project = "girl-c0ded";
       const queue = "trigger-listening-function";
       const location =
       "us-central1"; // Queue location must match the function location
-      const url = `https://${location}-${project}.cloudfunctions.net/startListeningFunction`;
+      const url = `https://${location}-${project}.cloudfunctions.net/handleMetadata`;
       console.log("Scheduled task URL:", url);
 
 
