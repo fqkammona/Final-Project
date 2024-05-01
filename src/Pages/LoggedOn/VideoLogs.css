@@ -1,26 +1,42 @@
 .VideoLogs-page {
-    width: 100%;
+    margin-top: 40px; /* Adjust the value as needed */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     padding: 20px;
+    gap: 20px;
     box-sizing: border-box;
-  }
-  
-  .filter {
-    text-align: right;
-    margin-bottom: 20px;
-  }
-  
-  .video-list {
+    width: 100%;
+}
+
+
+
+.filter-sidebar {
+    width: 250px; /* Adjust width as needed */
+    flex-shrink: 0; /* Prevents the sidebar from shrinking */
+    padding: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.video-list {
+    flex-grow: 1; /* Takes up the remaining space */
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-around;
-  }
-  
-  .video-item {
-    width: 320px;
+    justify-content: flex-start; /* Aligns videos to the start of the container */
+}
+
+.video-item {
+    width: 320px; /* Fixed width for each video */
     text-align: center;
     border: 1px solid #ccc;
     padding: 10px;
     box-sizing: border-box;
-  }
-  
+}
+.filter-sidebar label {
+    display: block; /* Ensure each label is on a new line */
+    margin-bottom: 15px; /* Increase spacing below each label */
+    cursor: pointer; /* Optional: Changes the cursor to a pointer to indicate clickable area */
+    margin-top: 10px; /* Adds space above each label */
+    margin-bottom: 15px; /* Adds more space below each label */
+}

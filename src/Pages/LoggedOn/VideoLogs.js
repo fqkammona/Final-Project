@@ -66,34 +66,30 @@ const VideoLogs = () => {
     };
 
     return (
-        <div className="VideoLogs-page">
-            <h1>Video Logs</h1>
-            <div className="filter-controls">
-                <div className="filter">
-                    <label>Detected Objects:</label>
-                    <div>
-                        <label><input type="checkbox" value="person" onChange={handleObjectFilterChange} checked={objectFilters.includes('person')} /> Person</label>
-                        <label><input type="checkbox" value="car" onChange={handleObjectFilterChange} checked={objectFilters.includes('car')} /> Car</label>
-                        <label><input type="checkbox" value="dog" onChange={handleObjectFilterChange} checked={objectFilters.includes('dog')} /> Dog</label>
-                        <label><input type="checkbox" value="cat" onChange={handleObjectFilterChange} checked={objectFilters.includes('cat')} /> Cat</label>
-                    </div>
-                </div>
-                <div className="filter">
-                    <label>Detected People:</label>
-                    <div>
-                        <label><input type="checkbox" value="Sirena" onChange={handlePeopleFilterChange} checked={peopleFilters.includes('Sirena')} /> Sirena</label>
-                        <label><input type="checkbox" value="Diego" onChange={handlePeopleFilterChange} checked={peopleFilters.includes('Diego')} /> Diego</label>
-                        <label><input type="checkbox" value="Fatima" onChange={handlePeopleFilterChange} checked={peopleFilters.includes('Fatima')} /> Fatima</label>
-                    </div>
-                </div>
-                <div className="sort-controls">
-                    <label>Sort by Time: </label>
-                    <select onChange={handleSortChange} value={sortOrder}>
-                        <option value="asc">Oldest First</option>
-                        <option value="desc">Newest First</option>
+
+<div className="VideoLogs-page">
+            <aside className="filter-sidebar">
+                <div>
+                    <h3>Sort by Time:</h3>
+                    <select>
+                        <option value="oldest">Oldest First</option>
+                        <option value="newest">Newest First</option>
                     </select>
                 </div>
-            </div>
+                <div>
+                    <h3>Detected People:</h3>
+                    <label><input type="checkbox" name="people" value="Sirena" /> Sirena</label>
+                    <label><input type="checkbox" name="people" value="Diego" /> Diego</label>
+                    <label><input type="checkbox" name="people" value="Fatima" /> Fatima</label>
+                </div>
+                <div>
+                    <h3>Detected Objects:</h3>
+                    <label><input type="checkbox" name="objects" value="Person" /> Person</label>
+                    <label><input type="checkbox" name="objects" value="Car" /> Car</label>
+                    <label><input type="checkbox" name="objects" value="Dog" /> Dog</label>
+                    <label><input type="checkbox" name="objects" value="Cat" /> Cat</label>
+                </div>
+    </aside>
             <div className="video-list">
                 {filteredVideos.map((video, index) => (
                     <div key={index} className="video-item">
