@@ -66,45 +66,51 @@ const VideoLogs = () => {
     };
 
     return (
-
 <div className="VideoLogs-page">
-            <aside className="filter-sidebar">
+    <aside className="filter-sidebar">
+        <div className="filter-controls">
+            <div className="sort-controls">
+                <label>Sort by Time:</label>
+                <select onChange={handleSortChange} value={sortOrder}>
+                    <option value="asc">Oldest First</option>
+                    <option value="desc">Newest First</option>
+                </select>
+            </div>
+            <div className="filter">
+                <h3>Detected People:</h3>
                 <div>
-                    <h3>Sort by Time:</h3>
-                    <select>
-                        <option value="oldest">Oldest First</option>
-                        <option value="newest">Newest First</option>
-                    </select>
+                    <label><input type="checkbox" value="Sirena" onChange={handlePeopleFilterChange} checked={peopleFilters.includes('Sirena')} /> Sirena</label>
+                    <label><input type="checkbox" value="Diego" onChange={handlePeopleFilterChange} checked={peopleFilters.includes('Diego')} /> Diego</label>
+                    <label><input type="checkbox" value="Fatima" onChange={handlePeopleFilterChange} checked={peopleFilters.includes('Fatima')} /> Fatima</label>
                 </div>
+            </div>
+            <div className="filter">
+                <h3>Detected Objects:</h3>
                 <div>
-                    <h3>Detected People:</h3>
-                    <label><input type="checkbox" name="people" value="Sirena" /> Sirena</label>
-                    <label><input type="checkbox" name="people" value="Diego" /> Diego</label>
-                    <label><input type="checkbox" name="people" value="Fatima" /> Fatima</label>
+                    <label><input type="checkbox" value="person" onChange={handleObjectFilterChange} checked={objectFilters.includes('person')} /> Person</label>
+                    <label><input type="checkbox" value="car" onChange={handleObjectFilterChange} checked={objectFilters.includes('car')} /> Car</label>
+                    <label><input type="checkbox" value="dog" onChange={handleObjectFilterChange} checked={objectFilters.includes('dog')} /> Dog</label>
+                    <label><input type="checkbox" value="cat" onChange={handleObjectFilterChange} checked={objectFilters.includes('cat')} /> Cat</label>
                 </div>
-                <div>
-                    <h3>Detected Objects:</h3>
-                    <label><input type="checkbox" name="objects" value="Person" /> Person</label>
-                    <label><input type="checkbox" name="objects" value="Car" /> Car</label>
-                    <label><input type="checkbox" name="objects" value="Dog" /> Dog</label>
-                    <label><input type="checkbox" name="objects" value="Cat" /> Cat</label>
-                </div>
-    </aside>
-            <div className="video-list">
-                {filteredVideos.map((video, index) => (
-                    <div key={index} className="video-item">
-                        <video width="320" height="240" controls>
-                            <source src={video.url} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                        <div>Detected Objects: {video.objects}</div>
-                        <div>Detected People: {video.people}</div>
-                        <div>File Name: {video.name}</div>
-                        <div>Timestamp: {new Date(video.timestamp).toLocaleString()}</div>
-                    </div>
-                ))}
             </div>
         </div>
+    </aside>
+    <div className="video-list">
+        {filteredVideos.map((video, index) => (
+            <div key={index} className="video-item">
+                <video width="320" height="240" controls>
+                    <source src={video.url} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div>Detected Objects: {video.objects}</div>
+                <div>Detected People: {video.people}</div>
+                <div>File Name: {video.name}</div>
+                <div>Timestamp: {new Date(video.timestamp).toLocaleString()}</div>
+            </div>
+        ))}
+    </div>
+</div>
+
     );
 };
 

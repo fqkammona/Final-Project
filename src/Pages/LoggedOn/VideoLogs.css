@@ -1,42 +1,60 @@
 .VideoLogs-page {
-    margin-top: 40px; /* Adjust the value as needed */
+    margin-top: 50px; /* Adjust this value to the height of your nav bar */
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
     padding: 20px;
     gap: 20px;
-    box-sizing: border-box;
-    width: 100%;
 }
 
-
-
 .filter-sidebar {
-    width: 250px; /* Adjust width as needed */
-    flex-shrink: 0; /* Prevents the sidebar from shrinking */
-    padding: 20px;
-    border-right: 1px solid #ccc;
+    width: 250px; /* Ensure this is enough to fit all labels without wrapping */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.filter-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter, .sort-controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter label, .sort-controls label {
+    margin: 5px 0;
+}
+
+.filter div, .sort-controls select {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
 }
 
 .video-list {
-    flex-grow: 1; /* Takes up the remaining space */
+    flex-grow: 1;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: flex-start; /* Aligns videos to the start of the container */
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .video-item {
-    width: 320px; /* Fixed width for each video */
+    width: 320px;
     text-align: center;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: hidden;
 }
-.filter-sidebar label {
-    display: block; /* Ensure each label is on a new line */
-    margin-bottom: 15px; /* Increase spacing below each label */
-    cursor: pointer; /* Optional: Changes the cursor to a pointer to indicate clickable area */
-    margin-top: 10px; /* Adds space above each label */
-    margin-bottom: 15px; /* Adds more space below each label */
+
+.video-item video {
+    width: 100%;
 }
