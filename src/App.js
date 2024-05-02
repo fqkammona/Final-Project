@@ -23,7 +23,7 @@ const LogoutOnAccess = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
-      if (currentUser && ['/home', '/frequently-asked-questions', '/meet-the-team', '/our-story', '/signup'].includes(location.pathname)) {
+      if (currentUser && ['/home', '/meet-the-team', '/our-story', '/signup'].includes(location.pathname)) {
           logout(); // Automatically logout if user navigates to these pages
       }
   }, [location, currentUser, logout]); // Dependencies to trigger the effect

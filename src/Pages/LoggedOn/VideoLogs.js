@@ -9,18 +9,16 @@ const VideoLogs = () => {
     const [peopleFilters, setPeopleFilters] = useState([]);
     const [sortOrder, setSortOrder] = useState('asc'); // 'asc' for ascending, 'desc' for descending
 
-
-
     const parseMetadata = (metadata) => {
         if (!metadata || !metadata.customMetadata) {
             return { objects: [], people: [], timestamp: 'N/A' };
         }
-    
+
         try {
             // Extract the JSON-like string from customMetadata
             const metaDataString = metadata.customMetadata.customMetadata;
             //console.log('metadata string:', metaDataString);
-    
+
             // Initialize a variable to hold the parsed object
             let parsedMetadata;
             //console.log('{' + typeof metaDataString + '} ' + JSON.stringify(metaDataString));
@@ -34,20 +32,18 @@ const VideoLogs = () => {
                 // If it's already an object, use it directly
                 parsedMetadata = metaDataString;
             }
-    
+
             // Extracting individual components from the parsed metadata
             const objects = parsedMetadata.objects || [];
             const people = parsedMetadata.people || [];
             const timestamp = parsedMetadata.timestamp ? new Date(parsedMetadata.timestamp).toISOString() : 'N/A';
-    
+
             return { objects, people, timestamp };
         } catch (error) {
             console.error("Failed to parse metadata:", error);
             return { objects: [], people: [], timestamp: 'N/A' };
         }
     };
-    
-    
 
     useEffect(() => {
         const fetchVideos = async () => {
@@ -57,21 +53,21 @@ const VideoLogs = () => {
                 const filesData = await Promise.all(videoFilesSnapshot.items.map(async item => {
                     const url = await getDownloadURL(item);
                     const metadata = await getMetadata(item);
-                    
-  
+
+
                     const { objects, people, timestamp } = parseMetadata(metadata);
-                    
+
                     console.log(objects, people, timestamp);
 
 
                     console.log('(' + typeof objects + ') parsedObjects: ' + objects + ' (' + typeof people + ')'
-                    +'parsedPeople: ' + people + ' (' + typeof timestamp + ') parsedTimestamp: ' + timestamp);
+                        + 'parsedPeople: ' + people + ' (' + typeof timestamp + ') parsedTimestamp: ' + timestamp);
                     return {
                         url,
                         name: item.name,
                         timestamp: timestamp,
-                        objects: objects.join(', '), 
-                        people: people.join(', ') 
+                        objects: objects.join(', '),
+                        people: people.join(', ')
                     };
                 }));
 
@@ -86,14 +82,14 @@ const VideoLogs = () => {
 
     const handleObjectFilterChange = (event) => {
         const value = event.target.value;
-        setObjectFilters(filters => 
+        setObjectFilters(filters =>
             filters.includes(value) ? filters.filter(filter => filter !== value) : [...filters, value]
         );
     };
 
     const handlePeopleFilterChange = (event) => {
         const value = event.target.value;
-        setPeopleFilters(filters => 
+        setPeopleFilters(filters =>
             filters.includes(value) ? filters.filter(filter => filter !== value) : [...filters, value]
         );
     };
@@ -113,31 +109,48 @@ const VideoLogs = () => {
             <aside className="filter-sidebar">
                 <div className="filter-controls">
                     <div className="sort-controls">
-                        <label>Sort by Time:</label>
+                        <h3 className='filter-title'>Sort by Time:</h3>
                         <select onChange={handleSortChange} value={sortOrder}>
                             <option value="asc">Oldest First</option>
                             <option value="desc">Newest First</option>
                         </select>
                     </div>
                     <div className="filter">
-                        <h3>Detected People:</h3>
+                        <h3 className='filter-title'>Detected People:</h3>
                         <div>
-                            <label><input type="checkbox" value="Sirena" onChange={handlePeopleFilterChange} checked={peopleFilters.includes('Sirena')} /> Sirena</label>
-                            <label><input type="checkbox" value="Diego" onChange={handlePeopleFilterChange} checked={peopleFilters.includes('Diego')} /> Diego</label>
-                            <label><input type="checkbox" value="Fatima" onChange={handlePeopleFilterChange} checked={peopleFilters.includes('Fatima')} /> Fatima</label>
+                            {['Sirena', 'Diego', 'Fatima'].map(person => (
+                                <label key={person} className="events-checkbox-item">
+                                    <span className="events-checkbox-label">{person}</span>
+                                    <input
+                                        type="checkbox"
+                                        value={person}
+                                        onChange={handlePeopleFilterChange}
+                                        checked={peopleFilters.includes(person)}
+                                        className="events-checkbox"
+                                    />
+                                </label>
+                            ))}
                         </div>
                     </div>
+
                     <div className="filter">
-                        <h3>Detected Objects:</h3>
+                        <h3 className='filter-title'>Detected Objects:</h3>
                         <div>
-                            <label><input type="checkbox" value="person" onChange={handleObjectFilterChange} checked={objectFilters.includes('person')} /> Person</label>
-                            <label><input type="checkbox" value="car" onChange={handleObjectFilterChange} checked={objectFilters.includes('car')} /> Car</label>
-                            <label><input type="checkbox" value="dog" onChange={handleObjectFilterChange} checked={objectFilters.includes('dog')} /> Dog</label>
-                            <label><input type="checkbox" value="bus" onChange={handleObjectFilterChange} checked={objectFilters.includes('bus')} /> Bus</label>
-                            <label><input type="checkbox" value="truck" onChange={handleObjectFilterChange} checked={objectFilters.includes('truck')} /> Truck</label>
-                            <label><input type="checkbox" value="cat" onChange={handleObjectFilterChange} checked={objectFilters.includes('cat')} /> Cat</label>
+                            {['Person', 'Car', 'Dog', 'Bus', 'Truck', 'Cat'].map(item => (
+                                <label key={item} className="events-checkbox-item">
+                                    <span className="events-checkbox-label">{item}</span>
+                                    <input
+                                        type="checkbox"
+                                        value={item}
+                                        onChange={handleObjectFilterChange}
+                                        checked={objectFilters.includes(item)}
+                                        className="events-checkbox"
+                                    />
+                                </label>
+                            ))}
                         </div>
                     </div>
+
                 </div>
             </aside>
             <div className="video-list">
