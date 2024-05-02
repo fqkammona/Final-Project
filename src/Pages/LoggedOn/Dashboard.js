@@ -44,7 +44,7 @@ const Dashboard = () => {
             <FaPhotoVideo className="icon" />
             <span className="icon-title">Video Logs</span>
           </div>
-          <div className="icon-container" onClick={() => navigate('/live-feed')}>
+          <div className="icon-container" onClick={() => navigate('/notifications')}>
             <IoMdBook className="icon" />
             <span className="icon-title">Event Logs</span>
           </div>
