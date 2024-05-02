@@ -136,6 +136,15 @@
     transform: rotate(-110deg);
     /* Additional rotation for storm mode */
   }
+
+  .last-dial-rotated {
+    transform: rotate(-55deg);
+  }
+  
+  .last-dial-storm-rotated {
+    transform: rotate(-110deg);
+    /* Additional rotation for storm mode */
+  }
   
   .dial:not(:last-child) {
     margin-bottom: 20px;

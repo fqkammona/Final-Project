@@ -128,11 +128,6 @@
   transform: rotate(-35deg);
 }
 
-.storm-mode .screen {
-  background-color: #deb173;
-  /* Dark blue for both modes */
-}
-
 .last-dial-rotated {
   transform: rotate(-55deg);
 }
@@ -174,7 +169,6 @@
   height: 100%;
   /* Adjust height as needed */
   background-color: #A86169;
-  ;
   /* Speaker color */
   border: 2px solid #000;
   /* Speaker border */
@@ -196,46 +190,9 @@
   /* Dot color */
 }
 
-/* Adjustments for winter mode */
-.winter-mode .screen {
-  background-color: #ADD8E6;
-  /* Light blue for a winter theme */
-  /* Consider adding snowflake or icicle graphics here */
-}
-
 .last-dial-winter-rotated {
   transform: rotate(-165deg);
   /* Additional rotation for winter mode */
 }
 
-.night-mode .screen {
-  background-color: #002244;
-  /* Dark blue for the night sky */
-  position: relative;
-  /* Needed for pseudo-elements */
-  overflow: hidden;
-  /* Keep pseudo-elements within the screen */
-}
 
-/* Moon */
-.night-mode .screen::before {
-  content: '';
-  position: absolute;
-  top: 20px;
-  /* Adjust as needed */
-  left: 20px;
-  /* Adjust as needed */
-  width: 100px;
-  /* Moon size */
-  height: 100px;
-  /* Moon size */
-  background: radial-gradient(circle at top left, #FFF, #00224400);
-  border-radius: 50%;
-  box-shadow: 0 0 8px #FFF, 0 0 15px #FFF, 0 0 30px #FFF;
-  /* Glowing effect */
-}
-
-.house-tv-setting {
-  margin-top: -102px;
-  margin-right: -50px;
-}

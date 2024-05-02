@@ -5,6 +5,7 @@ import NightMode from '../Seasons/NightMode';
 import StormMode from '../Seasons/StormMode';
 import WinterMode from '../Seasons/WinterMode';
 import DayMode from '../Seasons/DayMode';
+
 class TvDisplay extends React.Component {
     constructor(props) {
         super(props);
@@ -33,7 +34,7 @@ class TvDisplay extends React.Component {
         const dialClasses = `dial-control ${isLast ? 'last-dial' : ''} ${dialRotationClass}`;
         return (
             <div className={dialClasses} onClick={this.toggleMode}>
-                {/* Dial content */}
+               
             </div>
         );
     };
