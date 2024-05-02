@@ -136,7 +136,7 @@ const VideoLogs = () => {
                     <div className="filter">
                         <h3 className='filter-title'>Detected Objects:</h3>
                         <div>
-                            {['Person', 'Car', 'Dog', 'Bus', 'Truck', 'Cat'].map(item => (
+                            {['person', 'car', 'dog', 'bus', 'truck', 'cat'].map(item => (
                                 <label key={item} className="events-checkbox-item">
                                     <span className="events-checkbox-label">{item}</span>
                                     <input
