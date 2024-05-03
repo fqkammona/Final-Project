@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../../AuthContext';
+import './Notifications.css';
 import { getFunctions } from 'firebase/functions';
 
 function Notifications() {

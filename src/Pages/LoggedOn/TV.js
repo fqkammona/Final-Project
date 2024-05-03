@@ -1,6 +1,6 @@
 import React from 'react';
 import './TV.css';
-const videoFeedUrl = "http://172.20.10.3:5005/video_feed";
+const videoFeedUrl = "http://localhost/video_feed";
 
 class TV extends React.Component {
     renderDial = () => {

@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.103f81f1.css",
-    "main.js": "/static/js/main.5657a776.js",
+    "main.css": "/static/css/main.8ed97b48.css",
+    "main.js": "/static/js/main.1181fdf4.js",
     "static/media/test.png": "/static/media/test.3f63f9c73adfe67cf451.png",
-    "static/media/Sirena.png": "/static/media/Sirena.e32fef0759a02561858b.png",
     "static/media/Diego.png": "/static/media/Diego.329748dab9a4e7d4f6d1.png",
+    "static/media/Sirena.png": "/static/media/Sirena.d03742cf8faa074fb5a0.png",
     "index.html": "/index.html",
     "static/media/Cloud2.svg": "/static/media/Cloud2.12ede561066d69e1eb06a5a15384c5e5.svg",
     "static/media/Cloud1.svg": "/static/media/Cloud1.b2721129e10a884e565bf7ccf60603cf.svg",
@@ -13,11 +13,11 @@
     "static/media/Mountain4.svg": "/static/media/Mountain4.785141b1c411ec42504c0a81c8688626.svg",
     "static/media/Mountain2.svg": "/static/media/Mountain2.25de1dbfb9a08447eb2e53c1205c9746.svg",
     "static/media/Mountain1.svg": "/static/media/Mountain1.008421791740756d826e66fd612fcaa6.svg",
-    "main.103f81f1.css.map": "/static/css/main.103f81f1.css.map",
-    "main.5657a776.js.map": "/static/js/main.5657a776.js.map"
+    "main.8ed97b48.css.map": "/static/css/main.8ed97b48.css.map",
+    "main.1181fdf4.js.map": "/static/js/main.1181fdf4.js.map"
   },
   "entrypoints": [
-    "static/css/main.103f81f1.css",
-    "static/js/main.5657a776.js"
+    "static/css/main.8ed97b48.css",
+    "static/js/main.1181fdf4.js"
   ]
 }
