@@ -7,7 +7,7 @@ const Timeline = () => {
     const [showNotificationBox, setShowNotificationBox] = useState(false);
     const [activeNotifications, setActiveNotifications] = useState([]);
     const notificationRef = useRef(null);
-    const notifications = ["Diego has arrived at home!", "IT'S JUST THAT SIMPLE!"];
+    const notifications = ["Modern Marvels is starting!", "IT'S JUST THAT SIMPLE!"];
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -52,7 +52,7 @@ const Timeline = () => {
                     <h2 className="event-title">1st Schedule an Event</h2>
                     <div className="mock-alert">
                         <div className="mock-alert-content">
-                            <p>Event scheduled on 4/25/2024, 3:00:00 PM. Thank you!</p>
+                            <p>Event scheduled on 5/3/2024, 1:00:00 PM. Thank you!</p>
                             <button className="mock-alert-ok-button">OK</button>
                         </div>
                     </div>

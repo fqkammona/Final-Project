@@ -16,9 +16,9 @@
   font-size: clamp(1.2rem, 4vw + 1rem, 6rem);
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: bold;
-  margin-top: 20%;
+  margin-left: 2%;
   line-height: 1.6;
-  text-align: left;
+  text-align: center;
   align-content: center;
   justify-content: center;
 }

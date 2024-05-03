@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaHeart } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa6";
 import './NotificationMessage.css'; 
 
