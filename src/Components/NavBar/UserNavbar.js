@@ -26,7 +26,7 @@ const UserNavbar = ({}) => {
     };
 
     return (
-        <Navbar bg={isSmallScreen ? "white" : "transparent"} expand="lg" className={`custom-navbar ${isSmallScreen ? "small-screen" : ""}`} expanded={expanded}>
+        <Navbar bg={isSmallScreen ? "transparent" : "transparent"} expand="lg" className={`custom-navbar ${isSmallScreen ? "small-screen" : ""}`} expanded={expanded}>
             <Link to="/live-feed" className="navbar-brand" onClick={handleNavItemClick}>LIVE FEED</Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => setExpanded(expanded => !expanded)} />
             <Button variant="primary" className="log-out-button" onClick={handleLogout}>LOG OFF</Button>

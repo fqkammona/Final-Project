@@ -55,6 +55,20 @@
   /* Rounded edges for the screen */
 }
 
+
+.tv-live-feed-screen {
+  width: 100%;  /* Take full width of its parent */
+  height: 100%; /* Take full height of its parent */
+  background-color: #D3D3D3;
+  border: 2px solid black;
+  border-radius: 15px; /* Rounded edges for the screen */
+  overflow: hidden; /* Ensures no overflow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .side-box {
   width: 17%;
   /* Adjusted width for the side box */

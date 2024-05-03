@@ -1,6 +1,6 @@
 import React from 'react';
 import './TV.css';
-const videoFeedUrl = "http://10.9.197.114:5000/video_feed";
+const videoFeedUrl = "http://172.20.10.3:5005/video_feed";
 
 class TV extends React.Component {
     renderDial = () => {
@@ -23,8 +23,8 @@ class TV extends React.Component {
             <div className="tv-container">
                 <div className="tv">
                     <div className="screen-border">
-                        <div className="screen">
-                            <img src={videoFeedUrl} alt="Live Feed" style={{ width: '640px', height: '480px' }} />
+                        <div className="tv-live-feed-screen">
+                        <img src={videoFeedUrl} alt="Live Feed" style={{ width: '640px', height: '500px' }} />
                         </div>
                     </div>
                     <div className="side-box">

@@ -17,5 +17,29 @@
     font-size: 55px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 40px; /* Adds space between the text and the form */
+    margin-top: 35px; /* Adds space between the text and the form */
   }
+
+  @media (max-width: 768px) {
+    .LiveFeed-page{
+        min-height: 42vh;
+    }
+    .tv-live-feed-display {
+        bottom: 10;
+        transform: scale(0.6);
+    }
+
+    .tv-live-feed-container {
+        top: 0;
+    }
+}
+
+@media (max-width: 468px) {
+    .LiveFeed-page{
+        min-height: 42vh;
+    }
+
+    .tv-live-feed-display {
+        transform: scale(0.55);
+    }
+}
