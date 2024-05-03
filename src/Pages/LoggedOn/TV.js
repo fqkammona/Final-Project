@@ -24,7 +24,7 @@ class TV extends React.Component {
                 <div className="tv">
                     <div className="screen-border">
                         <div className="screen">
-            
+                            <img src={videoFeedUrl} alt="Live Feed" style={{ width: '640px', height: '480px' }} />
                         </div>
                     </div>
                     <div className="side-box">

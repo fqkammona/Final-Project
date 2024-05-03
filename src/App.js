@@ -5,8 +5,6 @@ import LoadingPage from './Components/LoadingPage/LoadingPage';
 import Login from './Components/Login/Login';
 import Signup from './Components/Login/Signup';
 import HomePage from './Pages/HomePage';
-import FAQpage from './Pages/FAQpage';
-import TeamPage from './Pages/Team/TeamPage';
 import StoryPage from './Pages/StoryPage';
 import NavBar from './Components/NavBar/NavBar';
 import UserNavbar from './Components/NavBar/UserNavbar';
@@ -23,8 +21,8 @@ const LogoutOnAccess = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
-      if (currentUser && ['/home', '/meet-the-team', '/our-story', '/signup'].includes(location.pathname)) {
-          logout(); // Automatically logout if user navigates to these pages
+      if (currentUser && ['/home', '/our-story'].includes(location.pathname)) {
+          logout(); 
       }
   }, [location, currentUser, logout]); // Dependencies to trigger the effect
 
@@ -74,8 +72,6 @@ const App = () => {
               <Routes>
                   <Route path="/" element={<Navigate replace to="/home" />} />
                   <Route path="/home" element={<HomePage />} />
-                  <Route path="/frequently-asked-questions" element={<FAQpage />} />
-                  <Route path="/meet-the-team" element={<TeamPage />} />
                   <Route path="/our-story" element={<StoryPage />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
