@@ -54,17 +54,21 @@ const Settings = () => {
         setLoading(false);
       });
   }, [currentUser]);
+
   const handleAddressUpdate = async (newAddressDetails) => {
     setLoading(true);
     const addressRef = doc(db, 'users', currentUser.uid, 'address', 'primary');
+    const isAddressComplete = Object.values(newAddressDetails).every(value => value !== '');
+    
     const updatedAddressDetails = {
       ...newAddressDetails,
-      Update: true  // Set the Update flag to true when updating the address
-  };
-
+      Update: isAddressComplete  // Set the Update flag based on whether all address fields are filled
+    };
+  
     try {
       await updateDoc(addressRef, updatedAddressDetails);
       console.log('Address updated successfully!');
+      await handleCompleteUpdate(isAddressComplete);  // Handle updating the Complete flag
     } catch (error) {
       console.error('Error updating address:', error);
       setError('Error updating profile: ' + error.message);
@@ -72,6 +76,29 @@ const Settings = () => {
       setLoading(false);
     }
   };
+  
+  const handleCompleteUpdate = async (isAddressComplete) => {
+    const userRef = doc(db, 'users', currentUser.uid);
+    const userInfoSnap = await getDoc(userRef);
+    if (userInfoSnap.exists()) {
+      const userInfo = userInfoSnap.data();
+      const isPhoneReady = userInfo.phoneNumber !== 'Pending Update';
+      const completedStatus = isAddressComplete && isPhoneReady;
+  
+      try {
+        await updateDoc(userRef, { completed: completedStatus });  // Update the 'completed' field
+        if (completedStatus) {
+          console.log('Profile marked as completed.');
+        }
+      } catch (error) {
+        console.error('Error updating completed status:', error);
+        setError('Error updating completed status: ' + error.message);
+      }
+    }
+  };
+  
+  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
