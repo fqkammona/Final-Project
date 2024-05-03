@@ -5,12 +5,9 @@ import { db, auth } from '../../firebase-config';
 import { collection, addDoc, serverTimestamp, doc, getDoc } from 'firebase/firestore';
 import 'react-datepicker/dist/react-datepicker.css';
 import './EventsPage.css';
-import { format, getTimeZoneOffset } from 'date-fns';
-import { zonedTimeToUtc } from 'date-fns-tz';
 
 function EventsPage() {
     const [startDate, setStartDate] = useState(new Date());
-    const [startDateString, setStartDateString] = useState(format(new Date(), 'Pp')); // Additional state to hold string representation
     const [recognizedObjects, setRecognizedObjects] = useState([]);
     const [eventLabel, setEventLabel] = useState('');
     const [user, setUser] = useState(null);
@@ -24,13 +21,14 @@ function EventsPage() {
         const unsubscribe = auth.onAuthStateChanged((currentUser) => {
             setUser(currentUser);
             if (!currentUser) {
-                navigate('/login');
+                navigate('/login'); // Redirect to login if not authenticated
             }
         });
         return () => unsubscribe();
     }, [navigate]);
 
     useEffect(() => {
+        // Assuming 'completed' is a boolean field in userProfile indicating if the profile is fully updated
         const needsUpdate = !userProfile.completed;
         setShowUpdateWarning(needsUpdate);
     
@@ -42,6 +40,7 @@ function EventsPage() {
         );
     }, [eventLabel, startDate, recognizedObjects, minDate, userProfile]);
     
+
     useEffect(() => {
         const timer = setInterval(() => {
             setMinDate(new Date(Date.now() + 30 * 60000));
@@ -68,25 +67,7 @@ function EventsPage() {
         }
     }, [user]);
 
-    const handleDateChange = (date) => {
-        setStartDate(date);  // Keep the Date object as a reference
-    
-        // Get the timezone offset in minutes and convert it to hours
-        const offset = -date.getTimezoneOffset(); // getTimezoneOffset returns the difference in minutes between UTC and local time. Note the negation to invert the sign.
-        const hours = Math.floor(offset / 60);
-        
-        // Format the timezone in UTC-x format
-        const timezoneString = `UTC${hours >= 0 ? '+' : ''}${hours}`;
-    
-        // Format the date and time without timezone using format from date-fns
-        let dateString = format(date, "MMMM d, yyyy 'at' h:mm:ss aaa"); // "May 2, 2024 at 3:30:00 PM"
-    
-        // Append the custom timezone string
-        dateString += ` ${timezoneString}`; // "May 2, 2024 at 3:30:00 PM UTC-5:00"
-    
-        setStartDateString(dateString);
-    };
-    
+    const handleDateChange = (date) => setStartDate(date);
 
     const handleObjectChange = (event) => {
         const { value, checked } = event.target;
@@ -99,28 +80,28 @@ function EventsPage() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+
         if (!isFormValid) {
             console.error('The form is not valid!');
             return;
         }
-    
+
         const eventData = {
-            timestamp: startDateString,  // Use the string representation
+            timestamp: startDate,
             recognizedObjects,
             label: eventLabel
         };
-    
+
         try {
             const userEventsRef = collection(db, 'users', user.uid, 'events');
             await addDoc(userEventsRef, eventData);
-            alert(`Event scheduled on ${startDateString}. Thank you!`);  // Displaying the formatted string in the alert
+            alert(`Event scheduled on ${startDate.toLocaleString()}. Thank you!`);
             navigate('/dashboard');
         } catch (error) {
             console.error('Error submitting event: ', error);
         }
     };
-    
+
     return (
         <div className="events-page-container">
             {showUpdateWarning && (
@@ -157,7 +138,7 @@ function EventsPage() {
                     <div className="input-wrapper">
                         <label className="input-label">Date/Time:</label>
                         <DatePicker
-                             selected={new Date(startDate)}
+                            selected={startDate}
                             onChange={handleDateChange}
                             showTimeSelect
                             dateFormat="Pp"
@@ -167,8 +148,8 @@ function EventsPage() {
                         />
                     </div>
                     </div>
-                    <CheckBoxSection className="group-box-general-objects" title="General Objects" items={['person', 'car', 'dog', 'bus', 'truck', 'cat']} onChange={handleObjectChange} />
-                    <CheckBoxSection className="group-box-people" title="People" items={['Sirena', 'Diego', 'Fatima']} onChange={handleObjectChange} />
+                    <CheckBoxSection className="group-box-general-objects" title="General Objects" items={['People', 'Cars', 'Bicycles', 'Trucks', 'Cat', 'Dog']} onChange={handleObjectChange} />
+                    <CheckBoxSection className="group-box-people" title="People" items={['Fatima', 'Diego', 'Sirena']} onChange={handleObjectChange} />
                 </div>
                 <input
                     type="submit"
